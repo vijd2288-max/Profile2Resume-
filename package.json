@@ -1,0 +1,28 @@
+{
+  "name": "profile2resume",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests eslint.config.js",
+    "format": "prettier --write src tests docs package.json tsconfig.json eslint.config.js prettier.config.js",
+    "format:check": "prettier --check src tests docs package.json tsconfig.json eslint.config.js prettier.config.js",
+    "test": "vitest run tests/api.test.ts tests/env.test.ts && node --test tests/smoke.test.js",
+    "test:unit": "vitest run",
+    "test:smoke": "node --test tests/smoke.test.js",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3",
+    "vitest": "^3.2.4"
+  }
+}
