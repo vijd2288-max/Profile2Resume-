@@ -42,7 +42,26 @@ The planned backend is a small TypeScript HTTP API with these boundaries:
 4. Persistence repositories isolate database access from services.
 5. Background workers handle provider sync, evidence analysis, and resume generation asynchronously.
 
-Authentication and external integrations are explicitly out of scope for Phase 1.
+Phase 2 adds server-only MongoDB persistence and GitHub OAuth. The static Stitch page
+keeps its existing hash routes; the `Continue with GitHub` action targets the server
+OAuth entry point at `/auth/github`.
+
+## Phase 2 setup
+
+1. Copy `.env.example` to `.env` and set `API_SECRET_KEY` to a random value of at
+   least 32 characters.
+2. Set `MONGODB_URI` and, optionally, `MONGODB_DB_NAME` for the MongoDB deployment.
+   The application fails safely when the URI is missing and never logs credentials.
+3. Create a GitHub OAuth App. Set its callback URL to the exact
+   `GITHUB_CALLBACK_URL` value, then set `GITHUB_CLIENT_ID` and
+   `GITHUB_CLIENT_SECRET` in the server environment.
+4. Run `npm run build` and `npm test`.
+
+GitHub access tokens are encrypted with an AES-256-GCM key derived from
+`API_SECRET_KEY`, selected integration fields are hidden by default, and browser
+JavaScript receives only a signed HttpOnly session cookie. Rotate the secret and
+invalidate sessions if it is compromised. Never commit `.env` or populated
+credentials.
 
 ## Database responsibilities
 

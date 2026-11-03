@@ -143,6 +143,11 @@ export type GithubProfile = {
 export type GithubOAuthDependencies = {
   exchangeCode: (code: string, config: GithubOAuthConfig) => Promise<string>;
   fetchProfile: (accessToken: string) => Promise<GithubProfile>;
+  persistUser?: (
+    profile: GithubProfile,
+    accessToken: string,
+    source: NodeJS.ProcessEnv,
+  ) => Promise<UserDocument>;
 };
 
 export async function authenticateGithubCallback(
@@ -167,7 +172,7 @@ export async function authenticateGithubCallback(
 
   const accessToken = await dependencies.exchangeCode(params.code, config);
   const profile = await dependencies.fetchProfile(accessToken);
-  const user = await upsertGithubUser(profile, accessToken, source);
+  const user = await (dependencies.persistUser ?? upsertGithubUser)(profile, accessToken, source);
   return { user, sessionCookie: createSessionCookie(String(user._id), config.secret) };
 }
 
