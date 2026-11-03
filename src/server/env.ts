@@ -5,6 +5,8 @@ const serverEnvSchema = z.object({
   PORT: z.coerce.number().int().min(1).max(65535).default(3000),
   API_SECRET_KEY: z.string().min(32, "API_SECRET_KEY must contain at least 32 characters"),
   DATABASE_URL: z.string().url().optional(),
+  MONGODB_URI: z.string().url().optional(),
+  MONGODB_DB_NAME: z.string().min(1).optional(),
 });
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>;
