@@ -8,7 +8,12 @@ export interface ResumeBulletDocument extends Document {
   relevantSkills: string[];
   supportingEvidenceIds: Types.ObjectId[];
   validationStatus:
-    "pending" | "supported" | "partially_supported" | "unsupported" | "requires_clarification";
+    | "pending"
+    | "supported"
+    | "partially_supported"
+    | "user_confirmed"
+    | "unsupported"
+    | "requires_clarification";
   validationExplanation?: string;
   approvalStatus: "pending" | "approved" | "rejected";
   createdAt: Date;

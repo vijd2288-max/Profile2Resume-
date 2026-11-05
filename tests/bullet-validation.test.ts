@@ -4,10 +4,12 @@ import { Evidence } from "../src/server/evidence-models.js";
 
 describe("bullet validation", () => {
   it("rejects bullets without evidence", async () => {
-    const result = await validateBullet("507f1f77bcf86cd799439011", "Built services", [
-      "507f1f77bcf86cd799439012",
-    ] as never);
+    const query = vi.spyOn(Evidence, "find").mockReturnValue({
+      select: () => ({ lean: () => ({ exec: async () => [] }) }),
+    } as never);
+    const result = await validateBullet("507f1f77bcf86cd799439011", "Built services", []);
     expect(result.status).toBe("unsupported");
+    query.mockRestore();
   });
 
   it("cannot use another user's evidence", async () => {

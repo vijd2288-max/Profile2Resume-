@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { type Types } from "mongoose";
 import { Evidence } from "./evidence-models.js";
 
 export type BulletValidation = {
