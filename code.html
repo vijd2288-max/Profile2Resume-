@@ -1920,6 +1920,20 @@
             </form>
             <div class="flex flex-wrap items-center gap-space-sm">
               <button
+                id="resume-duplicate-button"
+                type="button"
+                class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md"
+              >
+                Duplicate
+              </button>
+              <button
+                id="resume-delete-button"
+                type="button"
+                class="px-space-md py-space-sm rounded-lg bg-error-container text-on-error-container font-title-md"
+              >
+                Delete
+              </button>
+              <button
                 id="resume-checkpoint-button"
                 type="button"
                 class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md"
@@ -2660,6 +2674,48 @@
                     method: "POST",
                     body: "{}",
                   });
+
+                  document
+                    .getElementById("resume-duplicate-button")
+                    .addEventListener("click", async () => {
+                      if (!activeResume) return;
+                      try {
+                        const copy = await resumeRequest(
+                          `/api/resumes/${activeResume._id}/duplicate`,
+                          {
+                            method: "POST",
+                            body: "{}",
+                          },
+                        );
+                        await loadResumes();
+                        document.getElementById("resume-selector").value = copy._id;
+                        renderResume(copy);
+                        document.getElementById("resume-save-status").textContent =
+                          "Resume duplicated.";
+                      } catch (error) {
+                        document.getElementById("resume-save-status").textContent = error.message;
+                      }
+                    });
+
+                  document
+                    .getElementById("resume-delete-button")
+                    .addEventListener("click", async () => {
+                      if (!activeResume || !window.confirm("Delete this resume draft?")) return;
+                      try {
+                        await resumeRequest(`/api/resumes/${activeResume._id}`, {
+                          method: "DELETE",
+                        });
+                        activeResume = null;
+                        document.getElementById("resume-editor-form").classList.add("hidden");
+                        document.getElementById("resume-preview").textContent =
+                          "Select a resume to preview approved content.";
+                        document.getElementById("resume-save-status").textContent =
+                          "Resume deleted.";
+                        await loadResumes();
+                      } catch (error) {
+                        document.getElementById("resume-save-status").textContent = error.message;
+                      }
+                    });
 
                   document
                     .getElementById("resume-role-button")
