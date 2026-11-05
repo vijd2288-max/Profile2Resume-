@@ -8,6 +8,7 @@ import { enrichGithubRepositories } from "./github-metadata.js";
 import { rankGithubRepositories } from "./github-ranking.js";
 import { syncGithubProjectsToProfile } from "./profile-unification.js";
 import { collectGithubEvidence } from "./github-evidence.js";
+import { applyProjectOverrides, ProjectOverride } from "./project-overrides.js";
 
 export function normalizeGithubRepository(repository: GithubRepository) {
   return {
@@ -90,8 +91,27 @@ export async function importGithubRepositories(
   document.profile = profileFromGithub(profile);
   document.repositories = Array.from(byGithubId.values()) as never;
   const metadata = await enrichGithubRepositories(client, document);
-  const ranked = rankGithubRepositories(Array.from(document.repositories), 6);
-  const rankedById = new Map(ranked.map((item) => [item.repository.githubId, item]));
+  const ranked = rankGithubRepositories(
+    Array.from(document.repositories),
+    document.repositories.length,
+  );
+  const overrides = await ProjectOverride.find({ userId: objectId }).lean().exec();
+  const rankedWithOverrides = applyProjectOverrides(
+    ranked,
+    new Map(
+      overrides.map((override) => [
+        override.githubId,
+        {
+          include: override.include,
+          exclude: override.exclude,
+          pinned: override.pinned,
+          priority: override.priority,
+          automaticRanking: override.automaticRanking,
+        },
+      ]),
+    ),
+  ).slice(0, 6);
+  const rankedById = new Map(rankedWithOverrides.map((item) => [item.repository.githubId, item]));
   for (const repository of document.repositories) {
     const result = rankedById.get(repository.githubId);
     repository.recommended = Boolean(result);

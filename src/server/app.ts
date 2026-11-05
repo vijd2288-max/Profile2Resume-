@@ -10,6 +10,7 @@ import { handleGithubRequest } from "./github-api.js";
 import { handleLinkedInRequest } from "./linkedin-api.js";
 import { handleLeetcodeRequest } from "./leetcode.js";
 import { handleEvidenceRequest } from "./evidence-api.js";
+import { handleProjectOverrideRequest } from "./project-override-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -89,6 +90,18 @@ export async function handleApplicationRequest(
       return;
     }
     if (await handleEvidenceRequest(request, response, userId, url.pathname, readJson, sendJson)) {
+      return;
+    }
+    if (
+      await handleProjectOverrideRequest(
+        request,
+        response,
+        userId,
+        url.pathname,
+        readJson,
+        sendJson,
+      )
+    ) {
       return;
     }
 
