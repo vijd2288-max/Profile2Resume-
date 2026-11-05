@@ -5,6 +5,7 @@ import { handleAuthRequest } from "./auth-http.js";
 import { connectToDatabase } from "./db.js";
 import { assertUserOwnership, requireAuthenticatedUser } from "./access.js";
 import { User } from "./models.js";
+import { handleProfileRequest } from "./profile-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -68,6 +69,19 @@ export async function handleApplicationRequest(
       throw new ApiError(500, "SERVER_MISCONFIGURED", "Server authentication is unavailable");
     const userId = requireAuthenticatedUser(request.headers.cookie, secret);
     await connectToDatabase(source);
+
+    if (
+      await handleProfileRequest(
+        request,
+        response,
+        userId,
+        url.pathname,
+        readJson,
+        sendJson,
+      )
+    ) {
+      return;
+    }
 
     if (url.pathname === "/api/me" && request.method === "GET") {
       const user = await User.findById(userId).exec();
