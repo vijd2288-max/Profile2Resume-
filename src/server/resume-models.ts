@@ -50,39 +50,16 @@ export interface ResumeVersionDocument extends Document {
   createdAt: Date;
 }
 
-const bulletSchema = new Schema<ResumeBulletValue>(
-  {
-    bulletId: { type: String, required: true, trim: true, maxlength: 100 },
-    text: { type: String, required: true, trim: true, maxlength: 1_000 },
-    evidenceReferences: { type: [String], default: [] },
-    validationStatus: {
-      type: String,
-      enum: [
-        "supported",
-        "partially_supported",
-        "user_confirmed",
-        "unsupported",
-        "requires_clarification",
-      ],
-      required: true,
-    },
-    approvalStatus: { type: String, enum: ["pending", "approved", "rejected"], required: true },
-    displayOrder: { type: Number, min: 0, required: true },
-    sourceBulletId: { type: String, maxlength: 100 },
-  },
-  { _id: false },
-);
-
 const sectionsSchema = new Schema<ResumeSections>(
   {
     personalInformation: { type: Schema.Types.Mixed, default: {} },
     professionalSummary: { type: String, maxlength: 4_000, default: "" },
     technicalSkills: { type: [String], default: [] },
-    workExperience: { type: Array, default: [] },
-    projects: { type: Array, default: [] },
-    education: { type: Array, default: [] },
-    certifications: { type: Array, default: [] },
-    achievements: { type: Array, default: [] },
+    workExperience: { type: Schema.Types.Mixed, default: [] },
+    projects: { type: Schema.Types.Mixed, default: [] },
+    education: { type: Schema.Types.Mixed, default: [] },
+    certifications: { type: Schema.Types.Mixed, default: [] },
+    achievements: { type: Schema.Types.Mixed, default: [] },
   },
   { _id: false },
 );
