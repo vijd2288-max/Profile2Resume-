@@ -4,6 +4,7 @@ import { AccountIntegration } from "./models.js";
 import { GithubImport, type GithubImportDocument } from "./github-models.js";
 import { GithubClient } from "./github-client.js";
 import type { GithubRepository, GithubUser } from "./github-types.js";
+import { enrichGithubRepositories } from "./github-metadata.js";
 
 export function normalizeGithubRepository(repository: GithubRepository) {
   return {
@@ -85,7 +86,8 @@ export async function importGithubRepositories(
   const document = existing ?? new GithubImport({ userId: objectId, repositories: [] });
   document.profile = profileFromGithub(profile);
   document.repositories = Array.from(byGithubId.values()) as never;
-  document.synchronizationStatus = "idle";
+  const metadata = await enrichGithubRepositories(client, document);
+  document.synchronizationStatus = metadata.failures.length ? "partial" : "idle";
   document.lastSynchronizedAt = importedAt;
   document.set("lastError", undefined);
   await document.save();

@@ -93,4 +93,18 @@ describe("GithubClient", () => {
     expect(result.description).toBe("Demo");
     expect(result).not.toHaveProperty("personalContribution");
   });
+
+  it("decodes bounded base64 README content", async () => {
+    clearGithubCache();
+    const fetcher = vi.fn(async () =>
+      response({
+        content: Buffer.from("# Demo").toString("base64"),
+        encoding: "base64",
+        html_url: "https://github.com/ada/demo/blob/main/README.md",
+      }),
+    );
+    const readme = await new GithubClient({ fetcher }).getReadme("ada", "demo");
+    expect(readme?.content).toBe("# Demo");
+    expect(readme?.htmlUrl).toContain("README.md");
+  });
 });
