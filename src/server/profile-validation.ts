@@ -16,6 +16,7 @@ const sourceEvidenceSchema = z.object({
 export const basicInformationSchema = z.object({
   fullName: optionalText(120),
   professionalHeadline: optionalText(240),
+  summary: optionalText(4_000),
   email: z.string().trim().email().max(320).optional(),
   phone: optionalText(40),
   location: optionalText(160),

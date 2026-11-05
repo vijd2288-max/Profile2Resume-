@@ -159,6 +159,7 @@ const developerProfileSchema = new Schema<DeveloperProfileDocument>(
     basicInformation: {
       fullName: { type: String, trim: true, maxlength: 120 },
       professionalHeadline: { type: String, trim: true, maxlength: 240 },
+      summary: { type: String, trim: true, maxlength: 4_000 },
       email: { type: String, trim: true, lowercase: true, maxlength: 320 },
       phone: { type: String, trim: true, maxlength: 40 },
       location: { type: String, trim: true, maxlength: 160 },

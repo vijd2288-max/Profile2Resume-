@@ -6,6 +6,7 @@ import { GithubClient } from "./github-client.js";
 import type { GithubRepository, GithubUser } from "./github-types.js";
 import { enrichGithubRepositories } from "./github-metadata.js";
 import { rankGithubRepositories } from "./github-ranking.js";
+import { syncGithubProjectsToProfile } from "./profile-unification.js";
 
 export function normalizeGithubRepository(repository: GithubRepository) {
   return {
@@ -104,5 +105,22 @@ export async function importGithubRepositories(
   document.lastSynchronizedAt = importedAt;
   document.set("lastError", undefined);
   await document.save();
+  await syncGithubProjectsToProfile(
+    userId,
+    document.repositories.map((repository) => ({
+      githubId: repository.githubId,
+      name: repository.name,
+      fullName: repository.fullName,
+      ...(repository.description ? { description: repository.description } : {}),
+      repositoryURL: repository.repositoryURL,
+      ...(repository.homepageURL ? { homepageURL: repository.homepageURL } : {}),
+      ...(repository.primaryLanguage ? { primaryLanguage: repository.primaryLanguage } : {}),
+      topics: repository.topics,
+      isFork: repository.isFork,
+      selectedForResume: repository.selectedForResume,
+      userEdited: repository.userEdited,
+      synchronizedAt: repository.synchronizedAt,
+    })),
+  );
   return document;
 }

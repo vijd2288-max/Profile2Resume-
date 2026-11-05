@@ -33,6 +33,7 @@ export type SourceEvidence = {
 export type BasicInformation = {
   fullName?: string;
   professionalHeadline?: string;
+  summary?: string;
   email?: string;
   phone?: string;
   location?: string;

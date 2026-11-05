@@ -108,6 +108,14 @@ export async function handleLinkedInRequest(
         importedAt: document.importedAt,
       };
       const extraction = document.extraction;
+      if (document.sectionStatuses.get("basic") === "approved") {
+        profile.basicInformation = {
+          ...profile.basicInformation,
+          ...(extraction.fullName ? { fullName: extraction.fullName } : {}),
+          ...(extraction.headline ? { professionalHeadline: extraction.headline } : {}),
+          ...(extraction.summary ? { summary: extraction.summary } : {}),
+        };
+      }
       if (document.sectionStatuses.get("skills") === "approved") {
         const skills = profile.technicalSkills as unknown as Array<Record<string, unknown>>;
         for (const name of extraction.skills) {
