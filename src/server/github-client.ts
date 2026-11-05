@@ -68,14 +68,13 @@ export class GithubClient {
     Object.entries(search).forEach(([key, value]) => url.searchParams.set(key, value));
     const key = url.toString();
     const existing = cache.get(key);
-    const usableCache = existing && existing.expiresAt > this.now() ? existing : undefined;
-    if (usableCache) return usableCache.value as T;
+    if (existing && existing.expiresAt > this.now()) return existing.value as T;
     const headers: Record<string, string> = {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": process.env.GITHUB_API_VERSION ?? "2022-11-28",
     };
     if (this.token) headers.Authorization = `Bearer ${this.token}`;
-    if (usableCache?.etag) headers["If-None-Match"] = usableCache.etag;
+    if (existing?.etag) headers["If-None-Match"] = existing.etag;
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
     let response: Response;
@@ -90,7 +89,7 @@ export class GithubClient {
       clearTimeout(timeout);
     }
     const limits = rateLimit(response.headers);
-    if (response.status === 304 && usableCache) return usableCache.value as T;
+    if (response.status === 304 && existing) return existing.value as T;
     if (!response.ok) {
       throw new GithubApiError(
         response.status === 404

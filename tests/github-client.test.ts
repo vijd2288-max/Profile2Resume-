@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { clearGithubCache, GithubClient } from "../src/server/github-client.js";
 import { GithubApiError } from "../src/server/github-types.js";
+import { normalizeGithubRepository } from "../src/server/github-import.js";
 
 function response(body: unknown, init: ResponseInit = {}): Response {
   return new Response(JSON.stringify(body), {
@@ -66,5 +67,30 @@ describe("GithubClient", () => {
     });
     await expect(rateLimited.getUser()).rejects.toMatchObject({ status: 429 });
     await expect(rateLimited.getUser()).rejects.toBeInstanceOf(GithubApiError);
+  });
+
+  it("normalizes public repository metadata without inventing contributions", () => {
+    const result = normalizeGithubRepository({
+      id: 7,
+      name: "demo",
+      full_name: "ada/demo",
+      description: " Demo ",
+      html_url: "https://github.com/ada/demo",
+      homepage: null,
+      language: "TypeScript",
+      topics: ["api"],
+      fork: false,
+      archived: false,
+      created_at: "2025-01-01T00:00:00Z",
+      pushed_at: "2025-02-01T00:00:00Z",
+      stargazers_count: 2,
+      forks_count: 1,
+      default_branch: "main",
+      size: 12,
+      visibility: "public",
+    });
+    expect(result.fullName).toBe("ada/demo");
+    expect(result.description).toBe("Demo");
+    expect(result).not.toHaveProperty("personalContribution");
   });
 });
