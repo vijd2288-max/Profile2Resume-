@@ -7,6 +7,7 @@ import type { GithubRepository, GithubUser } from "./github-types.js";
 import { enrichGithubRepositories } from "./github-metadata.js";
 import { rankGithubRepositories } from "./github-ranking.js";
 import { syncGithubProjectsToProfile } from "./profile-unification.js";
+import { collectGithubEvidence } from "./github-evidence.js";
 
 export function normalizeGithubRepository(repository: GithubRepository) {
   return {
@@ -105,6 +106,7 @@ export async function importGithubRepositories(
   document.lastSynchronizedAt = importedAt;
   document.set("lastError", undefined);
   await document.save();
+  await collectGithubEvidence(userId, document);
   await syncGithubProjectsToProfile(
     userId,
     document.repositories.map((repository) => ({
