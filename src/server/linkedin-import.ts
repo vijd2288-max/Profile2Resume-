@@ -86,7 +86,9 @@ function lines(value: string): string[] {
 
 export function parseLinkedInText(text: string): LinkedInExtraction {
   const normalized = text
-    .replace(/\u0000/g, "")
+    .split("")
+    .filter((character) => character.charCodeAt(0) !== 0)
+    .join("")
     .replace(/[ \t]+/g, " ")
     .trim();
   const allLines = lines(normalized);
