@@ -23,14 +23,18 @@ export type AiProviderConfig = {
 type ChatResponse = { choices?: Array<{ message?: { content?: string } }> };
 
 export class ConfigurableAiProvider {
-  private readonly config: Required<
-    Pick<AiProviderConfig, "baseUrl" | "model" | "timeoutMs" | "maxRetries">
-  > &
-    Omit<AiProviderConfig, "baseUrl" | "model" | "timeoutMs" | "maxRetries">;
+  private readonly config: {
+    apiKey?: string;
+    baseUrl: string;
+    model: string;
+    timeoutMs: number;
+    maxRetries: number;
+    fetchImpl: typeof fetch;
+  };
 
   constructor(config: AiProviderConfig = {}) {
     this.config = {
-      apiKey: config.apiKey ?? process.env.AI_API_KEY,
+      ...(config.apiKey ? { apiKey: config.apiKey } : {}),
       baseUrl: config.baseUrl ?? process.env.AI_BASE_URL ?? "https://api.openai.com/v1",
       model: config.model ?? process.env.AI_MODEL ?? "gpt-4o-mini",
       timeoutMs: config.timeoutMs ?? 20_000,
@@ -103,8 +107,8 @@ export class ConfigurableAiProvider {
 
 export function createAiProvider(source: NodeJS.ProcessEnv = process.env) {
   return new ConfigurableAiProvider({
-    apiKey: source.AI_API_KEY,
-    baseUrl: source.AI_BASE_URL,
-    model: source.AI_MODEL,
+    ...(source.AI_API_KEY ? { apiKey: source.AI_API_KEY } : {}),
+    ...(source.AI_BASE_URL ? { baseUrl: source.AI_BASE_URL } : {}),
+    ...(source.AI_MODEL ? { model: source.AI_MODEL } : {}),
   });
 }

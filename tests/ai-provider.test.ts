@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { AiProviderError, ConfigurableAiProvider } from "../src/server/ai-provider.js";
+import { ConfigurableAiProvider } from "../src/server/ai-provider.js";
 
 describe("AI provider", () => {
   it("requires a server-side API key", async () => {
