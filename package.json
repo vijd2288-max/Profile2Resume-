@@ -8,7 +8,7 @@
     "lint": "eslint src tests eslint.config.js",
     "format": "prettier --write src tests docs package.json tsconfig.json eslint.config.js prettier.config.js",
     "format:check": "prettier --check src tests docs package.json tsconfig.json eslint.config.js prettier.config.js",
-    "test": "vitest run tests/api.test.ts tests/env.test.ts tests/db.test.ts tests/models.test.ts tests/auth.test.ts tests/access.test.ts tests/profile.test.ts && node --test tests/smoke.test.js",
+    "test": "vitest run tests/api.test.ts tests/env.test.ts tests/db.test.ts tests/models.test.ts tests/auth.test.ts tests/access.test.ts tests/profile.test.ts tests/github-client.test.ts tests/github-ranking.test.ts && node --test tests/smoke.test.js",
     "test:unit": "vitest run",
     "test:smoke": "node --test tests/smoke.test.js",
     "build": "npm run typecheck",

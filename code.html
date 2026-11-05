@@ -1,1120 +1,2151 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Profile2Resume</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error":"#ba1a1a","secondary-container":"#c9bfff","on-error":"#ffffff","secondary":"#5f578f","surface-container-highest":"#e2e2ea","tertiary-container":"#b64a2c","tertiary-fixed":"#ffdbd1","surface-container-lowest":"#ffffff","on-primary-fixed":"#000c61","background":"#faf8ff","surface-container":"#ededf6","on-secondary-fixed-variant":"#473f76","primary-fixed-dim":"#bcc2ff","on-secondary":"#ffffff","surface-variant":"#e2e2ea","surface-dim":"#d9d9e2","on-secondary-fixed":"#1b1248","outline":"#757687","tertiary-fixed-dim":"#ffb5a1","surface-bright":"#faf8ff","on-error-container":"#93000a","inverse-surface":"#2e3037","inverse-on-surface":"#f0f0f9","on-tertiary-fixed-variant":"#83250a","primary-fixed":"#dfe0ff","on-background":"#191b21","on-primary-fixed-variant":"#132dc8","on-surface":"#191b21","on-tertiary-container":"#ffeae6","on-primary":"#ffffff","on-surface-variant":"#444655","secondary-fixed":"#e5deff","surface-container-low":"#f3f3fc","tertiary":"#963217","on-primary-container":"#eeedff","surface-container-high":"#e7e7f0","on-tertiary":"#ffffff","surface":"#faf8ff","primary-container":"#465bee","outline-variant":"#c5c5d8","error-container":"#ffdad6","secondary-fixed-dim":"#c9bfff","primary":"#283fd5","inverse-primary":"#bcc2ff","surface-tint":"#364ce0","on-tertiary-fixed":"#3c0800","on-secondary-container":"#534b83"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-2xl":"4rem","margin-mobile":"1.25rem","margin":"2.5rem","space-xl":"2.5rem","space-md":"1rem","gutter":"1.5rem","gutter-sm":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","space-lg":"1.5rem"},fontFamily:{"headline-md":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"],"label-code-sm":["JetBrains Mono"],"title-md":["Space Grotesk"],"body-lg":["Inter"],"headline-lg":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"body-sm":["Inter"],"headline-sm":["Space Grotesk"],"display-hero":["Space Grotesk"],"body-md":["Inter"],"label-code-md":["JetBrains Mono"]},fontSize:{"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"500"}],"display-hero-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"600"}],"label-code-sm":["11px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"title-md":["16px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"400"}],"headline-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"600"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0.005em",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"600"}],"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"label-code-md":["13px",{lineHeight:"18px",letterSpacing:"-0.01em",fontWeight:"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(25,27,33,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="Profile2Resume Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VfKgL39J8DUDPSROoxcx4Lpn0fDoIUgyzx1rL-mQ1o2T2GP0eGgxJ_v4pOdrnCllISVyg1-_D1PMHLDL-vVkP4eMxFs1u3h8i15ENFnm3m9snPNasQ-QuZRrraQR787LPWllZeHg5purRRCgKTCLKt7Cn3xPRN2n6z32ZdXnEu-DAItycj4NwDFD3gumuvVJXLJLdOeuzcOXp-Zu6uG2IEyz4TNU-YZefp2mR7kthk6Q"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Profile2Resume</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-title-md"><a aria-current="page" class="px-space-sm py-space-xs rounded transition-colors bg-primary-container text-on-primary font-title-md" data-path="landing" href="#">Landing</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors" data-path="connect" href="#">Connect</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors" data-path="analysis" href="#">AI Analysis</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors" data-path="studio" href="#">Resume Studio</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors" data-path="preview" href="#">Preview</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Verified Profile</span></div><div class="relative hidden sm:flex items-center"><select class="appearance-none bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm py-space-xs pl-space-sm pr-space-lg rounded cursor-pointer hover:bg-surface-container"><option>Full-Stack &amp; Cloud</option><option>AI &amp; ML Engineer</option></select><span class="material-symbols-outlined pointer-events-none absolute right-space-xs text-outline text-[16px]">expand_more</span></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="hidden lg:flex flex-col text-right leading-none"><span class="font-title-md text-body-sm text-on-surface">Alex Chen</span><span class="font-label-code-sm text-label-code-sm text-outline">Staff Engineer</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzl1c-XU5ZsFYHaYDhe-JZTQT1vFyXPhcur6jOtu76uNXd6IAym83lhBgsUh2DxhOiom_0NeCBeFBzDD-cbhRgAr-8gd6lvBmyb9WSLL7vRJOM6u6YquK-IPKt6yJRfxm8jjSAI-zjVNnx0aSkvkrX6qmGdC8bBtB_iP6dXJeWk-9bFOA3pu7BeDQR1IaQ2UjrG9voviYzOaS2mmwxguzcneqhDFxMDeuetK0tflZ8"/></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div id="stitch-landing-content" class="flex flex-col w-full">
-<!-- HERO SECTION -->
-<section class="relative w-full px-margin pt-space-xl pb-space-2xl overflow-hidden bg-surface">
-<!-- Subtle architectural background glow -->
-<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center relative z-10">
-<!-- Left Column: Typography & CTAs -->
-<div class="lg:col-span-6 flex flex-col gap-space-lg">
-<!-- Eyebrow Badge -->
-<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-1 rounded-full bg-surface-container-low shadow-sm">
-<span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-</span>
-<span class="font-label-code-sm text-label-code-sm text-on-surface-variant tracking-wider uppercase font-semibold">YOUR PROFESSIONAL IDENTITY, REIMAGINED</span>
-</div>
-<!-- Main Headline -->
-<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight">
-          Your work deserves a <span class="text-primary italic">better</span> resume.
-        </h1>
-<!-- Supporting Copy -->
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-          Connect your developer profiles. Discover your strongest achievements. Generate evidence-backed resumes tailored to your next opportunity.
-        </p>
-<!-- Verification Stats Pill -->
-<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-xl bg-surface-container shadow-sm self-start">
-<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
-<span class="font-label-code-md text-label-code-md text-on-surface font-medium">
-            10,400+ Verified Repositories <span class="text-outline mx-1">•</span> 99.4% Evidence Match Rate
-          </span>
-</div>
-<!-- Dual CTA Buttons -->
-<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
-<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-md hover:bg-primary transition-all hover:-translate-y-0.5 active:translate-y-0" data-path="connect" href="#">
-<span>Build My Resume</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-<button class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-title-md shadow-sm hover:bg-surface-container transition-all" id="tour-btn" type="button">
-<span class="material-symbols-outlined text-primary text-[20px]">play_circle</span>
-<span>Explore How It Works</span>
-</button>
-</div>
-<!-- Micro Social Proof Metric -->
-<div class="flex items-center gap-space-md pt-space-sm">
-<div class="flex -space-x-2">
-<img class="w-8 h-8 rounded-full object-cover shadow-sm" data-alt="Portrait photo of high-performing senior systems engineer with warm architectural studio lighting, neutral minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSnn0hPyHZL8pSX1ZSodPSgWkTqlduBanLaJ0J9aVU0ceeB6JF9BFpD8iH4uBWIdLr7gEmcy-jSJuYfLw3Ch6u24_x6OdfdsNKC5_jgu_a763OYufovSBu9AFdOOe79lZR37H2aPONiVKyGQonp9pqVQQoqyQ0sTaYe1UVbevdRELFWkT8AKCPUQbpl7Ya0SDToOP_BsFRzjQqsiAdpBX6Mo6WvvcqRnLyk3yOTFpk"/>
-<img class="w-8 h-8 rounded-full object-cover shadow-sm" data-alt="Portrait photo of female staff cloud architect wearing subtle glasses in modern clean workspace, soft diffuse illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjhoM2icFqpJiYlrNPrz63HWrdlFDZzIUQabh7eGmFhrr292URO3S0zSj3XCZKNmhdHD0ZK-XAfZzs2wDZ7S6FA0NlSJ0YDoQiAPkMlb26QasSdv9GGbfBgABsLEnqW-HFdydiNx2I05kYFTOaSSmtOZx0SIKF5bSXQXRkyzjMI6mBvSRFZswz8bkIAAPXiwwhy675N5p5Ez_-c9iU7_0vjiw7sZ9PamX0Wddd98ZN"/>
-<img class="w-8 h-8 rounded-full object-cover shadow-sm" data-alt="Portrait photo of tech lead engineer smiling thoughtfully in warm minimalist office with architectural stone textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ui5hFOCbZzyeF9L0FURrTWQn2HBUeqAnhhEfOoi32gkcF79FeJTlTyH6pQogzEad4PhPK-FHljyYoOmlcpOeE7967iH6xcrXN1IsqqE3qzO7eewazNqYjV_RkPaYwMHoGfkQs4SE1TUBFw4EF2zAnvGbRVL3eA1klMO-QZ2d_0m5VgYG_qmuXLeAZ-8TPMChlEAIbFavPiw3usmsfPiQ-FGU3VkzQY5NWOkr5IZf"/>
-</div>
-<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Validated by Staff &amp; Principal Engineers from Tier-1 tech stacks</span>
-</div>
-</div>
-<!-- Right Column: 3D Animation Scene -->
-<div class="lg:col-span-6 relative flex items-center justify-center">
-<div class="w-full relative rounded-2xl bg-surface-container-lowest shadow-xl p-space-xs overflow-hidden">
-<!-- Monospace Header Terminal bar inside scene container -->
-<div class="flex items-center justify-between px-space-md py-space-xs bg-surface-container rounded-t-xl mb-1">
-<div class="flex items-center gap-space-xs">
-<span class="w-2.5 h-2.5 rounded-full bg-error/60"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container/60"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-primary/60"></span>
-<span class="font-label-code-sm text-label-code-sm text-outline ml-2">telemetry-stream.live</span>
-</div>
-<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">SYNCHRONIZED (3 SOURCES)</span>
-</div>
-<!-- Embedded Three.js Scene -->
-<!-- STITCH_THREEJS_START:ANIMATION_4 class="w-full h-[620px] rounded-2xl bg-transparent" -->
-<div class="w-full h-[620px] rounded-2xl bg-transparent" style="display:block;">
-<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-<div id="threejs-container-ANIMATION_4" style="width:100%;height:100%"></div>
-<script>
-(function() {
-  const container = document.getElementById('threejs-container-ANIMATION_4');
-  // Interactive Three.js 3D Hero Scene for Profile2Resume
-const width = container.clientWidth || window.innerWidth;
-const height = container.clientHeight || window.innerHeight;
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-camera.position.set(0, 0, 18);
-
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setSize(width, height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-container.appendChild(renderer.domElement);
-
-// Lighting
-const ambientLight = new THREE.AmbientLight(0xf7f6f2, 1.2);
-scene.add(ambientLight);
-
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.8);
-dirLight.position.set(8, 12, 10);
-dirLight.castShadow = true;
-scene.add(dirLight);
-
-const accentLight = new THREE.PointLight(0x465bee, 2.5, 30);
-accentLight.position.set(-6, 4, 8);
-scene.add(accentLight);
-
-const warmLight = new THREE.PointLight(0xff805e, 1.8, 25);
-warmLight.position.set(7, -5, 6);
-scene.add(warmLight);
-
-// Group container for scene tilt
-const heroGroup = new THREE.Group();
-scene.add(heroGroup);
-
-// 1. Central Floating Premium Resume Document
-const resumeGroup = new THREE.Group();
-const paperGeo = new THREE.BoxGeometry(6.2, 8.8, 0.15);
-const paperMat = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  roughness: 0.25,
-  metalness: 0.05
-});
-const paperMesh = new THREE.Mesh(paperGeo, paperMat);
-paperMesh.castShadow = true;
-paperMesh.receiveShadow = true;
-resumeGroup.add(paperMesh);
-
-// Layered sheet offset behind
-const shadowSheetGeo = new THREE.BoxGeometry(6.0, 8.6, 0.1);
-const shadowSheetMat = new THREE.MeshStandardMaterial({ color: 0xedece6, roughness: 0.4 });
-const shadowSheet = new THREE.Mesh(shadowSheetGeo, shadowSheetMat);
-shadowSheet.position.set(0.2, -0.2, -0.15);
-shadowSheet.rotation.z = -0.03;
-resumeGroup.add(shadowSheet);
-
-// Resume header line & simulated structure lines
-function createLineMesh(w, h, color, x, y, z) {
-  const geo = new THREE.PlaneGeometry(w, h);
-  const mat = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
-  const m = new THREE.Mesh(geo, mat);
-  m.position.set(x, y, z);
-  return m;
-}
-
-// Avatar block on resume
-const docAvatar = createLineMesh(1.1, 1.1, 0x465bee, -1.9, 3.2, 0.081);
-resumeGroup.add(docAvatar);
-
-// Header typography lines
-resumeGroup.add(createLineMesh(2.6, 0.28, 0x17191f, 0.4, 3.5, 0.081));
-resumeGroup.add(createLineMesh(2.2, 0.14, 0x777b85, 0.2, 3.1, 0.081));
-resumeGroup.add(createLineMesh(4.8, 0.04, 0xe5e3dc, 0, 2.4, 0.081));
-
-// Sections & bullet lines
-for (let i = 0; i < 4; i++) {
-  const ySec = 1.9 - i * 1.5;
-  resumeGroup.add(createLineMesh(1.5, 0.18, 0x465bee, -1.6, ySec, 0.081));
-  resumeGroup.add(createLineMesh(4.8, 0.08, 0x22242a, 0, ySec - 0.35, 0.081));
-  resumeGroup.add(createLineMesh(4.5, 0.08, 0x5a5e68, -0.15, ySec - 0.6, 0.081));
-  resumeGroup.add(createLineMesh(3.8, 0.08, 0x777b85, -0.5, ySec - 0.85, 0.081));
-}
-
-// Subtle verified badges on resume
-const badgeGeo = new THREE.SphereGeometry(0.12, 16, 16);
-const badgeMat = new THREE.MeshStandardMaterial({ color: 0x10b981, emissive: 0x10b981, emissiveIntensity: 0.6 });
-const badge1 = new THREE.Mesh(badgeGeo, badgeMat);
-badge1.position.set(2.2, 1.9, 0.1);
-resumeGroup.add(badge1);
-const badge2 = new THREE.Mesh(badgeGeo, badgeMat);
-badge2.position.set(2.2, 0.4, 0.1);
-resumeGroup.add(badge2);
-
-resumeGroup.rotation.y = -0.18;
-resumeGroup.rotation.x = 0.08;
-resumeGroup.rotation.z = 0.04;
-heroGroup.add(resumeGroup);
-
-// 2. Floating 3D Platform Objects (GitHub, LinkedIn, LeetCode)
-function createPlatformToken(color, iconType) {
-  const group = new THREE.Group();
-  const cylinderGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.35, 32);
-  const cylinderMat = new THREE.MeshStandardMaterial({
-    color: color,
-    roughness: 0.2,
-    metalness: 0.3
-  });
-  const mesh = new THREE.Mesh(cylinderGeo, cylinderMat);
-  mesh.rotation.x = Math.PI / 3;
-  mesh.castShadow = true;
-  group.add(mesh);
-
-  // Outer glowing rim
-  const ringGeo = new THREE.TorusGeometry(1.35, 0.06, 16, 48);
-  const ringMat = new THREE.MeshBasicMaterial({ color: color });
-  const ring = new THREE.Mesh(ringGeo, ringMat);
-  ring.rotation.x = Math.PI / 3;
-  group.add(ring);
-
-  // Center symbol
-  const coreGeo = new THREE.BoxGeometry(0.6, 0.6, 0.2);
-  const coreMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1 });
-  const core = new THREE.Mesh(coreGeo, coreMat);
-  core.position.z = 0.25;
-  group.add(core);
-
-  return group;
-}
-
-// GitHub (Left top)
-const githubToken = createPlatformToken(0x24292e, 'github');
-githubToken.position.set(-6.2, 3.2, 2.5);
-heroGroup.add(githubToken);
-
-// LinkedIn (Left bottom)
-const linkedinToken = createPlatformToken(0x0a66c2, 'linkedin');
-linkedinToken.position.set(-5.8, -3.2, 3.2);
-heroGroup.add(linkedinToken);
-
-// LeetCode (Right center)
-const leetcodeToken = createPlatformToken(0xffa116, 'leetcode');
-leetcodeToken.position.set(6.4, 0.2, 2.0);
-heroGroup.add(leetcodeToken);
-
-// 3. Animated Data Stream Curves connecting platforms to resume
-function createStreamLine(startVec, endVec, colorHex) {
-  const midVec = new THREE.Vector3().addVectors(startVec, endVec).multiplyScalar(0.5);
-  midVec.z += 2.5; // arc outwards
-  const curve = new THREE.QuadraticBezierCurve3(startVec, midVec, endVec);
-  const points = curve.getPoints(50);
-  const geo = new THREE.BufferGeometry().setFromPoints(points);
-  const mat = new THREE.LineBasicMaterial({
-    color: colorHex,
-    transparent: true,
-    opacity: 0.85,
-    linewidth: 2
-  });
-  return new THREE.Line(geo, mat);
-}
-
-const lineGH = createStreamLine(githubToken.position, new THREE.Vector3(-1.5, 2.5, 0.3), 0x465bee);
-heroGroup.add(lineGH);
-const lineLI = createStreamLine(linkedinToken.position, new THREE.Vector3(-1.5, -1.0, 0.3), 0x38bdf8);
-heroGroup.add(lineLI);
-const lineLC = createStreamLine(leetcodeToken.position, new THREE.Vector3(1.8, 0.5, 0.3), 0xff805e);
-heroGroup.add(lineLC);
-
-// 4. Floating Mini Cards & Tech Tags
-function createFloatingCard(w, h, color, text) {
-  const group = new THREE.Group();
-  const boxGeo = new THREE.BoxGeometry(w, h, 0.1);
-  const boxMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
-    roughness: 0.15,
-    metalness: 0.1
-  });
-  const m = new THREE.Mesh(boxGeo, boxMat);
-  m.castShadow = true;
-  group.add(m);
-
-  const edgeGeo = new THREE.EdgesGeometry(boxGeo);
-  const edgeMat = new THREE.LineBasicMaterial({ color: color });
-  group.add(new THREE.LineSegments(edgeGeo, edgeMat));
-  return group;
-}
-
-const card1 = createFloatingCard(2.4, 1.2, 0x465bee);
-card1.position.set(-4.5, 0.5, 3.8);
-card1.rotation.y = 0.25;
-heroGroup.add(card1);
-
-const card2 = createFloatingCard(2.6, 1.3, 0x10b981);
-card2.position.set(5.2, 3.4, 1.8);
-card2.rotation.y = -0.3;
-heroGroup.add(card2);
-
-// 5. Ambient Data Particles
-const particleCount = 120;
-const particleGeo = new THREE.BufferGeometry();
-const posArray = new Float32Array(particleCount * 3);
-for (let i = 0; i < particleCount * 3; i += 3) {
-  posArray[i] = (Math.random() - 0.5) * 22;
-  posArray[i + 1] = (Math.random() - 0.5) * 16;
-  posArray[i + 2] = (Math.random() - 0.5) * 12;
-}
-particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const particleMat = new THREE.PointsMaterial({
-  size: 0.14,
-  color: 0x465bee,
-  transparent: true,
-  opacity: 0.65
-});
-const particles = new THREE.Points(particleGeo, particleMat);
-heroGroup.add(particles);
-
-// Mouse interaction & Parallax
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-
-window.addEventListener('mousemove', (e) => {
-  const normX = (e.clientX / window.innerWidth) * 2 - 1;
-  const normY = -(e.clientY / window.innerHeight) * 2 + 1;
-  targetX = normX * 0.35;
-  targetY = normY * 0.35;
-});
-
-// Render loop with slow orbital and gentle floating
-let clock = new THREE.Clock();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const elapsed = clock.getElapsedTime();
-
-  // Smooth mouse lerp
-  mouseX += (targetX - mouseX) * 0.05;
-  mouseY += (targetY - mouseY) * 0.05;
-
-  heroGroup.rotation.y = mouseX * 0.5;
-  heroGroup.rotation.x = -mouseY * 0.4;
-
-  // Gentle floating movement
-  resumeGroup.position.y = Math.sin(elapsed * 1.2) * 0.25;
-  resumeGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.9) * 0.03;
-
-  githubToken.position.y = 3.2 + Math.sin(elapsed * 1.5 + 1) * 0.2;
-  githubToken.rotation.y = elapsed * 0.8;
-
-  linkedinToken.position.y = -3.2 + Math.cos(elapsed * 1.4 + 2) * 0.25;
-  linkedinToken.rotation.y = -elapsed * 0.7;
-
-  leetcodeToken.position.y = 0.2 + Math.sin(elapsed * 1.6 + 3) * 0.22;
-  leetcodeToken.rotation.y = elapsed * 0.9;
-
-  card1.position.y = 0.5 + Math.sin(elapsed * 1.3) * 0.15;
-  card2.position.y = 3.4 + Math.cos(elapsed * 1.1) * 0.18;
-
-  particles.rotation.y = elapsed * 0.03;
-
-  renderer.render(scene, camera);
-}
-animate();
-
-// Resize handler
-window.addEventListener('resize', () => {
-  const newW = container.clientWidth || window.innerWidth;
-  const newH = container.clientHeight || window.innerHeight;
-  camera.aspect = newW / newH;
-  camera.updateProjectionMatrix();
-  renderer.setSize(newW, newH);
-});
-
-})();
-</script>
-</div>
-<!-- STITCH_THREEJS_END:ANIMATION_4 -->
-<!-- Floating Metric Badge over 3D Container -->
-<div class="absolute bottom-6 left-6 right-6 p-space-md rounded-xl bg-surface-container-lowest/90 backdrop-blur-md shadow-lg flex items-center justify-between">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
-<span class="material-symbols-outlined text-[20px]">hub</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Commit Proof Anchor</span>
-<span class="font-label-code-sm text-label-code-sm text-outline">SHA: 7f83e2a9 · 94.2% verified impact</span>
-</div>
-</div>
-<span class="px-space-sm py-0.5 rounded-full font-label-code-sm text-label-code-sm bg-surface-container-high text-on-surface-variant font-medium">ATS Score: 98/100</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PIPELINE STRIP -->
-<section class="w-full bg-surface-container-low py-space-lg px-margin shadow-sm">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-md">
-<span class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-wider font-semibold whitespace-nowrap">Automated Ingestion Flow</span>
-<div class="flex flex-wrap items-center justify-center gap-space-xs sm:gap-space-sm font-label-code-sm text-label-code-sm text-on-surface w-full md:w-auto">
-<div class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
-<span class="font-semibold text-on-surface">GitHub</span>
-<span class="text-outline font-normal">(24 Repos)</span>
-</div>
-<span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
-<div class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-[16px] text-secondary">badge</span>
-<span class="font-semibold text-on-surface">LinkedIn</span>
-<span class="text-outline font-normal">(Verified XP)</span>
-</div>
-<span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
-<div class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-[16px] text-tertiary">code_blocks</span>
-<span class="font-semibold text-on-surface">LeetCode</span>
-<span class="text-outline font-normal">(520 Solved)</span>
-</div>
-<span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
-<div class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary shadow-sm">
-<span class="material-symbols-outlined text-[16px]">psychology</span>
-<span class="font-semibold">AI Evidence Compiler</span>
-</div>
-<span class="material-symbols-outlined text-primary text-[16px]">arrow_forward</span>
-<div class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm">
-<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
-<span class="font-semibold text-primary">Verified ATS Resume</span>
-</div>
-</div>
-</div>
-</section>
-<!-- SOCIAL PROOF / PROBLEM STATEMENT -->
-<section class="w-full px-margin py-space-2xl bg-surface">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
-<div class="flex flex-col gap-space-xs max-w-2xl">
-<span class="font-label-code-sm text-label-code-sm text-tertiary font-semibold tracking-wider uppercase">The Career Documentation Crisis</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">
-          Stop rebuilding your resume from scratch.
-        </h2>
-<p class="font-body-md text-body-md text-on-surface-variant">
-          Engineers spend weekends copy-pasting outdated accomplishments while their best technical feats remain buried in merged pull requests.
-        </p>
-</div>
-<!-- Problem Cards Mosaic -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Card 1 -->
-<div class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300">
-<div class="flex flex-col gap-space-md">
-<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-fixed transition-colors">
-<span class="material-symbols-outlined text-[26px]">account_tree</span>
-</div>
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold">01 / Fragmented Trace</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Your work is scattered</h3>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Repositories, PRs, problem ratings, and certifications live across four distinct platforms with zero unified truth.
-            </p>
-</div>
-<div class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">sync_problem</span>
-<span>Average 8 repos / 4 tabs forgotten</span>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300">
-<div class="flex flex-col gap-space-md">
-<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary group-hover:bg-secondary-fixed transition-colors">
-<span class="material-symbols-outlined text-[26px]">tune</span>
-</div>
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold">02 / Translation Tax</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Your achievements are difficult to present</h3>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Turning raw commits and complex architectures into quantified ATS bullets takes hours of guesswork and writer's block.
-            </p>
-</div>
-<div class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">schedule</span>
-<span>6.4 hours wasted per job application</span>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300">
-<div class="flex flex-col gap-space-md">
-<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-tertiary-fixed transition-colors">
-<span class="material-symbols-outlined text-[26px]">fact_check</span>
-</div>
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold">03 / Trust Deficit</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Your resume should prove what you claim</h3>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Recruiters and engineering managers want verifiable proof, not inflated AI summaries or buzzword soup.
-            </p>
-</div>
-<div class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">verified</span>
-<span>Cryptographic links build 3.4x interview rate</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- INTERACTIVE 4-STAGE TIMELINE ("HOW IT WORKS") -->
-<section class="w-full px-margin py-space-2xl bg-surface-container-low">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase">System Workflow</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">
-            How Profile2Resume Works
-          </h2>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-          A four-stage deterministic compilation pipeline transforming technical activity into verified executive resumes.
-        </p>
-</div>
-<!-- Stage Selector Tabs -->
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-space-sm" id="timeline-tabs">
-<!-- Stage 1 Button -->
-<button class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow transition-all group" data-stage="1" type="button">
-<div class="flex items-center justify-between w-full mb-space-xs">
-<span class="font-label-code-sm text-label-code-sm font-semibold text-primary">STAGE 01</span>
-<span class="material-symbols-outlined text-[18px] text-primary">link</span>
-</div>
-<span class="font-title-md text-title-md text-on-surface">Connect Profiles</span>
-<span class="font-body-sm text-body-sm text-outline mt-1">One-click sync across developer identity hubs.</span>
-</button>
-<!-- Stage 2 Button -->
-<button class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group" data-stage="2" type="button">
-<div class="flex items-center justify-between w-full mb-space-xs">
-<span class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary">STAGE 02</span>
-<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary">analytics</span>
-</div>
-<span class="font-title-md text-title-md text-on-surface">Analyze Impact</span>
-<span class="font-body-sm text-body-sm text-outline mt-1">AST parsing, commit analysis &amp; rating score.</span>
-</button>
-<!-- Stage 3 Button -->
-<button class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group" data-stage="3" type="button">
-<div class="flex items-center justify-between w-full mb-space-xs">
-<span class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary">STAGE 03</span>
-<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary">verified</span>
-</div>
-<span class="font-title-md text-title-md text-on-surface">Verify Citations</span>
-<span class="font-body-sm text-body-sm text-outline mt-1">Direct clickable proofs to PRs &amp; telemetry.</span>
-</button>
-<!-- Stage 4 Button -->
-<button class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group" data-stage="4" type="button">
-<div class="flex items-center justify-between w-full mb-space-xs">
-<span class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary">STAGE 04</span>
-<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary">description</span>
-</div>
-<span class="font-title-md text-title-md text-on-surface">Generate Resume</span>
-<span class="font-body-sm text-body-sm text-outline mt-1">Tailored ATS-optimized resume in one click.</span>
-</button>
-</div>
-<!-- Stage Preview Interactive Canvas -->
-<div class="rounded-xl bg-surface-container-lowest p-space-xl shadow-lg relative min-h-[380px] flex items-center">
-<!-- Content Pane 1 -->
-<div class="stage-panel w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center" id="stage-panel-1">
-<div class="lg:col-span-6 flex flex-col gap-space-md">
-<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-primary-fixed text-on-primary-fixed self-start font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">sync</span>
-<span>OAuth 2.0 Identity Protocol</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Stage 1: Connect your profiles</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Sync GitHub, LinkedIn, and LeetCode with read-only access. The engine pulls pull requests, commit distribution, repository stars, algorithmic percentile ranks, and verified employment dates in under 15 seconds.
-            </p>
-<div class="flex items-center gap-space-sm pt-space-xs">
-<span class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface">github.com/alexchen</span>
-<span class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface">linkedin.com/in/alexchen</span>
-<span class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface">leetcode.com/u/alex_dev</span>
-</div>
-</div>
-<div class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
-<div class="flex items-center justify-between pb-space-xs">
-<span class="font-label-code-md text-label-code-md text-on-surface font-semibold">Active Sync Manifest</span>
-<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-</div>
-<!-- Mock items -->
-<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs">
-<div class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[20px]">code</span>
-<span class="font-body-sm text-body-sm font-medium">alexchen/distributed-raft</span>
-</div>
-<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">842 stars • 68 PRs</span>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs">
-<div class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-[20px]">business_center</span>
-<span class="font-body-sm text-body-sm font-medium">Stripe — Staff Infrastructure</span>
-</div>
-<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">2021 — Present</span>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs">
-<div class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-tertiary text-[20px]">military_tech</span>
-<span class="font-body-sm text-body-sm font-medium">LeetCode Knight Ranking</span>
-</div>
-<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Top 2.1% (2,140 Elo)</span>
-</div>
-</div>
-</div>
-<!-- Content Pane 2 -->
-<div class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center" id="stage-panel-2">
-<div class="lg:col-span-6 flex flex-col gap-space-md">
-<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed self-start font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">psychology</span>
-<span>Semantic Impact Scoring</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Stage 2: Analyze your achievements</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Our analyzer performs AST parsing over PR code changes, calculating architectural ownership, algorithmic complexity, performance speedups, and throughput gains without human embellishment.
-            </p>
-<div class="flex items-center gap-space-md pt-space-xs font-label-code-sm text-label-code-sm">
-<span class="text-primary">AST Token Depth: 1.2M</span>
-<span class="text-outline">•</span>
-<span class="text-secondary">Throughput Gain: +340%</span>
-</div>
-</div>
-<div class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
-<span class="font-label-code-md text-label-code-md text-on-surface font-semibold mb-1">AST Analysis Telemetry</span>
-<div class="p-space-sm rounded-lg bg-surface-container-lowest font-label-code-sm text-label-code-sm flex flex-col gap-1">
-<span class="text-outline">// Parsed commit c8a192f (grpc_multiplexer.go)</span>
-<span class="text-primary font-medium">Latency reduction: p99 decreased from 42ms to 8.4ms</span>
-<span class="text-on-surface-variant">Identified: Zero-copy memory pooling &amp; sync.Pool allocation</span>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-lowest font-label-code-sm text-label-code-sm flex flex-col gap-1">
-<span class="text-outline">// Parsed PR #412 (kafka-event-mesh)</span>
-<span class="text-secondary font-medium">Throughput scale: 120,000 req/sec sustained load</span>
-<span class="text-on-surface-variant">Impact Score: 98.4 (High Technical Rigor)</span>
-</div>
-</div>
-</div>
-<!-- Content Pane 3 -->
-<div class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center" id="stage-panel-3">
-<div class="lg:col-span-6 flex flex-col gap-space-md">
-<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed self-start font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">verified</span>
-<span>Cryptographic Bullet Attestation</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Stage 3: Verify every bullet</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              No hollow claims. Every single resume sentence is bound to immutable evidence hashes, benchmark traces, or repository commits that recruiters can click to inspect.
-            </p>
-<div class="flex items-center gap-space-xs text-primary font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">lock</span>
-<span>100% Zero-Hallucination Guarantee</span>
-</div>
-</div>
-<div class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
-<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-primary font-semibold">ATT-9041-VERIFIED</span>
-<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface">
-                "Engineered raft consensus subsystem reducing failover election timeout by 76% across 5-node clusters."
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>Profile2Resume</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "secondary-container": "#c9bfff",
+              "on-error": "#ffffff",
+              secondary: "#5f578f",
+              "surface-container-highest": "#e2e2ea",
+              "tertiary-container": "#b64a2c",
+              "tertiary-fixed": "#ffdbd1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#000c61",
+              background: "#faf8ff",
+              "surface-container": "#ededf6",
+              "on-secondary-fixed-variant": "#473f76",
+              "primary-fixed-dim": "#bcc2ff",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e2e2ea",
+              "surface-dim": "#d9d9e2",
+              "on-secondary-fixed": "#1b1248",
+              outline: "#757687",
+              "tertiary-fixed-dim": "#ffb5a1",
+              "surface-bright": "#faf8ff",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#2e3037",
+              "inverse-on-surface": "#f0f0f9",
+              "on-tertiary-fixed-variant": "#83250a",
+              "primary-fixed": "#dfe0ff",
+              "on-background": "#191b21",
+              "on-primary-fixed-variant": "#132dc8",
+              "on-surface": "#191b21",
+              "on-tertiary-container": "#ffeae6",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#444655",
+              "secondary-fixed": "#e5deff",
+              "surface-container-low": "#f3f3fc",
+              tertiary: "#963217",
+              "on-primary-container": "#eeedff",
+              "surface-container-high": "#e7e7f0",
+              "on-tertiary": "#ffffff",
+              surface: "#faf8ff",
+              "primary-container": "#465bee",
+              "outline-variant": "#c5c5d8",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#c9bfff",
+              primary: "#283fd5",
+              "inverse-primary": "#bcc2ff",
+              "surface-tint": "#364ce0",
+              "on-tertiary-fixed": "#3c0800",
+              "on-secondary-container": "#534b83",
+            },
+            borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+            spacing: {
+              "space-2xl": "4rem",
+              "margin-mobile": "1.25rem",
+              margin: "2.5rem",
+              "space-xl": "2.5rem",
+              "space-md": "1rem",
+              gutter: "1.5rem",
+              "gutter-sm": "1rem",
+              "space-sm": "0.5rem",
+              "space-xs": "0.25rem",
+              "space-lg": "1.5rem",
+            },
+            fontFamily: {
+              "headline-md": ["Space Grotesk"],
+              "display-hero-mobile": ["Space Grotesk"],
+              "label-code-sm": ["JetBrains Mono"],
+              "title-md": ["Space Grotesk"],
+              "body-lg": ["Inter"],
+              "headline-lg": ["Space Grotesk"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              "body-sm": ["Inter"],
+              "headline-sm": ["Space Grotesk"],
+              "display-hero": ["Space Grotesk"],
+              "body-md": ["Inter"],
+              "label-code-md": ["JetBrains Mono"],
+            },
+            fontSize: {
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "500" },
+              ],
+              "display-hero-mobile": [
+                "36px",
+                { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "600" },
+              ],
+              "label-code-sm": [
+                "11px",
+                { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "title-md": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "600" }],
+              "body-lg": [
+                "18px",
+                { lineHeight: "28px", letterSpacing: "-0.005em", fontWeight: "400" },
+              ],
+              "headline-lg": [
+                "36px",
+                { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "600" },
+              ],
+              "headline-lg-mobile": [
+                "28px",
+                { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "body-sm": [
+                "13px",
+                { lineHeight: "20px", letterSpacing: "0.005em", fontWeight: "400" },
+              ],
+              "headline-sm": [
+                "20px",
+                { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "500" },
+              ],
+              "display-hero": [
+                "56px",
+                { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "600" },
+              ],
+              "body-md": ["15px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }],
+              "label-code-md": [
+                "13px",
+                { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "500" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased">
+    <header
+      class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(25,27,33,0.04)]"
+    >
+      <div class="h-16 w-full px-margin flex items-center justify-between gap-space-lg">
+        <div class="flex items-center gap-space-lg">
+          <div class="flex items-center gap-space-sm">
+            <img
+              alt="Profile2Resume Logo"
+              class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VfKgL39J8DUDPSROoxcx4Lpn0fDoIUgyzx1rL-mQ1o2T2GP0eGgxJ_v4pOdrnCllISVyg1-_D1PMHLDL-vVkP4eMxFs1u3h8i15ENFnm3m9snPNasQ-QuZRrraQR787LPWllZeHg5purRRCgKTCLKt7Cn3xPRN2n6z32ZdXnEu-DAItycj4NwDFD3gumuvVJXLJLdOeuzcOXp-Zu6uG2IEyz4TNU-YZefp2mR7kthk6Q"
+            /><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight"
+              >Profile2Resume</span
+            >
+          </div>
+          <nav
+            class="hidden xl:flex items-center gap-space-xs"
+            data-active-classes="bg-primary-container text-on-primary font-title-md"
+          >
+            <a
+              aria-current="page"
+              class="px-space-sm py-space-xs rounded transition-colors bg-primary-container text-on-primary font-title-md"
+              data-path="landing"
+              href="#"
+              >Landing</a
+            ><a
+              class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors"
+              data-path="connect"
+              href="#"
+              >Connect</a
+            ><a
+              class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors"
+              data-path="dashboard"
+              href="#"
+              >Dashboard</a
+            ><a
+              class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors"
+              data-path="analysis"
+              href="#"
+              >AI Analysis</a
+            ><a
+              class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors"
+              data-path="studio"
+              href="#"
+              >Resume Studio</a
+            ><a
+              class="px-space-sm py-space-xs rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container transition-colors"
+              data-path="preview"
+              href="#"
+              >Preview</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-space-md">
+          <div
+            class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low"
+          >
+            <span class="relative flex h-2 w-2"
+              ><span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+              ></span
+              ><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span
+            ><span class="font-label-code-sm text-label-code-sm text-on-surface-variant"
+              >Verified Profile</span
+            >
+          </div>
+          <div class="relative hidden sm:flex items-center">
+            <select
+              class="appearance-none bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm py-space-xs pl-space-sm pr-space-lg rounded cursor-pointer hover:bg-surface-container"
+            >
+              <option>Full-Stack &amp; Cloud</option>
+              <option>AI &amp; ML Engineer</option></select
+            ><span
+              class="material-symbols-outlined pointer-events-none absolute right-space-xs text-outline text-[16px]"
+              >expand_more</span
+            >
+          </div>
+          <div class="flex items-center gap-space-sm pl-space-sm">
+            <div class="hidden lg:flex flex-col text-right leading-none">
+              <span class="font-title-md text-body-sm text-on-surface">Alex Chen</span
+              ><span class="font-label-code-sm text-label-code-sm text-outline"
+                >Staff Engineer</span
+              >
+            </div>
+            <img
+              alt="Profile"
+              class="w-8 h-8 rounded-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzl1c-XU5ZsFYHaYDhe-JZTQT1vFyXPhcur6jOtu76uNXd6IAym83lhBgsUh2DxhOiom_0NeCBeFBzDD-cbhRgAr-8gd6lvBmyb9WSLL7vRJOM6u6YquK-IPKt6yJRfxm8jjSAI-zjVNnx0aSkvkrX6qmGdC8bBtB_iP6dXJeWk-9bFOA3pu7BeDQR1IaQ2UjrG9voviYzOaS2mmwxguzcneqhDFxMDeuetK0tflZ8"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]">
+      <div id="stitch-landing-content" class="flex flex-col w-full">
+        <!-- HERO SECTION -->
+        <section
+          class="relative w-full px-margin pt-space-xl pb-space-2xl overflow-hidden bg-surface"
+        >
+          <!-- Subtle architectural background glow -->
+          <div
+            class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center relative z-10"
+          >
+            <!-- Left Column: Typography & CTAs -->
+            <div class="lg:col-span-6 flex flex-col gap-space-lg">
+              <!-- Eyebrow Badge -->
+              <div
+                class="inline-flex items-center gap-space-xs self-start px-space-sm py-1 rounded-full bg-surface-container-low shadow-sm"
+              >
+                <span class="relative flex h-2 w-2">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                  ></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span
+                  class="font-label-code-sm text-label-code-sm text-on-surface-variant tracking-wider uppercase font-semibold"
+                  >YOUR PROFESSIONAL IDENTITY, REIMAGINED</span
+                >
+              </div>
+              <!-- Main Headline -->
+              <h1 class="font-display-hero text-display-hero text-on-surface tracking-tight">
+                Your work deserves a <span class="text-primary italic">better</span> resume.
+              </h1>
+              <!-- Supporting Copy -->
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Connect your developer profiles. Discover your strongest achievements. Generate
+                evidence-backed resumes tailored to your next opportunity.
               </p>
-<div class="flex items-center gap-space-sm font-label-code-sm text-label-code-sm text-outline pt-1">
-<span>Ref: github.com/core/pr/419</span>
-<span>•</span>
-<span>Hash: 9b2d881</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Content Pane 4 -->
-<div class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center" id="stage-panel-4">
-<div class="lg:col-span-6 flex flex-col gap-space-md">
-<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-primary text-on-primary self-start font-label-code-sm text-label-code-sm">
-<span class="material-symbols-outlined text-[16px]">magic_button</span>
-<span>1-Click Precision PDF Export</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Stage 4: Generate your resume</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Generate an ATS-certified, beautifully typeset physical resume sheet. Tailor focus areas (Staff Engineer vs. ML Infrastructure) with a single dropdown click.
+              <!-- Verification Stats Pill -->
+              <div
+                class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-xl bg-surface-container shadow-sm self-start"
+              >
+                <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+                <span class="font-label-code-md text-label-code-md text-on-surface font-medium">
+                  10,400+ Verified Repositories <span class="text-outline mx-1">•</span> 99.4%
+                  Evidence Match Rate
+                </span>
+              </div>
+              <!-- Dual CTA Buttons -->
+              <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+                <a
+                  class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-md hover:bg-primary transition-all hover:-translate-y-0.5 active:translate-y-0"
+                  data-path="connect"
+                  href="#"
+                >
+                  <span>Build My Resume</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+                <button
+                  class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-title-md shadow-sm hover:bg-surface-container transition-all"
+                  id="tour-btn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-primary text-[20px]"
+                    >play_circle</span
+                  >
+                  <span>Explore How It Works</span>
+                </button>
+              </div>
+              <!-- Micro Social Proof Metric -->
+              <div class="flex items-center gap-space-md pt-space-sm">
+                <div class="flex -space-x-2">
+                  <img
+                    class="w-8 h-8 rounded-full object-cover shadow-sm"
+                    data-alt="Portrait photo of high-performing senior systems engineer with warm architectural studio lighting, neutral minimalist background"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSnn0hPyHZL8pSX1ZSodPSgWkTqlduBanLaJ0J9aVU0ceeB6JF9BFpD8iH4uBWIdLr7gEmcy-jSJuYfLw3Ch6u24_x6OdfdsNKC5_jgu_a763OYufovSBu9AFdOOe79lZR37H2aPONiVKyGQonp9pqVQQoqyQ0sTaYe1UVbevdRELFWkT8AKCPUQbpl7Ya0SDToOP_BsFRzjQqsiAdpBX6Mo6WvvcqRnLyk3yOTFpk"
+                  />
+                  <img
+                    class="w-8 h-8 rounded-full object-cover shadow-sm"
+                    data-alt="Portrait photo of female staff cloud architect wearing subtle glasses in modern clean workspace, soft diffuse illumination"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjhoM2icFqpJiYlrNPrz63HWrdlFDZzIUQabh7eGmFhrr292URO3S0zSj3XCZKNmhdHD0ZK-XAfZzs2wDZ7S6FA0NlSJ0YDoQiAPkMlb26QasSdv9GGbfBgABsLEnqW-HFdydiNx2I05kYFTOaSSmtOZx0SIKF5bSXQXRkyzjMI6mBvSRFZswz8bkIAAPXiwwhy675N5p5Ez_-c9iU7_0vjiw7sZ9PamX0Wddd98ZN"
+                  />
+                  <img
+                    class="w-8 h-8 rounded-full object-cover shadow-sm"
+                    data-alt="Portrait photo of tech lead engineer smiling thoughtfully in warm minimalist office with architectural stone textures"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ui5hFOCbZzyeF9L0FURrTWQn2HBUeqAnhhEfOoi32gkcF79FeJTlTyH6pQogzEad4PhPK-FHljyYoOmlcpOeE7967iH6xcrXN1IsqqE3qzO7eewazNqYjV_RkPaYwMHoGfkQs4SE1TUBFw4EF2zAnvGbRVL3eA1klMO-QZ2d_0m5VgYG_qmuXLeAZ-8TPMChlEAIbFavPiw3usmsfPiQ-FGU3VkzQY5NWOkr5IZf"
+                  />
+                </div>
+                <span class="font-label-code-sm text-label-code-sm text-on-surface-variant"
+                  >Validated by Staff &amp; Principal Engineers from Tier-1 tech stacks</span
+                >
+              </div>
+            </div>
+            <!-- Right Column: 3D Animation Scene -->
+            <div class="lg:col-span-6 relative flex items-center justify-center">
+              <div
+                class="w-full relative rounded-2xl bg-surface-container-lowest shadow-xl p-space-xs overflow-hidden"
+              >
+                <!-- Monospace Header Terminal bar inside scene container -->
+                <div
+                  class="flex items-center justify-between px-space-md py-space-xs bg-surface-container rounded-t-xl mb-1"
+                >
+                  <div class="flex items-center gap-space-xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-error/60"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-tertiary-container/60"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-primary/60"></span>
+                    <span class="font-label-code-sm text-label-code-sm text-outline ml-2"
+                      >telemetry-stream.live</span
+                    >
+                  </div>
+                  <span class="font-label-code-sm text-label-code-sm text-primary font-semibold"
+                    >SYNCHRONIZED (3 SOURCES)</span
+                  >
+                </div>
+                <!-- Embedded Three.js Scene -->
+                <!-- STITCH_THREEJS_START:ANIMATION_4 class="w-full h-[620px] rounded-2xl bg-transparent" -->
+                <div class="w-full h-[620px] rounded-2xl bg-transparent" style="display: block">
+                  <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+                  <div id="threejs-container-ANIMATION_4" style="width: 100%; height: 100%"></div>
+                  <script>
+                    (function () {
+                      const container = document.getElementById("threejs-container-ANIMATION_4");
+                      // Interactive Three.js 3D Hero Scene for Profile2Resume
+                      const width = container.clientWidth || window.innerWidth;
+                      const height = container.clientHeight || window.innerHeight;
+
+                      const scene = new THREE.Scene();
+                      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+                      camera.position.set(0, 0, 18);
+
+                      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                      renderer.setSize(width, height);
+                      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                      renderer.shadowMap.enabled = true;
+                      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                      container.appendChild(renderer.domElement);
+
+                      // Lighting
+                      const ambientLight = new THREE.AmbientLight(0xf7f6f2, 1.2);
+                      scene.add(ambientLight);
+
+                      const dirLight = new THREE.DirectionalLight(0xffffff, 1.8);
+                      dirLight.position.set(8, 12, 10);
+                      dirLight.castShadow = true;
+                      scene.add(dirLight);
+
+                      const accentLight = new THREE.PointLight(0x465bee, 2.5, 30);
+                      accentLight.position.set(-6, 4, 8);
+                      scene.add(accentLight);
+
+                      const warmLight = new THREE.PointLight(0xff805e, 1.8, 25);
+                      warmLight.position.set(7, -5, 6);
+                      scene.add(warmLight);
+
+                      // Group container for scene tilt
+                      const heroGroup = new THREE.Group();
+                      scene.add(heroGroup);
+
+                      // 1. Central Floating Premium Resume Document
+                      const resumeGroup = new THREE.Group();
+                      const paperGeo = new THREE.BoxGeometry(6.2, 8.8, 0.15);
+                      const paperMat = new THREE.MeshStandardMaterial({
+                        color: 0xffffff,
+                        roughness: 0.25,
+                        metalness: 0.05,
+                      });
+                      const paperMesh = new THREE.Mesh(paperGeo, paperMat);
+                      paperMesh.castShadow = true;
+                      paperMesh.receiveShadow = true;
+                      resumeGroup.add(paperMesh);
+
+                      // Layered sheet offset behind
+                      const shadowSheetGeo = new THREE.BoxGeometry(6.0, 8.6, 0.1);
+                      const shadowSheetMat = new THREE.MeshStandardMaterial({
+                        color: 0xedece6,
+                        roughness: 0.4,
+                      });
+                      const shadowSheet = new THREE.Mesh(shadowSheetGeo, shadowSheetMat);
+                      shadowSheet.position.set(0.2, -0.2, -0.15);
+                      shadowSheet.rotation.z = -0.03;
+                      resumeGroup.add(shadowSheet);
+
+                      // Resume header line & simulated structure lines
+                      function createLineMesh(w, h, color, x, y, z) {
+                        const geo = new THREE.PlaneGeometry(w, h);
+                        const mat = new THREE.MeshBasicMaterial({
+                          color: color,
+                          side: THREE.DoubleSide,
+                        });
+                        const m = new THREE.Mesh(geo, mat);
+                        m.position.set(x, y, z);
+                        return m;
+                      }
+
+                      // Avatar block on resume
+                      const docAvatar = createLineMesh(1.1, 1.1, 0x465bee, -1.9, 3.2, 0.081);
+                      resumeGroup.add(docAvatar);
+
+                      // Header typography lines
+                      resumeGroup.add(createLineMesh(2.6, 0.28, 0x17191f, 0.4, 3.5, 0.081));
+                      resumeGroup.add(createLineMesh(2.2, 0.14, 0x777b85, 0.2, 3.1, 0.081));
+                      resumeGroup.add(createLineMesh(4.8, 0.04, 0xe5e3dc, 0, 2.4, 0.081));
+
+                      // Sections & bullet lines
+                      for (let i = 0; i < 4; i++) {
+                        const ySec = 1.9 - i * 1.5;
+                        resumeGroup.add(createLineMesh(1.5, 0.18, 0x465bee, -1.6, ySec, 0.081));
+                        resumeGroup.add(createLineMesh(4.8, 0.08, 0x22242a, 0, ySec - 0.35, 0.081));
+                        resumeGroup.add(
+                          createLineMesh(4.5, 0.08, 0x5a5e68, -0.15, ySec - 0.6, 0.081),
+                        );
+                        resumeGroup.add(
+                          createLineMesh(3.8, 0.08, 0x777b85, -0.5, ySec - 0.85, 0.081),
+                        );
+                      }
+
+                      // Subtle verified badges on resume
+                      const badgeGeo = new THREE.SphereGeometry(0.12, 16, 16);
+                      const badgeMat = new THREE.MeshStandardMaterial({
+                        color: 0x10b981,
+                        emissive: 0x10b981,
+                        emissiveIntensity: 0.6,
+                      });
+                      const badge1 = new THREE.Mesh(badgeGeo, badgeMat);
+                      badge1.position.set(2.2, 1.9, 0.1);
+                      resumeGroup.add(badge1);
+                      const badge2 = new THREE.Mesh(badgeGeo, badgeMat);
+                      badge2.position.set(2.2, 0.4, 0.1);
+                      resumeGroup.add(badge2);
+
+                      resumeGroup.rotation.y = -0.18;
+                      resumeGroup.rotation.x = 0.08;
+                      resumeGroup.rotation.z = 0.04;
+                      heroGroup.add(resumeGroup);
+
+                      // 2. Floating 3D Platform Objects (GitHub, LinkedIn, LeetCode)
+                      function createPlatformToken(color, iconType) {
+                        const group = new THREE.Group();
+                        const cylinderGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.35, 32);
+                        const cylinderMat = new THREE.MeshStandardMaterial({
+                          color: color,
+                          roughness: 0.2,
+                          metalness: 0.3,
+                        });
+                        const mesh = new THREE.Mesh(cylinderGeo, cylinderMat);
+                        mesh.rotation.x = Math.PI / 3;
+                        mesh.castShadow = true;
+                        group.add(mesh);
+
+                        // Outer glowing rim
+                        const ringGeo = new THREE.TorusGeometry(1.35, 0.06, 16, 48);
+                        const ringMat = new THREE.MeshBasicMaterial({ color: color });
+                        const ring = new THREE.Mesh(ringGeo, ringMat);
+                        ring.rotation.x = Math.PI / 3;
+                        group.add(ring);
+
+                        // Center symbol
+                        const coreGeo = new THREE.BoxGeometry(0.6, 0.6, 0.2);
+                        const coreMat = new THREE.MeshStandardMaterial({
+                          color: 0xffffff,
+                          roughness: 0.1,
+                        });
+                        const core = new THREE.Mesh(coreGeo, coreMat);
+                        core.position.z = 0.25;
+                        group.add(core);
+
+                        return group;
+                      }
+
+                      // GitHub (Left top)
+                      const githubToken = createPlatformToken(0x24292e, "github");
+                      githubToken.position.set(-6.2, 3.2, 2.5);
+                      heroGroup.add(githubToken);
+
+                      // LinkedIn (Left bottom)
+                      const linkedinToken = createPlatformToken(0x0a66c2, "linkedin");
+                      linkedinToken.position.set(-5.8, -3.2, 3.2);
+                      heroGroup.add(linkedinToken);
+
+                      // LeetCode (Right center)
+                      const leetcodeToken = createPlatformToken(0xffa116, "leetcode");
+                      leetcodeToken.position.set(6.4, 0.2, 2.0);
+                      heroGroup.add(leetcodeToken);
+
+                      // 3. Animated Data Stream Curves connecting platforms to resume
+                      function createStreamLine(startVec, endVec, colorHex) {
+                        const midVec = new THREE.Vector3()
+                          .addVectors(startVec, endVec)
+                          .multiplyScalar(0.5);
+                        midVec.z += 2.5; // arc outwards
+                        const curve = new THREE.QuadraticBezierCurve3(startVec, midVec, endVec);
+                        const points = curve.getPoints(50);
+                        const geo = new THREE.BufferGeometry().setFromPoints(points);
+                        const mat = new THREE.LineBasicMaterial({
+                          color: colorHex,
+                          transparent: true,
+                          opacity: 0.85,
+                          linewidth: 2,
+                        });
+                        return new THREE.Line(geo, mat);
+                      }
+
+                      const lineGH = createStreamLine(
+                        githubToken.position,
+                        new THREE.Vector3(-1.5, 2.5, 0.3),
+                        0x465bee,
+                      );
+                      heroGroup.add(lineGH);
+                      const lineLI = createStreamLine(
+                        linkedinToken.position,
+                        new THREE.Vector3(-1.5, -1.0, 0.3),
+                        0x38bdf8,
+                      );
+                      heroGroup.add(lineLI);
+                      const lineLC = createStreamLine(
+                        leetcodeToken.position,
+                        new THREE.Vector3(1.8, 0.5, 0.3),
+                        0xff805e,
+                      );
+                      heroGroup.add(lineLC);
+
+                      // 4. Floating Mini Cards & Tech Tags
+                      function createFloatingCard(w, h, color, text) {
+                        const group = new THREE.Group();
+                        const boxGeo = new THREE.BoxGeometry(w, h, 0.1);
+                        const boxMat = new THREE.MeshStandardMaterial({
+                          color: 0xffffff,
+                          roughness: 0.15,
+                          metalness: 0.1,
+                        });
+                        const m = new THREE.Mesh(boxGeo, boxMat);
+                        m.castShadow = true;
+                        group.add(m);
+
+                        const edgeGeo = new THREE.EdgesGeometry(boxGeo);
+                        const edgeMat = new THREE.LineBasicMaterial({ color: color });
+                        group.add(new THREE.LineSegments(edgeGeo, edgeMat));
+                        return group;
+                      }
+
+                      const card1 = createFloatingCard(2.4, 1.2, 0x465bee);
+                      card1.position.set(-4.5, 0.5, 3.8);
+                      card1.rotation.y = 0.25;
+                      heroGroup.add(card1);
+
+                      const card2 = createFloatingCard(2.6, 1.3, 0x10b981);
+                      card2.position.set(5.2, 3.4, 1.8);
+                      card2.rotation.y = -0.3;
+                      heroGroup.add(card2);
+
+                      // 5. Ambient Data Particles
+                      const particleCount = 120;
+                      const particleGeo = new THREE.BufferGeometry();
+                      const posArray = new Float32Array(particleCount * 3);
+                      for (let i = 0; i < particleCount * 3; i += 3) {
+                        posArray[i] = (Math.random() - 0.5) * 22;
+                        posArray[i + 1] = (Math.random() - 0.5) * 16;
+                        posArray[i + 2] = (Math.random() - 0.5) * 12;
+                      }
+                      particleGeo.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
+                      const particleMat = new THREE.PointsMaterial({
+                        size: 0.14,
+                        color: 0x465bee,
+                        transparent: true,
+                        opacity: 0.65,
+                      });
+                      const particles = new THREE.Points(particleGeo, particleMat);
+                      heroGroup.add(particles);
+
+                      // Mouse interaction & Parallax
+                      let mouseX = 0;
+                      let mouseY = 0;
+                      let targetX = 0;
+                      let targetY = 0;
+
+                      window.addEventListener("mousemove", (e) => {
+                        const normX = (e.clientX / window.innerWidth) * 2 - 1;
+                        const normY = -(e.clientY / window.innerHeight) * 2 + 1;
+                        targetX = normX * 0.35;
+                        targetY = normY * 0.35;
+                      });
+
+                      // Render loop with slow orbital and gentle floating
+                      let clock = new THREE.Clock();
+
+                      function animate() {
+                        requestAnimationFrame(animate);
+                        const elapsed = clock.getElapsedTime();
+
+                        // Smooth mouse lerp
+                        mouseX += (targetX - mouseX) * 0.05;
+                        mouseY += (targetY - mouseY) * 0.05;
+
+                        heroGroup.rotation.y = mouseX * 0.5;
+                        heroGroup.rotation.x = -mouseY * 0.4;
+
+                        // Gentle floating movement
+                        resumeGroup.position.y = Math.sin(elapsed * 1.2) * 0.25;
+                        resumeGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.9) * 0.03;
+
+                        githubToken.position.y = 3.2 + Math.sin(elapsed * 1.5 + 1) * 0.2;
+                        githubToken.rotation.y = elapsed * 0.8;
+
+                        linkedinToken.position.y = -3.2 + Math.cos(elapsed * 1.4 + 2) * 0.25;
+                        linkedinToken.rotation.y = -elapsed * 0.7;
+
+                        leetcodeToken.position.y = 0.2 + Math.sin(elapsed * 1.6 + 3) * 0.22;
+                        leetcodeToken.rotation.y = elapsed * 0.9;
+
+                        card1.position.y = 0.5 + Math.sin(elapsed * 1.3) * 0.15;
+                        card2.position.y = 3.4 + Math.cos(elapsed * 1.1) * 0.18;
+
+                        particles.rotation.y = elapsed * 0.03;
+
+                        renderer.render(scene, camera);
+                      }
+                      animate();
+
+                      // Resize handler
+                      window.addEventListener("resize", () => {
+                        const newW = container.clientWidth || window.innerWidth;
+                        const newH = container.clientHeight || window.innerHeight;
+                        camera.aspect = newW / newH;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(newW, newH);
+                      });
+                    })();
+                  </script>
+                </div>
+                <!-- STITCH_THREEJS_END:ANIMATION_4 -->
+                <!-- Floating Metric Badge over 3D Container -->
+                <div
+                  class="absolute bottom-6 left-6 right-6 p-space-md rounded-xl bg-surface-container-lowest/90 backdrop-blur-md shadow-lg flex items-center justify-between"
+                >
+                  <div class="flex items-center gap-space-sm">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed"
+                    >
+                      <span class="material-symbols-outlined text-[20px]">hub</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-title-md text-body-sm text-on-surface"
+                        >Commit Proof Anchor</span
+                      >
+                      <span class="font-label-code-sm text-label-code-sm text-outline"
+                        >SHA: 7f83e2a9 · 94.2% verified impact</span
+                      >
+                    </div>
+                  </div>
+                  <span
+                    class="px-space-sm py-0.5 rounded-full font-label-code-sm text-label-code-sm bg-surface-container-high text-on-surface-variant font-medium"
+                    >ATS Score: 98/100</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- PIPELINE STRIP -->
+        <section class="w-full bg-surface-container-low py-space-lg px-margin shadow-sm">
+          <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-md"
+          >
+            <span
+              class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-wider font-semibold whitespace-nowrap"
+              >Automated Ingestion Flow</span
+            >
+            <div
+              class="flex flex-wrap items-center justify-center gap-space-xs sm:gap-space-sm font-label-code-sm text-label-code-sm text-on-surface w-full md:w-auto"
+            >
+              <div
+                class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+                <span class="font-semibold text-on-surface">GitHub</span>
+                <span class="text-outline font-normal">(24 Repos)</span>
+              </div>
+              <span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
+              <div
+                class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span class="material-symbols-outlined text-[16px] text-secondary">badge</span>
+                <span class="font-semibold text-on-surface">LinkedIn</span>
+                <span class="text-outline font-normal">(Verified XP)</span>
+              </div>
+              <span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
+              <div
+                class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span class="material-symbols-outlined text-[16px] text-tertiary">code_blocks</span>
+                <span class="font-semibold text-on-surface">LeetCode</span>
+                <span class="text-outline font-normal">(520 Solved)</span>
+              </div>
+              <span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
+              <div
+                class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary shadow-sm"
+              >
+                <span class="material-symbols-outlined text-[16px]">psychology</span>
+                <span class="font-semibold">AI Evidence Compiler</span>
+              </div>
+              <span class="material-symbols-outlined text-primary text-[16px]">arrow_forward</span>
+              <div
+                class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm"
+              >
+                <span class="material-symbols-outlined text-[16px] text-primary"
+                  >verified_user</span
+                >
+                <span class="font-semibold text-primary">Verified ATS Resume</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SOCIAL PROOF / PROBLEM STATEMENT -->
+        <section class="w-full px-margin py-space-2xl bg-surface">
+          <div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+            <div class="flex flex-col gap-space-xs max-w-2xl">
+              <span
+                class="font-label-code-sm text-label-code-sm text-tertiary font-semibold tracking-wider uppercase"
+                >The Career Documentation Crisis</span
+              >
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">
+                Stop rebuilding your resume from scratch.
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Engineers spend weekends copy-pasting outdated accomplishments while their best
+                technical feats remain buried in merged pull requests.
+              </p>
+            </div>
+            <!-- Problem Cards Mosaic -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+              <!-- Card 1 -->
+              <div
+                class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div class="flex flex-col gap-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary-fixed transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">account_tree</span>
+                  </div>
+                  <div class="flex flex-col gap-space-xs">
+                    <span
+                      class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold"
+                      >01 / Fragmented Trace</span
+                    >
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                      Your work is scattered
+                    </h3>
+                  </div>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Repositories, PRs, problem ratings, and certifications live across four distinct
+                    platforms with zero unified truth.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm"
+                >
+                  <span class="material-symbols-outlined text-[16px]">sync_problem</span>
+                  <span>Average 8 repos / 4 tabs forgotten</span>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div class="flex flex-col gap-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary group-hover:bg-secondary-fixed transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">tune</span>
+                  </div>
+                  <div class="flex flex-col gap-space-xs">
+                    <span
+                      class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold"
+                      >02 / Translation Tax</span
+                    >
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                      Your achievements are difficult to present
+                    </h3>
+                  </div>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Turning raw commits and complex architectures into quantified ATS bullets takes
+                    hours of guesswork and writer's block.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm"
+                >
+                  <span class="material-symbols-outlined text-[16px]">schedule</span>
+                  <span>6.4 hours wasted per job application</span>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="group flex flex-col justify-between p-space-xl rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div class="flex flex-col gap-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-tertiary-fixed transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">fact_check</span>
+                  </div>
+                  <div class="flex flex-col gap-space-xs">
+                    <span
+                      class="font-label-code-sm text-label-code-sm text-outline uppercase font-semibold"
+                      >03 / Trust Deficit</span
+                    >
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                      Your resume should prove what you claim
+                    </h3>
+                  </div>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Recruiters and engineering managers want verifiable proof, not inflated AI
+                    summaries or buzzword soup.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-lg flex items-center gap-space-xs text-outline font-label-code-sm text-label-code-sm"
+                >
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  <span>Cryptographic links build 3.4x interview rate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- INTERACTIVE 4-STAGE TIMELINE ("HOW IT WORKS") -->
+        <section class="w-full px-margin py-space-2xl bg-surface-container-low">
+          <div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+              <div class="flex flex-col gap-space-xs">
+                <span
+                  class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase"
+                  >System Workflow</span
+                >
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">
+                  How Profile2Resume Works
+                </h2>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                A four-stage deterministic compilation pipeline transforming technical activity into
+                verified executive resumes.
+              </p>
+            </div>
+            <!-- Stage Selector Tabs -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-space-sm" id="timeline-tabs">
+              <!-- Stage 1 Button -->
+              <button
+                class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow transition-all group"
+                data-stage="1"
+                type="button"
+              >
+                <div class="flex items-center justify-between w-full mb-space-xs">
+                  <span class="font-label-code-sm text-label-code-sm font-semibold text-primary"
+                    >STAGE 01</span
+                  >
+                  <span class="material-symbols-outlined text-[18px] text-primary">link</span>
+                </div>
+                <span class="font-title-md text-title-md text-on-surface">Connect Profiles</span>
+                <span class="font-body-sm text-body-sm text-outline mt-1"
+                  >One-click sync across developer identity hubs.</span
+                >
+              </button>
+              <!-- Stage 2 Button -->
+              <button
+                class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group"
+                data-stage="2"
+                type="button"
+              >
+                <div class="flex items-center justify-between w-full mb-space-xs">
+                  <span
+                    class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary"
+                    >STAGE 02</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary"
+                    >analytics</span
+                  >
+                </div>
+                <span class="font-title-md text-title-md text-on-surface">Analyze Impact</span>
+                <span class="font-body-sm text-body-sm text-outline mt-1"
+                  >AST parsing, commit analysis &amp; rating score.</span
+                >
+              </button>
+              <!-- Stage 3 Button -->
+              <button
+                class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group"
+                data-stage="3"
+                type="button"
+              >
+                <div class="flex items-center justify-between w-full mb-space-xs">
+                  <span
+                    class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary"
+                    >STAGE 03</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary"
+                    >verified</span
+                  >
+                </div>
+                <span class="font-title-md text-title-md text-on-surface">Verify Citations</span>
+                <span class="font-body-sm text-body-sm text-outline mt-1"
+                  >Direct clickable proofs to PRs &amp; telemetry.</span
+                >
+              </button>
+              <!-- Stage 4 Button -->
+              <button
+                class="timeline-tab-btn flex flex-col text-left p-space-md rounded-xl bg-surface-container shadow-sm hover:shadow transition-all group"
+                data-stage="4"
+                type="button"
+              >
+                <div class="flex items-center justify-between w-full mb-space-xs">
+                  <span
+                    class="font-label-code-sm text-label-code-sm font-semibold text-outline group-hover:text-primary"
+                    >STAGE 04</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary"
+                    >description</span
+                  >
+                </div>
+                <span class="font-title-md text-title-md text-on-surface">Generate Resume</span>
+                <span class="font-body-sm text-body-sm text-outline mt-1"
+                  >Tailored ATS-optimized resume in one click.</span
+                >
+              </button>
+            </div>
+            <!-- Stage Preview Interactive Canvas -->
+            <div
+              class="rounded-xl bg-surface-container-lowest p-space-xl shadow-lg relative min-h-[380px] flex items-center"
+            >
+              <!-- Content Pane 1 -->
+              <div
+                class="stage-panel w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
+                id="stage-panel-1"
+              >
+                <div class="lg:col-span-6 flex flex-col gap-space-md">
+                  <div
+                    class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-primary-fixed text-on-primary-fixed self-start font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">sync</span>
+                    <span>OAuth 2.0 Identity Protocol</span>
+                  </div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Stage 1: Connect your profiles
+                  </h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Sync GitHub, LinkedIn, and LeetCode with read-only access. The engine pulls pull
+                    requests, commit distribution, repository stars, algorithmic percentile ranks,
+                    and verified employment dates in under 15 seconds.
+                  </p>
+                  <div class="flex items-center gap-space-sm pt-space-xs">
+                    <span
+                      class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface"
+                      >github.com/alexchen</span
+                    >
+                    <span
+                      class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface"
+                      >linkedin.com/in/alexchen</span
+                    >
+                    <span
+                      class="px-space-sm py-1 rounded bg-surface-container font-label-code-sm text-label-code-sm text-on-surface"
+                      >leetcode.com/u/alex_dev</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm"
+                >
+                  <div class="flex items-center justify-between pb-space-xs">
+                    <span
+                      class="font-label-code-md text-label-code-md text-on-surface font-semibold"
+                      >Active Sync Manifest</span
+                    >
+                    <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                  </div>
+                  <!-- Mock items -->
+                  <div
+                    class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs"
+                  >
+                    <div class="flex items-center gap-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[20px]">code</span>
+                      <span class="font-body-sm text-body-sm font-medium"
+                        >alexchen/distributed-raft</span
+                      >
+                    </div>
+                    <span class="font-label-code-sm text-label-code-sm text-on-surface-variant"
+                      >842 stars • 68 PRs</span
+                    >
+                  </div>
+                  <div
+                    class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs"
+                  >
+                    <div class="flex items-center gap-space-sm">
+                      <span class="material-symbols-outlined text-secondary text-[20px]"
+                        >business_center</span
+                      >
+                      <span class="font-body-sm text-body-sm font-medium"
+                        >Stripe — Staff Infrastructure</span
+                      >
+                    </div>
+                    <span class="font-label-code-sm text-label-code-sm text-on-surface-variant"
+                      >2021 — Present</span
+                    >
+                  </div>
+                  <div
+                    class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between shadow-xs"
+                  >
+                    <div class="flex items-center gap-space-sm">
+                      <span class="material-symbols-outlined text-tertiary text-[20px]"
+                        >military_tech</span
+                      >
+                      <span class="font-body-sm text-body-sm font-medium"
+                        >LeetCode Knight Ranking</span
+                      >
+                    </div>
+                    <span class="font-label-code-sm text-label-code-sm text-on-surface-variant"
+                      >Top 2.1% (2,140 Elo)</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Content Pane 2 -->
+              <div
+                class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
+                id="stage-panel-2"
+              >
+                <div class="lg:col-span-6 flex flex-col gap-space-md">
+                  <div
+                    class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed self-start font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">psychology</span>
+                    <span>Semantic Impact Scoring</span>
+                  </div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Stage 2: Analyze your achievements
+                  </h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Our analyzer performs AST parsing over PR code changes, calculating
+                    architectural ownership, algorithmic complexity, performance speedups, and
+                    throughput gains without human embellishment.
+                  </p>
+                  <div
+                    class="flex items-center gap-space-md pt-space-xs font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="text-primary">AST Token Depth: 1.2M</span>
+                    <span class="text-outline">•</span>
+                    <span class="text-secondary">Throughput Gain: +340%</span>
+                  </div>
+                </div>
+                <div
+                  class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm"
+                >
+                  <span
+                    class="font-label-code-md text-label-code-md text-on-surface font-semibold mb-1"
+                    >AST Analysis Telemetry</span
+                  >
+                  <div
+                    class="p-space-sm rounded-lg bg-surface-container-lowest font-label-code-sm text-label-code-sm flex flex-col gap-1"
+                  >
+                    <span class="text-outline">// Parsed commit c8a192f (grpc_multiplexer.go)</span>
+                    <span class="text-primary font-medium"
+                      >Latency reduction: p99 decreased from 42ms to 8.4ms</span
+                    >
+                    <span class="text-on-surface-variant"
+                      >Identified: Zero-copy memory pooling &amp; sync.Pool allocation</span
+                    >
+                  </div>
+                  <div
+                    class="p-space-sm rounded-lg bg-surface-container-lowest font-label-code-sm text-label-code-sm flex flex-col gap-1"
+                  >
+                    <span class="text-outline">// Parsed PR #412 (kafka-event-mesh)</span>
+                    <span class="text-secondary font-medium"
+                      >Throughput scale: 120,000 req/sec sustained load</span
+                    >
+                    <span class="text-on-surface-variant"
+                      >Impact Score: 98.4 (High Technical Rigor)</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Content Pane 3 -->
+              <div
+                class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
+                id="stage-panel-3"
+              >
+                <div class="lg:col-span-6 flex flex-col gap-space-md">
+                  <div
+                    class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed self-start font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">verified</span>
+                    <span>Cryptographic Bullet Attestation</span>
+                  </div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Stage 3: Verify every bullet
+                  </h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    No hollow claims. Every single resume sentence is bound to immutable evidence
+                    hashes, benchmark traces, or repository commits that recruiters can click to
+                    inspect.
+                  </p>
+                  <div
+                    class="flex items-center gap-space-xs text-primary font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">lock</span>
+                    <span>100% Zero-Hallucination Guarantee</span>
+                  </div>
+                </div>
+                <div
+                  class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm"
+                >
+                  <div
+                    class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs"
+                  >
+                    <div class="flex items-center justify-between">
+                      <span
+                        class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-primary font-semibold"
+                        >ATT-9041-VERIFIED</span
+                      >
+                      <span class="material-symbols-outlined text-primary text-[18px]"
+                        >verified</span
+                      >
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface">
+                      "Engineered raft consensus subsystem reducing failover election timeout by 76%
+                      across 5-node clusters."
+                    </p>
+                    <div
+                      class="flex items-center gap-space-sm font-label-code-sm text-label-code-sm text-outline pt-1"
+                    >
+                      <span>Ref: github.com/core/pr/419</span>
+                      <span>•</span>
+                      <span>Hash: 9b2d881</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content Pane 4 -->
+              <div
+                class="stage-panel hidden w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
+                id="stage-panel-4"
+              >
+                <div class="lg:col-span-6 flex flex-col gap-space-md">
+                  <div
+                    class="inline-flex items-center gap-2 px-space-sm py-1 rounded bg-primary text-on-primary self-start font-label-code-sm text-label-code-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">magic_button</span>
+                    <span>1-Click Precision PDF Export</span>
+                  </div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Stage 4: Generate your resume
+                  </h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Generate an ATS-certified, beautifully typeset physical resume sheet. Tailor
+                    focus areas (Staff Engineer vs. ML Infrastructure) with a single dropdown click.
+                  </p>
+                  <div>
+                    <a
+                      class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-title-md text-body-sm shadow hover:bg-primary-container transition-all"
+                      data-path="connect"
+                      href="#"
+                    >
+                      <span>Start Free Ingestion</span>
+                      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm"
+                >
+                  <div
+                    class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm"
+                  >
+                    <div class="flex items-center justify-between pb-space-xs">
+                      <span class="font-title-md text-body-sm text-on-surface"
+                        >Alex Chen — Staff Systems Engineer</span
+                      >
+                      <span class="font-label-code-sm text-label-code-sm text-primary"
+                        >Ready for PDF</span
+                      >
+                    </div>
+                    <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                      <div class="h-full bg-primary w-[98%]"></div>
+                    </div>
+                    <div
+                      class="flex items-center justify-between font-label-code-sm text-label-code-sm text-outline"
+                    >
+                      <span>ATS Parsing Compatibility</span>
+                      <span class="font-semibold text-on-surface">99.8% (Green)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- DIFFERENTIATOR SECTION -->
+        <section class="w-full px-margin py-space-2xl bg-surface">
+          <div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+            <div class="flex flex-col gap-space-xs text-center items-center max-w-2xl mx-auto">
+              <span
+                class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase"
+                >Factual Precision vs. Fiction</span
+              >
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">
+                AI can write anything. We make sure it can prove it.
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Generic AI tools hallucinate metrics and fabricate tech stacks. Profile2Resume binds
+                every assertion to verified developer telemetry.
+              </p>
+            </div>
+            <!-- Side-by-Side Comparison -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+              <!-- Traditional AI Resume Card -->
+              <div
+                class="p-space-xl rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between"
+              >
+                <div class="flex flex-col gap-space-lg">
+                  <div class="flex items-center justify-between">
+                    <span class="font-headline-sm text-headline-sm text-on-surface"
+                      >Traditional AI Resume</span
+                    >
+                    <span
+                      class="px-space-sm py-1 rounded font-label-code-sm text-label-code-sm bg-error-container text-on-error-container font-medium"
+                      >Unverified Prompting</span
+                    >
+                  </div>
+                  <ul class="flex flex-col gap-space-md">
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-error text-[20px] mt-0.5"
+                        >close</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Generic ungrounded claims</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >"Spearheaded cloud migration" without specific architectures or
+                          scale.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-error text-[20px] mt-0.5"
+                        >close</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Unverified metric estimations</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Made-up numbers ("Boosted speed by 40%") that crumble under senior
+                          interview scrutiny.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-error text-[20px] mt-0.5"
+                        >close</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Manual cut-and-paste data gathering</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Requires manually dredging through repositories and job
+                          descriptions.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-error text-[20px] mt-0.5"
+                        >close</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Hallucinated libraries &amp; frameworks</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Lists technologies you've never committed code to in production.</span
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="pt-space-xl">
+                  <span class="font-label-code-sm text-label-code-sm text-error font-medium"
+                    >High risk of interview disqualification</span
+                  >
+                </div>
+              </div>
+              <!-- Profile2Resume Card (Elevated & Accentuated) -->
+              <div
+                class="p-space-xl rounded-xl bg-surface-container-lowest shadow-xl flex flex-col justify-between relative overflow-hidden"
+              >
+                <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+                <div class="flex flex-col gap-space-lg">
+                  <div class="flex items-center justify-between">
+                    <span class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                      >Profile2Resume Engine</span
+                    >
+                    <span
+                      class="px-space-sm py-1 rounded font-label-code-sm text-label-code-sm bg-primary-fixed text-on-primary-fixed font-semibold"
+                      >Cryptographically Verified</span
+                    >
+                  </div>
+                  <ul class="flex flex-col gap-space-md">
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                        >check_circle</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Source-linked achievements</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Direct reference tags to production merge requests and release
+                          binaries.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                        >check_circle</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Verified supporting evidence</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Quantified latency drops, lines refactored, and benchmark
+                          telemetry.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                        >check_circle</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Automated profile compilation</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Complete extraction across GitHub, LinkedIn, and LeetCode in
+                          seconds.</span
+                        >
+                      </div>
+                    </li>
+                    <li class="flex items-start gap-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                        >check_circle</span
+                      >
+                      <div class="flex flex-col">
+                        <span class="font-title-md text-body-sm text-on-surface"
+                          >Live GitHub proof verification</span
+                        >
+                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                          >Interactive verification links empower hiring managers to inspect proof
+                          instantly.</span
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="pt-space-xl flex items-center gap-space-xs font-label-code-sm text-label-code-sm text-primary font-semibold"
+                >
+                  <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                  <span>Zero hallucination policy with continuous git attestation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- TESTIMONIAL / VISUAL PROOF STRIP -->
+        <section class="w-full px-margin py-space-xl bg-surface-container-low">
+          <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+            <div class="flex flex-col gap-space-md">
+              <span
+                class="font-label-code-sm text-label-code-sm text-secondary font-semibold uppercase tracking-wider"
+                >Engineering Leader Validation</span
+              >
+              <blockquote class="font-headline-sm text-headline-sm text-on-surface italic">
+                "When an applicant sends a Profile2Resume, I can verify in 10 seconds that their
+                latency numbers came from a real repository PR. It completely cuts through hiring
+                noise."
+              </blockquote>
+              <div class="flex items-center gap-space-md">
+                <img
+                  class="w-12 h-12 rounded-full object-cover shadow-sm"
+                  data-alt="Professional portrait of a male VP of Engineering in a sleek minimalist San Francisco tech office, architectural natural lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyUzHxUU6eOuiWPzYBxGSKrxGwhg917c710YQIWGZA-0YsxwtKuGpT3IT_G6rarlUsm1bcDFuLGD4rdrdz3EwYXkCThljgz59NKfKwE0p_JgJwVkK7bvdF4OZMS_nUKWXgP3222jfNWrQHdMJ7brJc7kWvo3NNeaBy9WEg0_VO-CTKiNggvUiqyOtmw4hEddE-FK0SdCbWRkyywyNRt4XtJs4zVtiFdMl7EwpauMEw"
+                />
+                <div class="flex flex-col">
+                  <span class="font-title-md text-title-md text-on-surface">Marcus Vance</span>
+                  <span class="font-label-code-sm text-label-code-sm text-outline"
+                    >VP of Infrastructure &amp; Core Systems</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Inline SVG Telemetry Graph -->
+            <div
+              class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-label-code-md text-label-code-md text-on-surface font-semibold"
+                  >Candidate Callback Multiplier</span
+                >
+                <span class="font-label-code-sm text-label-code-sm text-primary font-semibold"
+                  >+240% vs Traditional Resumes</span
+                >
+              </div>
+              <!-- SVG Sparkline / Bar Chart -->
+              <svg
+                class="w-full h-32 text-primary"
+                fill="none"
+                preserveaspectratio="none"
+                viewbox="0 0 400 120"
+              >
+                <rect
+                  fill="currentColor"
+                  fill-opacity="0.15"
+                  height="50"
+                  rx="4"
+                  width="30"
+                  x="20"
+                  y="60"
+                ></rect>
+                <rect
+                  fill="currentColor"
+                  fill-opacity="0.25"
+                  height="65"
+                  rx="4"
+                  width="30"
+                  x="80"
+                  y="45"
+                ></rect>
+                <rect
+                  fill="currentColor"
+                  fill-opacity="0.25"
+                  height="55"
+                  rx="4"
+                  width="30"
+                  x="140"
+                  y="55"
+                ></rect>
+                <rect
+                  fill="currentColor"
+                  fill-opacity="0.4"
+                  height="75"
+                  rx="4"
+                  width="30"
+                  x="200"
+                  y="35"
+                ></rect>
+                <rect
+                  fill="currentColor"
+                  fill-opacity="0.6"
+                  height="85"
+                  rx="4"
+                  width="30"
+                  x="260"
+                  y="25"
+                ></rect>
+                <rect fill="currentColor" height="100" rx="4" width="30" x="320" y="10"></rect>
+                <!-- Accent trend line -->
+                <path
+                  d="M 35 60 Q 140 50 215 35 T 335 10"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                ></path>
+              </svg>
+              <div
+                class="flex items-center justify-between text-outline font-label-code-sm text-label-code-sm pt-space-xs"
+              >
+                <span>Standard Docx</span>
+                <span>Generic AI Prompt</span>
+                <span class="text-primary font-bold">Profile2Resume Verified</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- FINAL CTA SECTION -->
+        <section class="w-full px-margin py-space-2xl bg-surface">
+          <div
+            class="max-w-5xl mx-auto rounded-2xl bg-surface-container-lowest p-space-xl sm:p-space-2xl shadow-xl relative overflow-hidden flex flex-col items-center text-center gap-space-lg"
+          >
+            <!-- Background subtle gradient circle -->
+            <div
+              class="absolute -bottom-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-2xl pointer-events-none"
+            ></div>
+            <div class="flex flex-col gap-space-xs max-w-2xl">
+              <span
+                class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase"
+                >Begin Telemetry Ingestion</span
+              >
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">
+                Your next opportunity starts with your work.
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Connect your profiles in seconds. Let the engine discover, analyze, and assemble the
+                verifiable career record you have earned.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-space-md">
+              <a
+                class="inline-flex items-center justify-center gap-space-xs px-space-xl py-3 rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-md hover:bg-primary transition-all hover:-translate-y-0.5 active:translate-y-0"
+                data-path="connect"
+                href="#"
+              >
+                <span>Create Your First Resume</span>
+                <span class="material-symbols-outlined text-[18px]">bolt</span>
+              </a>
+              <a
+                class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg border border-outline-variant text-on-surface font-title-md text-title-md hover:bg-surface-container transition-colors"
+                href="/auth/github"
+              >
+                <span class="material-symbols-outlined text-[18px]">code</span>
+                <span>Continue with GitHub</span>
+              </a>
+              <a
+                class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-surface-container text-on-surface font-title-md text-title-md shadow-sm hover:bg-surface-container-high transition-colors"
+                data-path="preview"
+                href="#"
+              >
+                <span>View Public Demo</span>
+              </a>
+            </div>
+            <div
+              class="flex items-center gap-space-md text-outline font-label-code-sm text-label-code-sm pt-space-xs"
+            >
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px] text-primary">check</span>
+                No manual copy-pasting
+              </span>
+              <span>•</span>
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px] text-primary">check</span>
+                Read-only API access
+              </span>
+              <span>•</span>
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px] text-primary">check</span>
+                Export ATS-compliant PDF
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section id="profile-editor" class="hidden w-full px-margin py-space-xl">
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+          <div class="flex flex-col gap-space-xs">
+            <span
+              class="font-label-code-sm text-label-code-sm text-primary uppercase tracking-wider"
+              >Unified developer profile</span
+            >
+            <h1 class="font-headline-lg text-headline-lg text-on-surface">
+              Your verified career record
+            </h1>
+            <p
+              id="profile-status"
+              class="font-body-md text-body-md text-on-surface-variant"
+              role="status"
+            >
+              Loading profile...
             </p>
-<div>
-<a class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-title-md text-body-sm shadow hover:bg-primary-container transition-all" data-path="connect" href="#">
-<span>Start Free Ingestion</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="lg:col-span-6 p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
-<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
-<div class="flex items-center justify-between pb-space-xs">
-<span class="font-title-md text-body-sm text-on-surface">Alex Chen — Staff Systems Engineer</span>
-<span class="font-label-code-sm text-label-code-sm text-primary">Ready for PDF</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[98%]"></div>
-</div>
-<div class="flex items-center justify-between font-label-code-sm text-label-code-sm text-outline">
-<span>ATS Parsing Compatibility</span>
-<span class="font-semibold text-on-surface">99.8% (Green)</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- DIFFERENTIATOR SECTION -->
-<section class="w-full px-margin py-space-2xl bg-surface">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
-<div class="flex flex-col gap-space-xs text-center items-center max-w-2xl mx-auto">
-<span class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase">Factual Precision vs. Fiction</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">
-          AI can write anything. We make sure it can prove it.
-        </h2>
-<p class="font-body-md text-body-md text-on-surface-variant">
-          Generic AI tools hallucinate metrics and fabricate tech stacks. Profile2Resume binds every assertion to verified developer telemetry.
-        </p>
-</div>
-<!-- Side-by-Side Comparison -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<!-- Traditional AI Resume Card -->
-<div class="p-space-xl rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between">
-<div class="flex flex-col gap-space-lg">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-headline-sm text-on-surface">Traditional AI Resume</span>
-<span class="px-space-sm py-1 rounded font-label-code-sm text-label-code-sm bg-error-container text-on-error-container font-medium">Unverified Prompting</span>
-</div>
-<ul class="flex flex-col gap-space-md">
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Generic ungrounded claims</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">"Spearheaded cloud migration" without specific architectures or scale.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Unverified metric estimations</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Made-up numbers ("Boosted speed by 40%") that crumble under senior interview scrutiny.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Manual cut-and-paste data gathering</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Requires manually dredging through repositories and job descriptions.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Hallucinated libraries &amp; frameworks</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Lists technologies you've never committed code to in production.</span>
-</div>
-</li>
-</ul>
-</div>
-<div class="pt-space-xl">
-<span class="font-label-code-sm text-label-code-sm text-error font-medium">High risk of interview disqualification</span>
-</div>
-</div>
-<!-- Profile2Resume Card (Elevated & Accentuated) -->
-<div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-xl flex flex-col justify-between relative overflow-hidden">
-<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
-<div class="flex flex-col gap-space-lg">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Profile2Resume Engine</span>
-<span class="px-space-sm py-1 rounded font-label-code-sm text-label-code-sm bg-primary-fixed text-on-primary-fixed font-semibold">Cryptographically Verified</span>
-</div>
-<ul class="flex flex-col gap-space-md">
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Source-linked achievements</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Direct reference tags to production merge requests and release binaries.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Verified supporting evidence</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Quantified latency drops, lines refactored, and benchmark telemetry.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Automated profile compilation</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Complete extraction across GitHub, LinkedIn, and LeetCode in seconds.</span>
-</div>
-</li>
-<li class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
-<div class="flex flex-col">
-<span class="font-title-md text-body-sm text-on-surface">Live GitHub proof verification</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Interactive verification links empower hiring managers to inspect proof instantly.</span>
-</div>
-</li>
-</ul>
-</div>
-<div class="pt-space-xl flex items-center gap-space-xs font-label-code-sm text-label-code-sm text-primary font-semibold">
-<span class="material-symbols-outlined text-[18px]">verified_user</span>
-<span>Zero hallucination policy with continuous git attestation</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- TESTIMONIAL / VISUAL PROOF STRIP -->
-<section class="w-full px-margin py-space-xl bg-surface-container-low">
-<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
-<div class="flex flex-col gap-space-md">
-<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold uppercase tracking-wider">Engineering Leader Validation</span>
-<blockquote class="font-headline-sm text-headline-sm text-on-surface italic">
-          "When an applicant sends a Profile2Resume, I can verify in 10 seconds that their latency numbers came from a real repository PR. It completely cuts through hiring noise."
-        </blockquote>
-<div class="flex items-center gap-space-md">
-<img class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Professional portrait of a male VP of Engineering in a sleek minimalist San Francisco tech office, architectural natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyUzHxUU6eOuiWPzYBxGSKrxGwhg917c710YQIWGZA-0YsxwtKuGpT3IT_G6rarlUsm1bcDFuLGD4rdrdz3EwYXkCThljgz59NKfKwE0p_JgJwVkK7bvdF4OZMS_nUKWXgP3222jfNWrQHdMJ7brJc7kWvo3NNeaBy9WEg0_VO-CTKiNggvUiqyOtmw4hEddE-FK0SdCbWRkyywyNRt4XtJs4zVtiFdMl7EwpauMEw"/>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md text-on-surface">Marcus Vance</span>
-<span class="font-label-code-sm text-label-code-sm text-outline">VP of Infrastructure &amp; Core Systems</span>
-</div>
-</div>
-</div>
-<!-- Inline SVG Telemetry Graph -->
-<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<span class="font-label-code-md text-label-code-md text-on-surface font-semibold">Candidate Callback Multiplier</span>
-<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">+240% vs Traditional Resumes</span>
-</div>
-<!-- SVG Sparkline / Bar Chart -->
-<svg class="w-full h-32 text-primary" fill="none" preserveaspectratio="none" viewbox="0 0 400 120">
-<rect fill="currentColor" fill-opacity="0.15" height="50" rx="4" width="30" x="20" y="60"></rect>
-<rect fill="currentColor" fill-opacity="0.25" height="65" rx="4" width="30" x="80" y="45"></rect>
-<rect fill="currentColor" fill-opacity="0.25" height="55" rx="4" width="30" x="140" y="55"></rect>
-<rect fill="currentColor" fill-opacity="0.4" height="75" rx="4" width="30" x="200" y="35"></rect>
-<rect fill="currentColor" fill-opacity="0.6" height="85" rx="4" width="30" x="260" y="25"></rect>
-<rect fill="currentColor" height="100" rx="4" width="30" x="320" y="10"></rect>
-<!-- Accent trend line -->
-<path d="M 35 60 Q 140 50 215 35 T 335 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-</svg>
-<div class="flex items-center justify-between text-outline font-label-code-sm text-label-code-sm pt-space-xs">
-<span>Standard Docx</span>
-<span>Generic AI Prompt</span>
-<span class="text-primary font-bold">Profile2Resume Verified</span>
-</div>
-</div>
-</div>
-</section>
-<!-- FINAL CTA SECTION -->
-<section class="w-full px-margin py-space-2xl bg-surface">
-<div class="max-w-5xl mx-auto rounded-2xl bg-surface-container-lowest p-space-xl sm:p-space-2xl shadow-xl relative overflow-hidden flex flex-col items-center text-center gap-space-lg">
-<!-- Background subtle gradient circle -->
-<div class="absolute -bottom-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
-<div class="flex flex-col gap-space-xs max-w-2xl">
-<span class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-wider uppercase">Begin Telemetry Ingestion</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">
-          Your next opportunity starts with your work.
-        </h2>
-<p class="font-body-md text-body-md text-on-surface-variant">
-          Connect your profiles in seconds. Let the engine discover, analyze, and assemble the verifiable career record you have earned.
-        </p>
-</div>
-<div class="flex flex-col sm:flex-row items-center gap-space-md">
-<a class="inline-flex items-center justify-center gap-space-xs px-space-xl py-3 rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-md hover:bg-primary transition-all hover:-translate-y-0.5 active:translate-y-0" data-path="connect" href="#">
-<span>Create Your First Resume</span>
-<span class="material-symbols-outlined text-[18px]">bolt</span>
-</a>
-<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg border border-outline-variant text-on-surface font-title-md text-title-md hover:bg-surface-container transition-colors" href="/auth/github">
-<span class="material-symbols-outlined text-[18px]">code</span>
-<span>Continue with GitHub</span>
-</a>
-<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-surface-container text-on-surface font-title-md text-title-md shadow-sm hover:bg-surface-container-high transition-colors" data-path="preview" href="#">
-<span>View Public Demo</span>
-</a>
-</div>
-<div class="flex items-center gap-space-md text-outline font-label-code-sm text-label-code-sm pt-space-xs">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px] text-primary">check</span>
-          No manual copy-pasting
-        </span>
-<span>•</span>
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px] text-primary">check</span>
-          Read-only API access
-        </span>
-<span>•</span>
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px] text-primary">check</span>
-          Export ATS-compliant PDF
-        </span>
-</div>
-</div>
-</section>
-</div>
-<section id="profile-editor" class="hidden w-full px-margin py-space-xl">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-code-sm text-label-code-sm text-primary uppercase tracking-wider">Unified developer profile</span>
-<h1 class="font-headline-lg text-headline-lg text-on-surface">Your verified career record</h1>
-<p id="profile-status" class="font-body-md text-body-md text-on-surface-variant" role="status">Loading profile...</p>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
-<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm"><span class="font-label-code-sm text-outline">Completeness</span><strong id="profile-completeness" class="block font-headline-md text-primary">--</strong></div>
-<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm"><span class="font-label-code-sm text-outline">Education</span><strong id="profile-education-count" class="block font-headline-md text-on-surface">0</strong></div>
-<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm"><span class="font-label-code-sm text-outline">Experience</span><strong id="profile-experience-count" class="block font-headline-md text-on-surface">0</strong></div>
-<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm"><span class="font-label-code-sm text-outline">Projects</span><strong id="profile-project-count" class="block font-headline-md text-on-surface">0</strong></div>
-</div>
-<form id="basic-profile-form" class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm grid grid-cols-1 md:grid-cols-2 gap-space-md">
-<label class="flex flex-col gap-space-xs font-label-code-sm text-outline">Full name<input name="fullName" class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface" maxlength="120"/></label>
-<label class="flex flex-col gap-space-xs font-label-code-sm text-outline">Professional headline<input name="professionalHeadline" class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface" maxlength="240"/></label>
-<label class="flex flex-col gap-space-xs font-label-code-sm text-outline">Location<input name="location" class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface" maxlength="160"/></label>
-<label class="flex flex-col gap-space-xs font-label-code-sm text-outline">Portfolio URL<input name="portfolioURL" type="url" class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface"/></label>
-<button class="md:col-span-2 justify-self-start px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md" type="submit">Save personal information</button>
-</form>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
-<form data-profile-record="education" class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
-<h2 class="font-headline-sm text-headline-sm">Add education</h2><input name="institutionName" required placeholder="Institution" class="border border-outline-variant rounded p-space-sm"/><input name="degree" placeholder="Degree" class="border border-outline-variant rounded p-space-sm"/><button class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md" type="submit">Add education</button>
-</form>
-<form data-profile-record="experience" class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
-<h2 class="font-headline-sm text-headline-sm">Add experience</h2><input name="organization" required placeholder="Organization" class="border border-outline-variant rounded p-space-sm"/><input name="jobTitle" placeholder="Job title" class="border border-outline-variant rounded p-space-sm"/><button class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md" type="submit">Add experience</button>
-</form>
-<form data-profile-record="skills" class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
-<h2 class="font-headline-sm text-headline-sm">Add technical skill</h2><input name="name" required placeholder="Skill name" class="border border-outline-variant rounded p-space-sm"/><select name="category" class="border border-outline-variant rounded p-space-sm"><option value="programming_languages">Programming Languages</option><option value="frontend">Frontend</option><option value="backend">Backend</option><option value="databases">Databases</option><option value="ai_ml">AI/ML</option><option value="cloud_devops">Cloud and DevOps</option><option value="developer_tools">Developer Tools</option><option value="other">Other</option></select><button class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md" type="submit">Add skill</button>
-</form>
-</div>
-<div id="profile-records" class="grid grid-cols-1 md:grid-cols-2 gap-space-md"></div>
-</div>
-</section>
-<script>
-  // Timeline Stage Interactive Tab Switching
-  (function() {
-    const tabs = document.querySelectorAll('.timeline-tab-btn');
-    const panels = {
-      '1': document.getElementById('stage-panel-1'),
-      '2': document.getElementById('stage-panel-2'),
-      '3': document.getElementById('stage-panel-3'),
-      '4': document.getElementById('stage-panel-4')
-    };
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+              <span class="font-label-code-sm text-outline">Completeness</span
+              ><strong id="profile-completeness" class="block font-headline-md text-primary"
+                >--</strong
+              >
+            </div>
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+              <span class="font-label-code-sm text-outline">Education</span
+              ><strong id="profile-education-count" class="block font-headline-md text-on-surface"
+                >0</strong
+              >
+            </div>
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+              <span class="font-label-code-sm text-outline">Experience</span
+              ><strong id="profile-experience-count" class="block font-headline-md text-on-surface"
+                >0</strong
+              >
+            </div>
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+              <span class="font-label-code-sm text-outline">Projects</span
+              ><strong id="profile-project-count" class="block font-headline-md text-on-surface"
+                >0</strong
+              >
+            </div>
+          </div>
+          <div
+            class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+          >
+            <div class="flex items-center justify-between gap-space-md">
+              <div>
+                <span class="font-label-code-sm text-outline">GitHub connection</span
+                ><strong id="github-identity" class="block font-headline-sm text-on-surface"
+                  >Not synchronized</strong
+                ><a
+                  id="github-profile-link"
+                  class="font-label-code-sm text-primary"
+                  target="_blank"
+                  rel="noreferrer"
+                ></a>
+              </div>
+              <button
+                id="github-sync-button"
+                type="button"
+                class="px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md"
+              >
+                Import GitHub data
+              </button>
+            </div>
+            <p id="github-sync-status" class="font-body-sm text-on-surface-variant" role="status">
+              Public repositories are imported with source metadata and ranking explanations.
+            </p>
+            <div
+              id="github-repositories"
+              class="grid grid-cols-1 md:grid-cols-2 gap-space-md"
+            ></div>
+          </div>
+          <form
+            id="basic-profile-form"
+            class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm grid grid-cols-1 md:grid-cols-2 gap-space-md"
+          >
+            <label class="flex flex-col gap-space-xs font-label-code-sm text-outline"
+              >Full name<input
+                name="fullName"
+                class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface"
+                maxlength="120"
+            /></label>
+            <label class="flex flex-col gap-space-xs font-label-code-sm text-outline"
+              >Professional headline<input
+                name="professionalHeadline"
+                class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface"
+                maxlength="240"
+            /></label>
+            <label class="flex flex-col gap-space-xs font-label-code-sm text-outline"
+              >Location<input
+                name="location"
+                class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface"
+                maxlength="160"
+            /></label>
+            <label class="flex flex-col gap-space-xs font-label-code-sm text-outline"
+              >Portfolio URL<input
+                name="portfolioURL"
+                type="url"
+                class="border border-outline-variant rounded p-space-sm font-body-md text-on-surface"
+            /></label>
+            <button
+              class="md:col-span-2 justify-self-start px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md"
+              type="submit"
+            >
+              Save personal information
+            </button>
+          </form>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+            <form
+              data-profile-record="education"
+              class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+            >
+              <h2 class="font-headline-sm text-headline-sm">Add education</h2>
+              <input
+                name="institutionName"
+                required
+                placeholder="Institution"
+                class="border border-outline-variant rounded p-space-sm"
+              /><input
+                name="degree"
+                placeholder="Degree"
+                class="border border-outline-variant rounded p-space-sm"
+              /><button
+                class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md"
+                type="submit"
+              >
+                Add education
+              </button>
+            </form>
+            <form
+              data-profile-record="experience"
+              class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+            >
+              <h2 class="font-headline-sm text-headline-sm">Add experience</h2>
+              <input
+                name="organization"
+                required
+                placeholder="Organization"
+                class="border border-outline-variant rounded p-space-sm"
+              /><input
+                name="jobTitle"
+                placeholder="Job title"
+                class="border border-outline-variant rounded p-space-sm"
+              /><button
+                class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md"
+                type="submit"
+              >
+                Add experience
+              </button>
+            </form>
+            <form
+              data-profile-record="skills"
+              class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+            >
+              <h2 class="font-headline-sm text-headline-sm">Add technical skill</h2>
+              <input
+                name="name"
+                required
+                placeholder="Skill name"
+                class="border border-outline-variant rounded p-space-sm"
+              /><select name="category" class="border border-outline-variant rounded p-space-sm">
+                <option value="programming_languages">Programming Languages</option>
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="databases">Databases</option>
+                <option value="ai_ml">AI/ML</option>
+                <option value="cloud_devops">Cloud and DevOps</option>
+                <option value="developer_tools">Developer Tools</option>
+                <option value="other">Other</option></select
+              ><button
+                class="px-space-md py-space-sm rounded bg-surface-container text-on-surface font-title-md"
+                type="submit"
+              >
+                Add skill
+              </button>
+            </form>
+          </div>
+          <div id="profile-records" class="grid grid-cols-1 md:grid-cols-2 gap-space-md"></div>
+        </div>
+      </section>
+      <script>
+        // Timeline Stage Interactive Tab Switching
+        (function () {
+          const tabs = document.querySelectorAll(".timeline-tab-btn");
+          const panels = {
+            1: document.getElementById("stage-panel-1"),
+            2: document.getElementById("stage-panel-2"),
+            3: document.getElementById("stage-panel-3"),
+            4: document.getElementById("stage-panel-4"),
+          };
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const stage = tab.getAttribute('data-stage');
-        
-        // Reset tab styles
-        tabs.forEach(t => {
-          t.classList.remove('bg-surface-container-lowest', 'shadow');
-          t.classList.add('bg-surface-container');
-          const badge = t.querySelector('span:first-child');
-          if (badge) {
-            badge.classList.remove('text-primary');
-            badge.classList.add('text-outline');
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+              const stage = tab.getAttribute("data-stage");
+
+              // Reset tab styles
+              tabs.forEach((t) => {
+                t.classList.remove("bg-surface-container-lowest", "shadow");
+                t.classList.add("bg-surface-container");
+                const badge = t.querySelector("span:first-child");
+                if (badge) {
+                  badge.classList.remove("text-primary");
+                  badge.classList.add("text-outline");
+                }
+              });
+
+              // Activate clicked tab
+              tab.classList.remove("bg-surface-container");
+              tab.classList.add("bg-surface-container-lowest", "shadow");
+              const activeBadge = tab.querySelector("span:first-child");
+              if (activeBadge) {
+                activeBadge.classList.remove("text-outline");
+                activeBadge.classList.add("text-primary");
+              }
+
+              // Hide all panels, show target panel
+              Object.keys(panels).forEach((key) => {
+                if (panels[key]) {
+                  panels[key].classList.add("hidden");
+                }
+              });
+
+              if (panels[stage]) {
+                panels[stage].classList.remove("hidden");
+              }
+            });
+          });
+
+          // Tour button smooth scroll or timeline trigger
+          const tourBtn = document.getElementById("tour-btn");
+          if (tourBtn) {
+            tourBtn.addEventListener("click", () => {
+              const timeline = document.getElementById("timeline-tabs");
+              if (timeline) {
+                timeline.scrollIntoView({ behavior: "smooth", block: "center" });
+              }
+            });
           }
-        });
+        })();
 
-        // Activate clicked tab
-        tab.classList.remove('bg-surface-container');
-        tab.classList.add('bg-surface-container-lowest', 'shadow');
-        const activeBadge = tab.querySelector('span:first-child');
-        if (activeBadge) {
-          activeBadge.classList.remove('text-outline');
-          activeBadge.classList.add('text-primary');
-        }
+        // Keep the Stitch export deployable as a static document while exposing its application routes.
+        (function () {
+          const routeLabels = {
+            landing: "Profile2Resume",
+            connect: "Connect Profiles",
+            dashboard: "Dashboard",
+            analysis: "AI Analysis",
+            studio: "Resume Studio",
+            preview: "Preview",
+          };
+          const links = document.querySelectorAll("[data-path]");
+          const landing = document.getElementById("stitch-landing-content");
+          const editor = document.getElementById("profile-editor");
+          let profile = null;
 
-        // Hide all panels, show target panel
-        Object.keys(panels).forEach(key => {
-          if (panels[key]) {
-            panels[key].classList.add('hidden');
+          async function profileRequest(path, options) {
+            const response = await fetch(path, {
+              headers: { "Content-Type": "application/json" },
+              ...options,
+            });
+            const body = await response.json().catch(() => null);
+            if (!response.ok || !body || !body.ok) {
+              throw new Error(body && body.error ? body.error.message : "Profile request failed");
+            }
+            return body.data;
           }
-        });
 
-        if (panels[stage]) {
-          panels[stage].classList.remove('hidden');
-        }
-      });
-    });
+          function setStatus(message, isError) {
+            const status = document.getElementById("profile-status");
+            if (status) {
+              status.textContent = message;
+              status.classList.toggle("text-error", Boolean(isError));
+            }
+          }
 
-    // Tour button smooth scroll or timeline trigger
-    const tourBtn = document.getElementById('tour-btn');
-    if (tourBtn) {
-      tourBtn.addEventListener('click', () => {
-        const timeline = document.getElementById('timeline-tabs');
-        if (timeline) {
-          timeline.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    }
-  })();
+          function renderProfile(data) {
+            profile = data;
+            const basic = data.basicInformation || {};
+            document.querySelectorAll("#basic-profile-form [name]").forEach((input) => {
+              input.value = basic[input.name] || "";
+            });
+            const completeness = data.completeness || {};
+            document.getElementById("profile-completeness").textContent =
+              `${completeness.score || 0}%`;
+            document.getElementById("profile-education-count").textContent = data.education.length;
+            document.getElementById("profile-experience-count").textContent =
+              data.experience.length;
+            document.getElementById("profile-project-count").textContent = data.projects.length;
+            const records = document.getElementById("profile-records");
+            records.replaceChildren();
+            [
+              ["Education", data.education, "education", "institutionName"],
+              ["Experience", data.experience, "experience", "organization"],
+              ["Skills", data.technicalSkills, "skills", "name"],
+              ["Projects", data.projects, "projects", "projectName"],
+            ].forEach(([label, items, path, titleKey]) => {
+              items.forEach((item) => {
+                const card = document.createElement("article");
+                card.className =
+                  "p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between gap-space-md";
+                const text = document.createElement("div");
+                const heading = document.createElement("strong");
+                heading.className = "font-title-md text-on-surface";
+                heading.textContent = item[titleKey];
+                const source = document.createElement("span");
+                source.className = "block font-label-code-sm text-outline";
+                source.textContent = `${label} · ${item.sourceProvider || "manual"}`;
+                text.append(heading, source);
+                const remove = document.createElement("button");
+                remove.className = "font-label-code-sm text-error";
+                remove.type = "button";
+                remove.textContent = "Remove";
+                remove.addEventListener("click", async () => {
+                  if (!window.confirm("Remove this profile record?")) return;
+                  try {
+                    await profileRequest(`/api/profile/${path}/${item._id}`, { method: "DELETE" });
+                    await loadProfile();
+                  } catch (error) {
+                    setStatus(error.message, true);
+                  }
+                });
+                card.append(text, remove);
+                records.append(card);
+              });
+            });
+          }
 
-  // Keep the Stitch export deployable as a static document while exposing its application routes.
-  (function() {
-    const routeLabels = {
-      landing: 'Profile2Resume',
-      connect: 'Connect Profiles',
-      dashboard: 'Dashboard',
-      analysis: 'AI Analysis',
-      studio: 'Resume Studio',
-      preview: 'Preview'
-    };
-    const links = document.querySelectorAll('[data-path]');
-    const landing = document.getElementById('stitch-landing-content');
-    const editor = document.getElementById('profile-editor');
-    let profile = null;
-
-    async function profileRequest(path, options) {
-      const response = await fetch(path, {
-        headers: { 'Content-Type': 'application/json' },
-        ...options
-      });
-      const body = await response.json().catch(() => null);
-      if (!response.ok || !body || !body.ok) {
-        throw new Error(body && body.error ? body.error.message : 'Profile request failed');
-      }
-      return body.data;
-    }
-
-    function setStatus(message, isError) {
-      const status = document.getElementById('profile-status');
-      if (status) {
-        status.textContent = message;
-        status.classList.toggle('text-error', Boolean(isError));
-      }
-    }
-
-    function renderProfile(data) {
-      profile = data;
-      const basic = data.basicInformation || {};
-      document.querySelectorAll('#basic-profile-form [name]').forEach((input) => {
-        input.value = basic[input.name] || '';
-      });
-      const completeness = data.completeness || {};
-      document.getElementById('profile-completeness').textContent = `${completeness.score || 0}%`;
-      document.getElementById('profile-education-count').textContent = data.education.length;
-      document.getElementById('profile-experience-count').textContent = data.experience.length;
-      document.getElementById('profile-project-count').textContent = data.projects.length;
-      const records = document.getElementById('profile-records');
-      records.replaceChildren();
-      [
-        ['Education', data.education, 'education', 'institutionName'],
-        ['Experience', data.experience, 'experience', 'organization'],
-        ['Skills', data.technicalSkills, 'skills', 'name'],
-        ['Projects', data.projects, 'projects', 'projectName']
-      ].forEach(([label, items, path, titleKey]) => {
-        items.forEach((item) => {
-          const card = document.createElement('article');
-          card.className = 'p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between gap-space-md';
-          const text = document.createElement('div');
-          const heading = document.createElement('strong');
-          heading.className = 'font-title-md text-on-surface';
-          heading.textContent = item[titleKey];
-          const source = document.createElement('span');
-          source.className = 'block font-label-code-sm text-outline';
-          source.textContent = `${label} · ${item.sourceProvider || 'manual'}`;
-          text.append(heading, source);
-          const remove = document.createElement('button');
-          remove.className = 'font-label-code-sm text-error';
-          remove.type = 'button';
-          remove.textContent = 'Remove';
-          remove.addEventListener('click', async () => {
-            if (!window.confirm('Remove this profile record?')) return;
+          async function loadProfile() {
+            setStatus("Loading profile...", false);
             try {
-              await profileRequest(`/api/profile/${path}/${item._id}`, { method: 'DELETE' });
-              await loadProfile();
+              renderProfile(await profileRequest("/api/profile"));
+              setStatus("Profile synced. Imported records retain their source attribution.", false);
             } catch (error) {
               setStatus(error.message, true);
             }
+
+            function renderGithub(data) {
+              const profile = data.profile;
+              const identity = document.getElementById("github-identity");
+              const link = document.getElementById("github-profile-link");
+              const status = document.getElementById("github-sync-status");
+              identity.textContent = profile ? `@${profile.username}` : "Not synchronized";
+              link.textContent = profile ? "View public profile" : "";
+              link.href = profile ? profile.profileURL : "#";
+              status.textContent = profile
+                ? `${data.repositories.length} public repositories · Last sync ${data.lastSynchronizedAt || "available"}`
+                : "Public repositories are imported with source metadata and ranking explanations.";
+              const list = document.getElementById("github-repositories");
+              list.replaceChildren();
+              (data.recommended || []).forEach((repository) => {
+                const card = document.createElement("article");
+                card.className =
+                  "p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs";
+                const title = document.createElement("a");
+                title.className = "font-title-md text-primary";
+                title.href = repository.repositoryURL;
+                title.target = "_blank";
+                title.rel = "noreferrer";
+                title.textContent = repository.name;
+                const details = document.createElement("span");
+                details.className = "font-body-sm text-on-surface-variant";
+                details.textContent = `${repository.primaryLanguage || "Technology pending"} · ${repository.stars} stars · score ${repository.rankingScore ?? 0}`;
+                const explanation = document.createElement("span");
+                explanation.className = "font-label-code-sm text-outline";
+                explanation.textContent =
+                  repository.rankingExplanation || "Ranking explanation pending.";
+                card.append(title, details, explanation);
+                list.append(card);
+              });
+              if (!data.repositories.length) {
+                const empty = document.createElement("span");
+                empty.className = "font-body-sm text-outline";
+                empty.textContent = "No public repositories imported yet.";
+                list.append(empty);
+              }
+            }
+
+            async function loadGithubStatus() {
+              try {
+                const data = await profileRequest("/api/github/status");
+                renderGithub(data);
+              } catch (error) {
+                document.getElementById("github-sync-status").textContent = error.message;
+              }
+            }
+
+            document
+              .getElementById("github-sync-button")
+              .addEventListener("click", async (event) => {
+                const button = event.currentTarget;
+                button.disabled = true;
+                button.textContent = "Importing...";
+                document.getElementById("github-sync-status").textContent =
+                  "Fetching public profile and repositories...";
+                try {
+                  const data = await profileRequest("/api/github/sync", {
+                    method: "POST",
+                    body: "{}",
+                  });
+                  renderGithub(data);
+                  document.getElementById("github-sync-status").textContent =
+                    data.synchronizationStatus === "partial"
+                      ? "GitHub data imported with some metadata unavailable."
+                      : "GitHub data synchronized successfully.";
+                } catch (error) {
+                  document.getElementById("github-sync-status").textContent = error.message;
+                } finally {
+                  button.disabled = false;
+                  button.textContent = "Refresh GitHub data";
+                }
+              });
+          }
+
+          document
+            .getElementById("basic-profile-form")
+            .addEventListener("submit", async (event) => {
+              event.preventDefault();
+              const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+              try {
+                renderProfile(
+                  await profileRequest("/api/profile", {
+                    method: "PATCH",
+                    body: JSON.stringify(data),
+                  }),
+                );
+                setStatus("Personal information saved.", false);
+              } catch (error) {
+                setStatus(error.message, true);
+              }
+            });
+
+          document.querySelectorAll("[data-profile-record]").forEach((form) => {
+            form.addEventListener("submit", async (event) => {
+              event.preventDefault();
+              const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+              if (form.dataset.profileRecord === "experience") data.currentlyWorking = false;
+              try {
+                renderProfile(
+                  await profileRequest(`/api/profile/${form.dataset.profileRecord}`, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                  }),
+                );
+                event.currentTarget.reset();
+                setStatus("Profile record added.", false);
+              } catch (error) {
+                setStatus(error.message, true);
+              }
+            });
           });
-          card.append(text, remove);
-          records.append(card);
-        });
-      });
-    }
 
-    async function loadProfile() {
-      setStatus('Loading profile...', false);
-      try {
-        renderProfile(await profileRequest('/api/profile'));
-        setStatus('Profile synced. Imported records retain their source attribution.', false);
-      } catch (error) {
-        setStatus(error.message, true);
-      }
-    }
+          function renderRoute() {
+            const requestedRoute = window.location.hash.slice(1);
+            const route = Object.prototype.hasOwnProperty.call(routeLabels, requestedRoute)
+              ? requestedRoute
+              : "landing";
 
-    document.getElementById('basic-profile-form').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const data = Object.fromEntries(new FormData(event.currentTarget).entries());
-      try {
-        renderProfile(await profileRequest('/api/profile', { method: 'PATCH', body: JSON.stringify(data) }));
-        setStatus('Personal information saved.', false);
-      } catch (error) {
-        setStatus(error.message, true);
-      }
-    });
+            document.body.dataset.route = route;
+            document.title = routeLabels[route];
+            landing.classList.toggle("hidden", route === "dashboard");
+            editor.classList.toggle("hidden", route !== "dashboard");
+            if (route === "dashboard") {
+              loadProfile();
+              loadGithubStatus();
+            }
+            links.forEach((link) => {
+              const isActive = link.getAttribute("data-path") === route;
+              link.setAttribute("aria-current", isActive ? "page" : "false");
+              link.classList.toggle("bg-primary-container", isActive);
+              link.classList.toggle("text-on-primary", isActive);
+              link.classList.toggle("text-on-surface-variant", !isActive);
+            });
+          }
 
-    document.querySelectorAll('[data-profile-record]').forEach((form) => {
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const data = Object.fromEntries(new FormData(event.currentTarget).entries());
-        if (form.dataset.profileRecord === 'experience') data.currentlyWorking = false;
-        try {
-          renderProfile(await profileRequest(`/api/profile/${form.dataset.profileRecord}`, {
-            method: 'POST',
-            body: JSON.stringify(data)
-          }));
-          event.currentTarget.reset();
-          setStatus('Profile record added.', false);
-        } catch (error) {
-          setStatus(error.message, true);
-        }
-      });
-    });
+          links.forEach((link) => {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              window.location.hash = link.getAttribute("data-path") || "landing";
+            });
+          });
 
-    function renderRoute() {
-      const requestedRoute = window.location.hash.slice(1);
-      const route = Object.prototype.hasOwnProperty.call(routeLabels, requestedRoute)
-        ? requestedRoute
-        : 'landing';
-
-      document.body.dataset.route = route;
-      document.title = routeLabels[route];
-      landing.classList.toggle('hidden', route === 'dashboard');
-      editor.classList.toggle('hidden', route !== 'dashboard');
-      if (route === 'dashboard') loadProfile();
-      links.forEach((link) => {
-        const isActive = link.getAttribute('data-path') === route;
-        link.setAttribute('aria-current', isActive ? 'page' : 'false');
-        link.classList.toggle('bg-primary-container', isActive);
-        link.classList.toggle('text-on-primary', isActive);
-        link.classList.toggle('text-on-surface-variant', !isActive);
-      });
-    }
-
-    links.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.location.hash = link.getAttribute('data-path') || 'landing';
-      });
-    });
-
-    window.addEventListener('hashchange', renderRoute);
-    renderRoute();
-  })();
-</script></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(25,27,33,0.03)] mt-space-2xl"><div class="w-full px-margin py-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="font-title-md text-title-md text-on-surface">Profile2Resume Engine</span><span class="px-space-xs py-0.5 rounded font-label-code-sm text-label-code-sm bg-surface-container text-on-surface-variant">v2.4-archival</span></div><p class="font-body-sm text-body-sm text-outline max-w-xl">Cryptographic commit validation, evidence-backed career telemetry, and algorithmic resume compilation for senior engineering talent.</p></div><div class="flex flex-wrap items-center gap-space-lg text-on-surface-variant font-label-code-sm text-label-code-sm"><a class="hover:text-primary transition-colors" href="#">Evidence Schema</a><a class="hover:text-primary transition-colors" href="#">Attestation Protocol</a><a class="hover:text-primary transition-colors" href="#">Privacy Architecture</a><a class="hover:text-primary transition-colors" href="#">Documentation</a></div></div><div class="w-full px-margin py-space-md bg-surface-container-high/50 flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-label-code-sm text-label-code-sm gap-space-sm"><span>© 2025 Profile2Resume Systems Inc. High-craft technical dossier tooling.</span><div class="flex items-center gap-space-sm"><span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span><span>All assertions cryptographically verifiable</span></div></div></footer></body></html>
+          window.addEventListener("hashchange", renderRoute);
+          renderRoute();
+        })();
+      </script>
+    </main>
+    <footer
+      class="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(25,27,33,0.03)] mt-space-2xl"
+    >
+      <div
+        class="w-full px-margin py-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg"
+      >
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center gap-space-xs">
+            <span class="font-title-md text-title-md text-on-surface">Profile2Resume Engine</span
+            ><span
+              class="px-space-xs py-0.5 rounded font-label-code-sm text-label-code-sm bg-surface-container text-on-surface-variant"
+              >v2.4-archival</span
+            >
+          </div>
+          <p class="font-body-sm text-body-sm text-outline max-w-xl">
+            Cryptographic commit validation, evidence-backed career telemetry, and algorithmic
+            resume compilation for senior engineering talent.
+          </p>
+        </div>
+        <div
+          class="flex flex-wrap items-center gap-space-lg text-on-surface-variant font-label-code-sm text-label-code-sm"
+        >
+          <a class="hover:text-primary transition-colors" href="#">Evidence Schema</a
+          ><a class="hover:text-primary transition-colors" href="#">Attestation Protocol</a
+          ><a class="hover:text-primary transition-colors" href="#">Privacy Architecture</a
+          ><a class="hover:text-primary transition-colors" href="#">Documentation</a>
+        </div>
+      </div>
+      <div
+        class="w-full px-margin py-space-md bg-surface-container-high/50 flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-label-code-sm text-label-code-sm gap-space-sm"
+      >
+        <span>© 2025 Profile2Resume Systems Inc. High-craft technical dossier tooling.</span>
+        <div class="flex items-center gap-space-sm">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span
+          ><span>All assertions cryptographically verifiable</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

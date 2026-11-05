@@ -5,6 +5,7 @@ import { GithubImport, type GithubImportDocument } from "./github-models.js";
 import { GithubClient } from "./github-client.js";
 import type { GithubRepository, GithubUser } from "./github-types.js";
 import { enrichGithubRepositories } from "./github-metadata.js";
+import { rankGithubRepositories } from "./github-ranking.js";
 
 export function normalizeGithubRepository(repository: GithubRepository) {
   return {
@@ -87,6 +88,18 @@ export async function importGithubRepositories(
   document.profile = profileFromGithub(profile);
   document.repositories = Array.from(byGithubId.values()) as never;
   const metadata = await enrichGithubRepositories(client, document);
+  const ranked = rankGithubRepositories(Array.from(document.repositories), 6);
+  const rankedById = new Map(ranked.map((item) => [item.repository.githubId, item]));
+  for (const repository of document.repositories) {
+    const result = rankedById.get(repository.githubId);
+    repository.recommended = Boolean(result);
+    if (result) {
+      repository.rankingScore = result.score;
+      repository.rankingExplanation = result.explanation;
+      repository.rankingSignals = result.positiveSignals;
+      repository.missingInformation = result.missingInformation;
+    }
+  }
   document.synchronizationStatus = metadata.failures.length ? "partial" : "idle";
   document.lastSynchronizedAt = importedAt;
   document.set("lastError", undefined);

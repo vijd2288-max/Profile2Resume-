@@ -6,6 +6,7 @@ import { connectToDatabase } from "./db.js";
 import { assertUserOwnership, requireAuthenticatedUser } from "./access.js";
 import { User } from "./models.js";
 import { handleProfileRequest } from "./profile-api.js";
+import { handleGithubRequest } from "./github-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -71,6 +72,11 @@ export async function handleApplicationRequest(
     await connectToDatabase(source);
 
     if (await handleProfileRequest(request, response, userId, url.pathname, readJson, sendJson)) {
+      return;
+    }
+    if (
+      await handleGithubRequest(request, response, userId, url.pathname, source, readJson, sendJson)
+    ) {
       return;
     }
 

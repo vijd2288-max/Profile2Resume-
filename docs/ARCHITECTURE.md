@@ -140,3 +140,27 @@ Phase 1 established documentation, environment validation, shared API primitives
 browser shell around the existing Stitch content, and baseline quality scripts. Phase 2
 implemented authentication and persistence. Phase 3 implements the unified developer profile;
 provider importers, AI analysis, and resume generation remain future work.
+
+## Phase 4 GitHub integration
+
+The server-side GitHub client uses the official REST API with an optional decrypted
+OAuth token from the authenticated user's `AccountIntegration`. Tokens never enter
+browser responses. Public repository imports are stored in the ownership-scoped
+`GithubImport` document, keyed by GitHub repository ID so repeated synchronization is
+idempotent. Imports collect bounded language, README, and recent-commit metadata; missing
+READMEs are represented as absent rather than as failures.
+
+Authenticated endpoints:
+
+- `GET /api/github/profile`
+- `GET /api/github/repositories`
+- `GET /api/github/repositories/:githubRepositoryId`
+- `GET /api/github/status`
+- `POST /api/github/import`
+- `POST /api/github/sync`
+
+Repository recommendations use a deterministic score that favors descriptions, README
+quality, detected technologies, topics, deployment links, activity, and original
+ownership. Stars are a secondary signal, forks receive a substantial penalty, archived
+repositories are deprioritized, and empty repositories are excluded from recommendations
+without deleting their imported metadata.

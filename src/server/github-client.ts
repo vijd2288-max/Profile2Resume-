@@ -1,7 +1,6 @@
 import type {
   GithubCommit,
   GithubLanguages,
-  GithubPage,
   GithubReadme,
   GithubRepository,
   GithubUser,
