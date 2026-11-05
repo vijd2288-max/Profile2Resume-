@@ -37,9 +37,9 @@ export async function enrichGithubRepositories(
         const latest = commits[0];
         if (latest) {
           repository.lastCommitURL = latest.html_url;
-          repository.lastCommitDate = latest.commit.author?.date
-            ? new Date(latest.commit.author.date)
-            : undefined;
+          if (latest.commit.author?.date) {
+            repository.lastCommitDate = new Date(latest.commit.author.date);
+          }
         }
       }
       enriched += 1;
