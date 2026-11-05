@@ -8,6 +8,7 @@ import { User } from "./models.js";
 import { handleProfileRequest } from "./profile-api.js";
 import { handleGithubRequest } from "./github-api.js";
 import { handleLinkedInRequest } from "./linkedin-api.js";
+import { handleLeetcodeRequest } from "./leetcode.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -81,6 +82,9 @@ export async function handleApplicationRequest(
       return;
     }
     if (await handleLinkedInRequest(request, response, userId, url.pathname, readJson, sendJson)) {
+      return;
+    }
+    if (await handleLeetcodeRequest(request, response, userId, url.pathname, readJson, sendJson)) {
       return;
     }
 
