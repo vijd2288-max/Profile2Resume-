@@ -43,6 +43,7 @@ const linkedInImportSchema = new Schema(
     },
     extractedText: { type: String, required: true, maxlength: MAX_EXTRACTED_TEXT, select: false },
     extraction: { type: Schema.Types.Mixed, required: true },
+    sectionStatuses: { type: Map, of: String, default: {} },
     importedAt: { type: Date, required: true },
     reviewedAt: Date,
   },
@@ -56,6 +57,7 @@ export interface LinkedInImportDocument extends Document {
   status: "pending_review" | "approved" | "rejected";
   extractedText: string;
   extraction: LinkedInExtraction;
+  sectionStatuses: Map<string, "pending_review" | "approved" | "rejected">;
   importedAt: Date;
   reviewedAt?: Date;
 }

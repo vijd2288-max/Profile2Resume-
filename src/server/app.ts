@@ -80,7 +80,7 @@ export async function handleApplicationRequest(
     ) {
       return;
     }
-    if (await handleLinkedInRequest(request, response, userId, url.pathname, sendJson)) {
+    if (await handleLinkedInRequest(request, response, userId, url.pathname, readJson, sendJson)) {
       return;
     }
 
