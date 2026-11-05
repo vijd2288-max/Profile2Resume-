@@ -1817,6 +1817,42 @@
             <div id="evidence-list" class="grid grid-cols-1 md:grid-cols-2 gap-space-md"></div>
             <div id="claims-list" class="flex flex-col gap-space-sm"></div>
           </section>
+          <section
+            class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+          >
+            <span class="font-label-code-sm text-outline">AI resume intelligence</span>
+            <h2 class="font-headline-sm text-headline-sm text-on-surface">
+              Tailor evidence to a role
+            </h2>
+            <p id="ai-resume-status" class="font-body-sm text-on-surface-variant" role="status">
+              Paste a job description to analyze requirements and draft reviewable bullets.
+            </p>
+            <form id="job-analysis-form" class="flex flex-col gap-space-sm">
+              <input
+                name="title"
+                placeholder="Target role (optional)"
+                class="border border-outline-variant rounded p-space-sm"
+              />
+              <textarea
+                name="description"
+                required
+                minlength="40"
+                maxlength="30000"
+                rows="6"
+                placeholder="Paste the job description here..."
+                class="border border-outline-variant rounded p-space-sm"
+              ></textarea>
+              <button
+                type="submit"
+                class="self-start px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md"
+              >
+                Analyze role
+              </button>
+            </form>
+            <div id="job-analysis-result" class="hidden flex flex-col gap-space-sm"></div>
+            <div id="ai-bullets" class="flex flex-col gap-space-sm"></div>
+            <div id="ai-clarifications" class="flex flex-col gap-space-sm"></div>
+          </section>
           <form
             id="basic-profile-form"
             class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm grid grid-cols-1 md:grid-cols-2 gap-space-md"
@@ -2294,6 +2330,149 @@
                 }
               }
             }
+
+            async function loadEvidence() {
+              try {
+                const [evidence, claims] = await Promise.all([
+                  profileRequest("/api/evidence"),
+                  profileRequest("/api/claims"),
+                ]);
+                const status = document.getElementById("evidence-status");
+                status.textContent = `${evidence.length} evidence records · ${claims.length} claims`;
+              } catch (error) {
+                document.getElementById("evidence-status").textContent = error.message;
+              }
+            }
+
+            function renderJobAnalysis(record) {
+              const result = document.getElementById("job-analysis-result");
+              result.classList.remove("hidden");
+              result.replaceChildren();
+              const heading = document.createElement("strong");
+              heading.className = "font-title-md text-on-surface";
+              heading.textContent = `${record.title} · ${record.analysis.seniorityLevel}`;
+              const details = document.createElement("span");
+              details.className = "font-body-sm text-on-surface-variant";
+              details.textContent = `Required: ${record.analysis.requiredSkills.join(", ") || "none listed"} · Missing profile information: ${record.missingProfileInformation.join(", ") || "none detected"}`;
+              result.append(heading, details);
+            }
+
+            function renderAiBullets(bullets) {
+              const list = document.getElementById("ai-bullets");
+              list.replaceChildren();
+              bullets.forEach((bullet) => {
+                const card = document.createElement("article");
+                card.className =
+                  "p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs";
+                const text = document.createElement("p");
+                text.className = "font-body-md text-on-surface";
+                text.textContent = bullet.text;
+                const state = document.createElement("span");
+                state.className = "font-label-code-sm text-outline";
+                state.textContent = `${bullet.validationStatus} · ${bullet.supportingEvidenceIds.length} evidence reference(s)`;
+                const actions = document.createElement("div");
+                actions.className = "flex flex-wrap gap-space-sm";
+                ["approved", "rejected"].forEach((approvalStatus) => {
+                  const button = document.createElement("button");
+                  button.type = "button";
+                  button.className = "font-label-code-sm text-primary";
+                  button.textContent = approvalStatus === "approved" ? "Approve" : "Reject";
+                  button.addEventListener("click", async () => {
+                    try {
+                      await profileRequest(`/api/ai/bullets/${bullet._id}`, {
+                        method: "PATCH",
+                        body: JSON.stringify({ approvalStatus }),
+                      });
+                      document.getElementById("ai-resume-status").textContent =
+                        "Bullet approval updated.";
+                    } catch (error) {
+                      document.getElementById("ai-resume-status").textContent = error.message;
+                    }
+                  });
+                  actions.append(button);
+                });
+                card.append(text, state, actions);
+                list.append(card);
+              });
+            }
+
+            function renderClarifications(questions) {
+              const list = document.getElementById("ai-clarifications");
+              list.replaceChildren();
+              questions
+                .filter((question) => question.status === "open")
+                .forEach((question) => {
+                  const row = document.createElement("div");
+                  row.className =
+                    "p-space-md rounded-lg border border-outline-variant flex flex-col gap-space-sm";
+                  const label = document.createElement("span");
+                  label.className = "font-body-sm text-on-surface";
+                  label.textContent = question.question;
+                  const input = document.createElement("input");
+                  input.className = "border border-outline-variant rounded p-space-sm";
+                  input.placeholder = "Your answer (optional if skipped)";
+                  const actions = document.createElement("div");
+                  actions.className = "flex gap-space-sm";
+                  ["Answer", "Skip"].forEach((name) => {
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.className = "font-label-code-sm text-primary";
+                    button.textContent = name;
+                    button.addEventListener("click", async () => {
+                      if (name === "Answer" && !input.value.trim()) return;
+                      try {
+                        await profileRequest(`/api/ai/clarifications/questions/${question._id}`, {
+                          method: "PATCH",
+                          body: JSON.stringify(
+                            name === "Answer" ? { response: input.value } : { skipped: true },
+                          ),
+                        });
+                        row.remove();
+                      } catch (error) {
+                        document.getElementById("ai-resume-status").textContent = error.message;
+                      }
+                    });
+                    actions.append(button);
+                  });
+                  row.append(label, input, actions);
+                  list.append(row);
+                });
+            }
+
+            document
+              .getElementById("job-analysis-form")
+              .addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const form = event.currentTarget;
+                const button = form.querySelector("button");
+                button.disabled = true;
+                document.getElementById("ai-resume-status").textContent =
+                  "Analyzing job description...";
+                try {
+                  const analysis = await profileRequest("/api/ai/job-analysis", {
+                    method: "POST",
+                    body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+                  });
+                  renderJobAnalysis(analysis);
+                  const bullets = await profileRequest("/api/ai/bullets", {
+                    method: "POST",
+                    body: JSON.stringify({
+                      analysisId: analysis._id,
+                      targetRole: analysis.title,
+                    }),
+                  });
+                  renderAiBullets(bullets);
+                  renderClarifications(
+                    await profileRequest(`/api/ai/clarifications/${analysis._id}`),
+                  );
+                  document.getElementById("ai-resume-status").textContent =
+                    "Drafts are ready for evidence review and approval.";
+                } catch (error) {
+                  document.getElementById("ai-resume-status").textContent = error.message;
+                } finally {
+                  button.disabled = false;
+                }
+              });
 
             async function reviewLinkedInSection(id, section, action, data) {
               const normalizedSection = ["fullName", "headline", "summary"].includes(section)
