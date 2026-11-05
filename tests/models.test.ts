@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { decryptSecret, encryptSecret } from "../src/server/crypto.js";
 import { AccountIntegration, User } from "../src/server/models.js";
+import { DeveloperProfile } from "../src/server/profile-models.js";
 
 describe("database models", () => {
   it("validates required user fields and provider values", () => {
@@ -38,5 +39,34 @@ describe("database models", () => {
     const encrypted = encryptSecret("oauth-token", env);
     expect(encrypted).not.toContain("oauth-token");
     expect(decryptSecret(encrypted, env)).toBe("oauth-token");
+  });
+
+  it("validates a profile with optional sections and source attribution", () => {
+    const profile = new DeveloperProfile({
+      userId: "507f1f77bcf86cd799439011",
+      education: [
+        {
+          institutionName: "Example University",
+          sourceProvider: "manual",
+          verificationStatus: "pending_review",
+        },
+      ],
+      technicalSkills: [
+        {
+          name: "TypeScript",
+          normalizedName: "typescript",
+          category: "programming_languages",
+          sourceProvider: "github",
+          verificationStatus: "imported",
+        },
+      ],
+    });
+    expect(profile.validateSync()).toBeUndefined();
+    expect(profile.education).toHaveLength(1);
+    expect(profile.technicalSkills).toHaveLength(1);
+  });
+
+  it("defines one profile per authenticated user", () => {
+    expect(DeveloperProfile.schema.indexes()).toContainEqual([{ userId: 1 }, { unique: true }]);
   });
 });
