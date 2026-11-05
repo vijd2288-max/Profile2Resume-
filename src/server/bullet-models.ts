@@ -9,6 +9,7 @@ export interface ResumeBulletDocument extends Document {
   supportingEvidenceIds: Types.ObjectId[];
   validationStatus:
     "pending" | "supported" | "partially_supported" | "unsupported" | "requires_clarification";
+  validationExplanation?: string;
   approvalStatus: "pending" | "approved" | "rejected";
   createdAt: Date;
   updatedAt: Date;
@@ -33,6 +34,7 @@ const bulletSchema = new Schema<ResumeBulletDocument>(
       ],
       default: "pending",
     },
+    validationExplanation: { type: String, maxlength: 1_000 },
     approvalStatus: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
   },
   { timestamps: true, versionKey: false },

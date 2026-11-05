@@ -4,6 +4,7 @@ import { ApiError, success } from "./api.js";
 import { createAiProvider } from "./ai-provider.js";
 import { ResumeBullet } from "./bullet-models.js";
 import { generateResumeBullets } from "./bullet-generation.js";
+import { validateBullet } from "./bullet-validation.js";
 
 type ReadJson = (request: IncomingMessage) => Promise<unknown>;
 type SendJson = (response: ServerResponse, status: number, body: unknown) => void;
@@ -35,11 +36,21 @@ export async function handleBulletRequest(
     sendJson(response, 200, success(bullets));
     return true;
   }
-  const match = pathname.match(/^\/api\/ai\/bullets\/([^/]+)$/);
+  const match = pathname.match(/^\/api\/ai\/bullets\/([^/]+)(\/validate)?$/);
   if (!match || !match[1]) return false;
   if (!Types.ObjectId.isValid(match[1]))
     throw new ApiError(400, "VALIDATION_ERROR", "Invalid bullet ID");
   const filter = { _id: match[1], userId };
+  if (request.method === "POST" && match[2] === "/validate") {
+    const bullet = await ResumeBullet.findOne(filter).exec();
+    if (!bullet) throw new ApiError(404, "BULLET_NOT_FOUND", "Resume bullet was not found");
+    const validation = await validateBullet(userId, bullet.text, bullet.supportingEvidenceIds);
+    bullet.validationStatus = validation.status;
+    bullet.validationExplanation = validation.explanation;
+    await bullet.save();
+    sendJson(response, 200, success({ bullet, validation }));
+    return true;
+  }
   if (request.method === "PATCH") {
     const body = await readJson(request);
     if (!body || typeof body !== "object")
