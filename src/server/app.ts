@@ -12,6 +12,7 @@ import { handleLeetcodeRequest } from "./leetcode.js";
 import { handleEvidenceRequest } from "./evidence-api.js";
 import { handleProjectOverrideRequest } from "./project-override-api.js";
 import { handleJobAnalysisRequest } from "./job-analysis-api.js";
+import { handleBulletRequest } from "./bullet-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -115,6 +116,11 @@ export async function handleApplicationRequest(
         readJson,
         sendJson,
       )
+    ) {
+      return;
+    }
+    if (
+      await handleBulletRequest(request, response, userId, url.pathname, source, readJson, sendJson)
     ) {
       return;
     }
