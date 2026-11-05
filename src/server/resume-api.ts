@@ -212,13 +212,15 @@ export async function handleResumeRequest(
   if (importMatch && request.method === "POST") {
     const resume = await Resume.findOne(resumeFilter(userId, importMatch[1] ?? "")).exec();
     if (!resume) throw new ApiError(404, "RESUME_NOT_FOUND", "Resume was not found");
+    const bulletId = importMatch[2];
+    if (!bulletId || !Types.ObjectId.isValid(bulletId))
+      throw new ApiError(400, "VALIDATION_ERROR", "Invalid bullet ID");
     const bullet = await ResumeBullet.findOne({
-      _id: importMatch[2],
-      userId,
+      _id: new Types.ObjectId(bulletId),
+      userId: new Types.ObjectId(userId),
       approvalStatus: "approved",
       validationStatus: { $in: ["supported", "user_confirmed"] },
     })
-      .lean()
       .exec();
     if (!bullet)
       throw new ApiError(
@@ -235,7 +237,9 @@ export async function handleResumeRequest(
           bulletId: new Types.ObjectId().toString(),
           sourceBulletId: bullet._id.toString(),
           text: bullet.text,
-          evidenceReferences: bullet.supportingEvidenceIds.map((value) => value.toString()),
+          evidenceReferences: bullet.supportingEvidenceIds.map((value: Types.ObjectId) =>
+            value.toString(),
+          ),
           validationStatus: bullet.validationStatus,
           approvalStatus: "approved",
           displayOrder: bullets.length,
