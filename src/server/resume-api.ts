@@ -64,7 +64,7 @@ const bulletSchema = z.object({
   displayOrder: z.number().int().min(0),
   sourceBulletId: z.string().max(100).optional(),
 });
-const bulletPatchSchema = bulletSchema.omit({ bulletId: true, displayOrder: true }).partial();
+const bulletPatchSchema = bulletSchema.omit({ displayOrder: true }).partial();
 
 function objectId(id: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(id)) throw new ApiError(400, "VALIDATION_ERROR", "Invalid resume ID");
@@ -182,13 +182,16 @@ export async function handleResumeRequest(
     const bullets = Array.isArray(target.bullets) ? target.bullets : [];
     const index = bullets.findIndex((bullet) => bullet.bulletId === itemMatch[2]);
     if (index < 0) throw new ApiError(404, "BULLET_NOT_FOUND", "Resume bullet was not found");
-    if (request.method === "DELETE") bullets.splice(index, 1);
-    else const patch = bulletPatchSchema.parse(await readJson(request));
-    bullets[index] = {
-      ...bullets[index],
-      ...patch,
-      ...(patch.sourceBulletId ? { sourceBulletId: patch.sourceBulletId } : {}),
-    };
+    if (request.method === "DELETE") {
+      bullets.splice(index, 1);
+    } else {
+      const patch = bulletPatchSchema.parse(await readJson(request));
+      bullets[index] = {
+        ...bullets[index],
+        ...patch,
+        ...(patch.sourceBulletId ? { sourceBulletId: patch.sourceBulletId } : {}),
+      };
+    }
     target.bullets = bullets.map((bullet, order) => ({ ...bullet, displayOrder: order }));
     resume.markModified("sections");
     resume.revision += 1;
