@@ -1918,6 +1918,16 @@
                 Save resume details
               </button>
             </form>
+            <div class="flex flex-wrap items-center gap-space-sm">
+              <button
+                id="resume-checkpoint-button"
+                type="button"
+                class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md"
+              >
+                Create version checkpoint
+              </button>
+              <div id="resume-version-list" class="flex flex-wrap gap-space-sm"></div>
+            </div>
             <div id="resume-bullets" class="flex flex-col gap-space-sm"></div>
           </section>
           <form
@@ -2477,6 +2487,40 @@
               document.getElementById("resume-save-status").textContent =
                 `Revision ${resume.revision} · ${resume.status}`;
               renderResumeBullets(resume);
+              loadResumeVersions();
+            }
+
+            async function loadResumeVersions() {
+              if (!activeResume) return;
+              try {
+                const versions = await resumeRequest(`/api/resumes/${activeResume._id}/versions`);
+                const list = document.getElementById("resume-version-list");
+                list.replaceChildren();
+                versions.forEach((version) => {
+                  const button = document.createElement("button");
+                  button.type = "button";
+                  button.className = "font-label-code-sm text-primary";
+                  button.textContent = `v${version.versionNumber} · ${version.reason}`;
+                  button.addEventListener("click", async () => {
+                    if (!window.confirm(`Restore version ${version.versionNumber}?`)) return;
+                    try {
+                      renderResume(
+                        await resumeRequest(
+                          `/api/resumes/${activeResume._id}/versions/${version.versionNumber}/restore`,
+                          { method: "POST", body: "{}" },
+                        ),
+                      );
+                      document.getElementById("resume-save-status").textContent =
+                        "Version restored as a new checkpoint.";
+                    } catch (error) {
+                      document.getElementById("resume-save-status").textContent = error.message;
+                    }
+                  });
+                  list.append(button);
+                });
+              } catch (error) {
+                document.getElementById("resume-save-status").textContent = error.message;
+              }
             }
 
             async function loadResumes() {
@@ -2506,6 +2550,54 @@
                   await loadResumes();
                   document.getElementById("resume-selector").value = resume._id;
                   renderResume(resume);
+                } catch (error) {
+                  document.getElementById("resume-save-status").textContent = error.message;
+                }
+              });
+
+            let autosaveTimer = null;
+            document.getElementById("resume-editor-form").addEventListener("input", () => {
+              if (!activeResume) return;
+              document.getElementById("resume-save-status").textContent = "Unsaved changes";
+              window.clearTimeout(autosaveTimer);
+              autosaveTimer = window.setTimeout(async () => {
+                const form = document.getElementById("resume-editor-form");
+                const values = Object.fromEntries(new FormData(form).entries());
+                document.getElementById("resume-save-status").textContent = "Saving...";
+                try {
+                  renderResume(
+                    await resumeRequest(`/api/resumes/${activeResume._id}`, {
+                      method: "PATCH",
+                      body: JSON.stringify({
+                        title: values.title,
+                        targetRole: values.targetRole,
+                        sections: {
+                          ...activeResume.sections,
+                          professionalSummary: values.professionalSummary,
+                        },
+                        expectedRevision: activeResume.revision,
+                      }),
+                    }),
+                  );
+                  document.getElementById("resume-save-status").textContent = "Saved";
+                } catch (error) {
+                  document.getElementById("resume-save-status").textContent = error.message;
+                }
+              }, 700);
+            });
+
+            document
+              .getElementById("resume-checkpoint-button")
+              .addEventListener("click", async () => {
+                if (!activeResume) return;
+                try {
+                  await resumeRequest(`/api/resumes/${activeResume._id}/versions`, {
+                    method: "POST",
+                    body: "{}",
+                  });
+                  await loadResumeVersions();
+                  document.getElementById("resume-save-status").textContent =
+                    "Version checkpoint saved.";
                 } catch (error) {
                   document.getElementById("resume-save-status").textContent = error.message;
                 }

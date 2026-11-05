@@ -15,6 +15,7 @@ import { handleJobAnalysisRequest } from "./job-analysis-api.js";
 import { handleBulletRequest } from "./bullet-api.js";
 import { handleClarificationRequest } from "./clarification-api.js";
 import { handleResumeRequest } from "./resume-api.js";
+import { handleResumeVersionRequest } from "./resume-version-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -132,6 +133,11 @@ export async function handleApplicationRequest(
       return;
     }
     if (await handleResumeRequest(request, response, userId, url.pathname, readJson, sendJson)) {
+      return;
+    }
+    if (
+      await handleResumeVersionRequest(request, response, userId, url.pathname, readJson, sendJson)
+    ) {
       return;
     }
 
