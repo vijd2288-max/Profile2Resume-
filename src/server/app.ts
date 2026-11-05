@@ -18,6 +18,7 @@ import { handleResumeRequest } from "./resume-api.js";
 import { handleResumeVersionRequest } from "./resume-version-api.js";
 import { handleResumePreviewRequest } from "./resume-preview-api.js";
 import { handleResumeExportRequest } from "./resume-export-api.js";
+import { rateLimit } from "./security.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -25,7 +26,14 @@ const profilePatchSchema = z.object({
 });
 
 function sendJson(response: ServerResponse, status: number, body: unknown): void {
-  response.writeHead(status, { "Content-Type": "application/json", "Cache-Control": "no-store" });
+  response.writeHead(status, {
+    "Content-Type": "application/json",
+    "Cache-Control": "no-store",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Content-Security-Policy": "default-src 'self'; frame-ancestors 'none'",
+  });
   response.end(JSON.stringify(body));
 }
 
@@ -67,9 +75,20 @@ export async function handleApplicationRequest(
   response: ServerResponse,
   source: NodeJS.ProcessEnv = process.env,
 ): Promise<void> {
+  const requestUrl = new URL(request.url ?? "/", "http://localhost");
+  try {
+    rateLimit(request, requestUrl.pathname, source);
+  } catch (error) {
+    const apiError =
+      error instanceof ApiError
+        ? error
+        : new ApiError(500, "INTERNAL_ERROR", "An unexpected error occurred");
+    sendJson(response, apiError.status, toApiFailure(apiError));
+    return;
+  }
   if (await handleAuthRequest(request, response, source)) return;
 
-  const url = new URL(request.url ?? "/", "http://localhost");
+  const url = requestUrl;
   if (!url.pathname.startsWith("/api/")) {
     sendJson(response, 404, failure(new ApiError(404, "NOT_FOUND", "Route not found")));
     return;
@@ -203,7 +222,10 @@ export async function handleApplicationRequest(
 }
 
 export function createApplicationServer(source: NodeJS.ProcessEnv = process.env) {
-  return createServer((request, response) => {
+  const server = createServer((request, response) => {
     void handleApplicationRequest(request, response, source);
   });
+  server.requestTimeout = Number(source.REQUEST_TIMEOUT_MS ?? 30_000);
+  server.headersTimeout = Math.min(server.requestTimeout, 10_000);
+  return server;
 }

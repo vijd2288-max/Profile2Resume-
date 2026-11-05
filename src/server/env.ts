@@ -10,6 +10,10 @@ const serverEnvSchema = z.object({
   GITHUB_CLIENT_ID: z.string().min(1).optional(),
   GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
   GITHUB_CALLBACK_URL: z.string().url().optional(),
+  RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(60_000),
+  RATE_LIMIT_MAX_REQUESTS: z.coerce.number().int().positive().default(120),
+  RATE_LIMIT_SENSITIVE_MAX_REQUESTS: z.coerce.number().int().positive().default(20),
+  REQUEST_TIMEOUT_MS: z.coerce.number().int().positive().default(30_000),
 });
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>;
