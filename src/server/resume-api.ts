@@ -228,6 +228,8 @@ export async function handleResumeRequest(
         "BULLET_NOT_APPROVED",
         "Only approved supported bullets can be added",
       );
+    if (bullet.validationStatus !== "supported" && bullet.validationStatus !== "user_confirmed")
+      throw new ApiError(409, "BULLET_NOT_APPROVED", "Bullet validation must be supported");
     const target = resume.sections.projects[0] ?? {};
     const bullets = Array.isArray(target.bullets) ? target.bullets : [];
     if (!bullets.some((item) => item.sourceBulletId === bullet._id.toString())) {
