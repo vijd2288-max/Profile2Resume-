@@ -19,6 +19,7 @@ import { handleResumeVersionRequest } from "./resume-version-api.js";
 import { handleResumePreviewRequest } from "./resume-preview-api.js";
 import { handleResumeExportRequest } from "./resume-export-api.js";
 import { rateLimit } from "./security.js";
+import { handleAccountRequest } from "./account-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -165,6 +166,9 @@ export async function handleApplicationRequest(
       return;
     }
     if (await handleResumeExportRequest(request, response, userId, url.pathname)) {
+      return;
+    }
+    if (await handleAccountRequest(request, response, userId, url.pathname, readJson, sendJson)) {
       return;
     }
 
