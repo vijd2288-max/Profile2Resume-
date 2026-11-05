@@ -40,6 +40,20 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      :focus-visible {
+        outline: 3px solid #465bee;
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
@@ -384,10 +398,16 @@
                 <!-- STITCH_THREEJS_START:ANIMATION_4 class="w-full h-[620px] rounded-2xl bg-transparent" -->
                 <div class="w-full h-[620px] rounded-2xl bg-transparent" style="display: block">
                   <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-                  <div id="threejs-container-ANIMATION_4" style="width: 100%; height: 100%"></div>
+                  <div
+                    id="threejs-container-ANIMATION_4"
+                    aria-hidden="true"
+                    style="width: 100%; height: 100%"
+                  ></div>
                   <script>
                     (function () {
                       const container = document.getElementById("threejs-container-ANIMATION_4");
+                      if (!container || !window.THREE) return;
+                      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                       // Interactive Three.js 3D Hero Scene for Profile2Resume
                       const width = container.clientWidth || window.innerWidth;
                       const height = container.clientHeight || window.innerHeight;
@@ -398,7 +418,7 @@
 
                       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
                       renderer.setSize(width, height);
-                      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
                       renderer.shadowMap.enabled = true;
                       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
                       container.appendChild(renderer.domElement);
@@ -653,7 +673,7 @@
 
                       function animate() {
                         requestAnimationFrame(animate);
-                        const elapsed = clock.getElapsedTime();
+                        const elapsed = reducedMotion ? 0 : clock.getElapsedTime();
 
                         // Smooth mouse lerp
                         mouseX += (targetX - mouseX) * 0.05;
@@ -1714,6 +1734,7 @@
                 id="linkedin-file"
                 type="file"
                 accept="application/pdf"
+                aria-label="LinkedIn profile PDF"
                 class="font-body-sm text-on-surface"
               />
               <button
@@ -1735,6 +1756,7 @@
               <form id="leetcode-form" class="grid grid-cols-2 gap-space-sm">
                 <input
                   name="leetCodeUsername"
+                  aria-label="LeetCode username"
                   required
                   placeholder="Username"
                   class="col-span-2 border border-outline-variant rounded p-space-sm"
@@ -1745,6 +1767,7 @@
                   type="number"
                   min="0"
                   placeholder="Total"
+                  aria-label="Total problems solved"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
@@ -1753,6 +1776,7 @@
                   type="number"
                   min="0"
                   placeholder="Easy"
+                  aria-label="Easy problems solved"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
@@ -1761,6 +1785,7 @@
                   type="number"
                   min="0"
                   placeholder="Medium"
+                  aria-label="Medium problems solved"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
@@ -1769,6 +1794,7 @@
                   type="number"
                   min="0"
                   placeholder="Hard"
+                  aria-label="Hard problems solved"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
@@ -1776,6 +1802,7 @@
                   type="number"
                   min="0"
                   placeholder="Contest rating"
+                  aria-label="Contest rating"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
@@ -1783,6 +1810,7 @@
                   type="number"
                   min="1"
                   placeholder="Global ranking"
+                  aria-label="Global ranking"
                   class="border border-outline-variant rounded p-space-sm"
                 />
                 <input
