@@ -17,6 +17,7 @@ import { handleClarificationRequest } from "./clarification-api.js";
 import { handleResumeRequest } from "./resume-api.js";
 import { handleResumeVersionRequest } from "./resume-version-api.js";
 import { handleResumePreviewRequest } from "./resume-preview-api.js";
+import { handleResumeExportRequest } from "./resume-export-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -142,6 +143,9 @@ export async function handleApplicationRequest(
       return;
     }
     if (await handleResumePreviewRequest(request, response, userId, url.pathname, sendJson)) {
+      return;
+    }
+    if (await handleResumeExportRequest(request, response, userId, url.pathname)) {
       return;
     }
 

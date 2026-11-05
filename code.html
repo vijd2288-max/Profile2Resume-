@@ -1952,6 +1952,13 @@
                 >
                   Select a resume to preview approved content.
                 </article>
+                <a
+                  id="resume-export-button"
+                  class="mt-space-sm inline-flex items-center justify-center rounded-full bg-primary px-space-md py-space-sm text-on-primary"
+                  href="#"
+                  download
+                  >Export ATS-friendly PDF</a
+                >
               </div>
               <div>
                 <span class="font-label-code-sm text-outline">Target role</span>
@@ -2549,6 +2556,8 @@
               document.getElementById("resume-save-status").textContent =
                 `Revision ${resume.revision} · ${resume.status}`;
               document.getElementById("resume-role-input").value = resume.targetRole;
+              document.getElementById("resume-export-button").href =
+                `/api/resumes/${resume._id}/export/pdf`;
               renderResumeBullets(resume);
               renderResumePreview(resume);
               loadResumeVersions();
