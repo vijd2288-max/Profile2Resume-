@@ -1853,6 +1853,73 @@
             <div id="ai-bullets" class="flex flex-col gap-space-sm"></div>
             <div id="ai-clarifications" class="flex flex-col gap-space-sm"></div>
           </section>
+          <section
+            class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+          >
+            <div class="flex items-center justify-between gap-space-md">
+              <div>
+                <span class="font-label-code-sm text-outline">Resume studio</span>
+                <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                  Approved content workspace
+                </h2>
+              </div>
+              <span id="resume-save-status" class="font-label-code-sm text-outline"
+                >No resume selected</span
+              >
+            </div>
+            <form id="resume-create-form" class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+              <input
+                name="title"
+                required
+                placeholder="Resume title"
+                class="border border-outline-variant rounded p-space-sm"
+              />
+              <input
+                name="targetRole"
+                required
+                placeholder="Target role"
+                class="border border-outline-variant rounded p-space-sm"
+              />
+              <button
+                type="submit"
+                class="px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md"
+              >
+                Create resume
+              </button>
+            </form>
+            <select
+              id="resume-selector"
+              class="border border-outline-variant rounded p-space-sm"
+              aria-label="Select resume"
+            >
+              <option value="">Select a resume</option>
+            </select>
+            <form id="resume-editor-form" class="hidden flex flex-col gap-space-sm">
+              <input
+                name="title"
+                required
+                class="border border-outline-variant rounded p-space-sm"
+              />
+              <input
+                name="targetRole"
+                required
+                class="border border-outline-variant rounded p-space-sm"
+              />
+              <textarea
+                name="professionalSummary"
+                rows="4"
+                placeholder="Professional summary"
+                class="border border-outline-variant rounded p-space-sm"
+              ></textarea>
+              <button
+                type="submit"
+                class="self-start px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md"
+              >
+                Save resume details
+              </button>
+            </form>
+            <div id="resume-bullets" class="flex flex-col gap-space-sm"></div>
+          </section>
           <form
             id="basic-profile-form"
             class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm grid grid-cols-1 md:grid-cols-2 gap-space-md"
@@ -2344,6 +2411,143 @@
               }
             }
 
+            let activeResume = null;
+
+            function resumeRequest(path, options) {
+              return profileRequest(path, options);
+            }
+
+            function renderResumeBullets(resume) {
+              const list = document.getElementById("resume-bullets");
+              list.replaceChildren();
+              const bullets = resume.sections.projects?.[0]?.bullets || [];
+              if (!bullets.length) {
+                const empty = document.createElement("span");
+                empty.className = "font-body-sm text-outline";
+                empty.textContent =
+                  "No project bullets added yet. Approve AI bullets before adding them.";
+                list.append(empty);
+                return;
+              }
+              bullets
+                .slice()
+                .sort((left, right) => left.displayOrder - right.displayOrder)
+                .forEach((bullet) => {
+                  const row = document.createElement("div");
+                  row.className =
+                    "p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs";
+                  const text = document.createElement("span");
+                  text.className = "font-body-md text-on-surface";
+                  text.textContent = bullet.text;
+                  const status = document.createElement("span");
+                  status.className = "font-label-code-sm text-outline";
+                  status.textContent = `${bullet.validationStatus} · ${bullet.approvalStatus} · ${bullet.evidenceReferences.length} evidence`;
+                  const actions = document.createElement("div");
+                  actions.className = "flex flex-wrap gap-space-sm";
+                  ["approved", "rejected"].forEach((approvalStatus) => {
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.className = "font-label-code-sm text-primary";
+                    button.textContent = approvalStatus === "approved" ? "Approve" : "Reject";
+                    button.addEventListener("click", async () => {
+                      try {
+                        activeResume = await resumeRequest(
+                          `/api/resumes/${activeResume._id}/bullets/${bullet.bulletId}`,
+                          { method: "PATCH", body: JSON.stringify({ approvalStatus }) },
+                        );
+                        renderResumeBullets(activeResume);
+                      } catch (error) {
+                        document.getElementById("resume-save-status").textContent = error.message;
+                      }
+                    });
+                    actions.append(button);
+                  });
+                  row.append(text, status, actions);
+                  list.append(row);
+                });
+            }
+
+            function renderResume(resume) {
+              activeResume = resume;
+              const form = document.getElementById("resume-editor-form");
+              form.classList.remove("hidden");
+              form.title.value = resume.title;
+              form.targetRole.value = resume.targetRole;
+              form.professionalSummary.value = resume.sections.professionalSummary || "";
+              document.getElementById("resume-save-status").textContent =
+                `Revision ${resume.revision} · ${resume.status}`;
+              renderResumeBullets(resume);
+            }
+
+            async function loadResumes() {
+              try {
+                const resumes = await resumeRequest("/api/resumes");
+                const selector = document.getElementById("resume-selector");
+                selector.replaceChildren(new Option("Select a resume", ""));
+                resumes.forEach((resume) => {
+                  selector.append(new Option(`${resume.title} · ${resume.targetRole}`, resume._id));
+                });
+              } catch (error) {
+                document.getElementById("resume-save-status").textContent = error.message;
+              }
+            }
+
+            document
+              .getElementById("resume-create-form")
+              .addEventListener("submit", async (event) => {
+                event.preventDefault();
+                try {
+                  const resume = await resumeRequest("/api/resumes", {
+                    method: "POST",
+                    body: JSON.stringify(
+                      Object.fromEntries(new FormData(event.currentTarget).entries()),
+                    ),
+                  });
+                  await loadResumes();
+                  document.getElementById("resume-selector").value = resume._id;
+                  renderResume(resume);
+                } catch (error) {
+                  document.getElementById("resume-save-status").textContent = error.message;
+                }
+              });
+
+            document.getElementById("resume-selector").addEventListener("change", async (event) => {
+              if (!event.currentTarget.value) return;
+              try {
+                renderResume(await resumeRequest(`/api/resumes/${event.currentTarget.value}`));
+              } catch (error) {
+                document.getElementById("resume-save-status").textContent = error.message;
+              }
+            });
+
+            document
+              .getElementById("resume-editor-form")
+              .addEventListener("submit", async (event) => {
+                event.preventDefault();
+                if (!activeResume) return;
+                const values = Object.fromEntries(new FormData(event.currentTarget).entries());
+                const sections = {
+                  ...activeResume.sections,
+                  professionalSummary: values.professionalSummary,
+                };
+                try {
+                  renderResume(
+                    await resumeRequest(`/api/resumes/${activeResume._id}`, {
+                      method: "PATCH",
+                      body: JSON.stringify({
+                        title: values.title,
+                        targetRole: values.targetRole,
+                        sections,
+                        expectedRevision: activeResume.revision,
+                      }),
+                    }),
+                  );
+                  document.getElementById("resume-save-status").textContent = "Resume saved.";
+                } catch (error) {
+                  document.getElementById("resume-save-status").textContent = error.message;
+                }
+              });
+
             function renderJobAnalysis(record) {
               const result = document.getElementById("job-analysis-result");
               result.classList.remove("hidden");
@@ -2642,6 +2846,7 @@
               loadGithubStatus();
               loadLinkedInReview();
               loadEvidence();
+              loadResumes();
             }
             links.forEach((link) => {
               const isActive = link.getAttribute("data-path") === route;
