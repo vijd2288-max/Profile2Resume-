@@ -1,4 +1,4 @@
-import type { ResumeDocument, ResumeSections } from "./resume-models.js";
+import type { ResumeBulletValue, ResumeDocument, ResumeSections } from "./resume-models.js";
 
 export type ResumePreview = {
   title: string;
@@ -6,9 +6,9 @@ export type ResumePreview = {
   sections: ResumeSections;
 };
 
-function approvedItems(
-  items: Array<Record<string, unknown> & { bullets?: Array<Record<string, unknown>> }>,
-) {
+type ResumeItem = Record<string, unknown> & { bullets?: ResumeBulletValue[] };
+
+function approvedItems(items: ResumeItem[]): ResumeItem[] {
   return items.map((item) => ({
     ...item,
     bullets: (item.bullets ?? []).filter(
