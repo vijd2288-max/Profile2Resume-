@@ -29,7 +29,7 @@ export async function createClaim(
     claimText: input.claimText,
     claimCategory: input.claimCategory,
     supportingEvidenceIds: verifiedIds,
-    evidenceSource: evidence[0]?.sourcePlatform,
+    ...(evidence[0]?.sourcePlatform ? { evidenceSource: evidence[0].sourcePlatform } : {}),
     verificationState: evidence.some((item) => item.verificationStatus === "user_confirmed")
       ? "user_confirmed"
       : "pending_review",

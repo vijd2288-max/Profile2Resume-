@@ -5,7 +5,7 @@ import { ApiError, success } from "./api.js";
 import { Evidence } from "./evidence-models.js";
 import { Claim, claimCategories } from "./claim-models.js";
 import { createClaim } from "./claim-service.js";
-import { evidenceApprovalStatuses, evidenceTypes, evidenceSources } from "./evidence-types.js";
+import { evidenceTypes, evidenceSources, type EvidenceApprovalStatus } from "./evidence-types.js";
 
 type SendJson = (response: ServerResponse, status: number, body: unknown) => void;
 type ReadJson = (request: IncomingMessage) => Promise<unknown>;
@@ -25,7 +25,7 @@ const claimInput = z.object({
   supportingEvidenceIds: z
     .array(z.string().regex(/^[a-f\d]{24}$/i))
     .max(50)
-    .optional(),
+    .default([]),
 });
 
 export async function handleEvidenceRequest(
@@ -70,9 +70,10 @@ export async function handleEvidenceRequest(
   const evidenceMatch = pathname.match(/^\/api\/evidence\/([^/]+)\/(approve|reject)$/);
   if (evidenceMatch && request.method === "POST") {
     const id = evidenceMatch[1];
+    if (!id) throw new ApiError(400, "VALIDATION_ERROR", "Missing evidence ID");
     if (!Types.ObjectId.isValid(id))
       throw new ApiError(400, "VALIDATION_ERROR", "Invalid evidence ID");
-    const approvalStatus = evidenceMatch[2] as (typeof evidenceApprovalStatuses)[number];
+    const approvalStatus = evidenceMatch[2] as EvidenceApprovalStatus;
     const record = await Evidence.findOneAndUpdate(
       { _id: id, userId: new Types.ObjectId(userId) },
       {
