@@ -220,8 +220,7 @@ export async function handleResumeRequest(
       userId: new Types.ObjectId(userId),
       approvalStatus: "approved",
       validationStatus: { $in: ["supported", "user_confirmed"] },
-    })
-      .exec();
+    }).exec();
     if (!bullet)
       throw new ApiError(
         409,
