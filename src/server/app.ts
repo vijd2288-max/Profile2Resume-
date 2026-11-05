@@ -70,16 +70,7 @@ export async function handleApplicationRequest(
     const userId = requireAuthenticatedUser(request.headers.cookie, secret);
     await connectToDatabase(source);
 
-    if (
-      await handleProfileRequest(
-        request,
-        response,
-        userId,
-        url.pathname,
-        readJson,
-        sendJson,
-      )
-    ) {
+    if (await handleProfileRequest(request, response, userId, url.pathname, readJson, sendJson)) {
       return;
     }
 

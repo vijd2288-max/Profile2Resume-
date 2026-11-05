@@ -1,6 +1,12 @@
 import type {
-  Achievement, BasicInformation, Certification, CodingStatistics, Education, Experience,
-  Project, TechnicalSkill,
+  Achievement,
+  BasicInformation,
+  Certification,
+  CodingStatistics,
+  Education,
+  Experience,
+  Project,
+  TechnicalSkill,
 } from "./profile-types.js";
 
 const clean = (value: string | undefined): string | undefined => {
@@ -15,9 +21,7 @@ const normalizeUrl = (value: string | undefined): string | undefined => {
 };
 
 function withoutUndefined<T extends object>(value: T): T {
-  return Object.fromEntries(
-    Object.entries(value).filter(([, item]) => item !== undefined),
-  ) as T;
+  return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined)) as T;
 }
 
 export function normalizePersonalInformation(value: BasicInformation): BasicInformation {
@@ -45,24 +49,36 @@ export function normalizeExperience(value: Experience): Experience {
 }
 
 const skillAliases: Record<string, string> = {
-  "react.js": "react", reactjs: "react", "node.js": "node", nodejs: "node",
-  typescript: "typescript", ts: "typescript", javascript: "javascript", js: "javascript",
+  "react.js": "react",
+  reactjs: "react",
+  "node.js": "node",
+  nodejs: "node",
+  typescript: "typescript",
+  ts: "typescript",
+  javascript: "javascript",
+  js: "javascript",
 };
 export function normalizeSkillName(value: string): string {
   const key = value.trim().toLowerCase().replace(/\s+/g, " ");
   return skillAliases[key] ?? key;
 }
 export function normalizeSkill(value: TechnicalSkill): TechnicalSkill {
-  return { ...value, name: clean(value.name) ?? value.name, normalizedName: normalizeSkillName(value.name) };
+  return {
+    ...value,
+    name: clean(value.name) ?? value.name,
+    normalizedName: normalizeSkillName(value.name),
+  };
 }
 export function deduplicateSkills(values: TechnicalSkill[]): TechnicalSkill[] {
   const seen = new Set<string>();
-  return values.filter((value) => {
-    const key = `${value.category}:${normalizeSkillName(value.name)}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  }).map(normalizeSkill);
+  return values
+    .filter((value) => {
+      const key = `${value.category}:${normalizeSkillName(value.name)}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .map(normalizeSkill);
 }
 export function normalizeProject(value: Project): Project {
   return withoutUndefined({

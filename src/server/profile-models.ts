@@ -3,7 +3,12 @@ import { profileSourceProviders, skillCategories, verificationStatuses } from ".
 
 const sourceEvidenceSchema = new Schema(
   {
-    sourceProvider: { type: String, enum: profileSourceProviders, required: true, default: "manual" },
+    sourceProvider: {
+      type: String,
+      enum: profileSourceProviders,
+      required: true,
+      default: "manual",
+    },
     sourceRecordId: { type: String, trim: true, maxlength: 255 },
     sourceURL: { type: String, trim: true, maxlength: 2_048 },
     importedAt: { type: Date },

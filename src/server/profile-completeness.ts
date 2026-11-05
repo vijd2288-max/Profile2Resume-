@@ -16,11 +16,13 @@ const weights = {
   codingStatistics: 0.05,
 };
 
-export function calculateProfileCompleteness(profile: DeveloperProfileDocument): ProfileCompleteness {
+export function calculateProfileCompleteness(
+  profile: DeveloperProfileDocument,
+): ProfileCompleteness {
   const basic = profile.basicInformation ?? {};
-  const basicScore = [
-    basic.fullName, basic.professionalHeadline, basic.email, basic.location,
-  ].filter(Boolean).length / 4;
+  const basicScore =
+    [basic.fullName, basic.professionalHeadline, basic.email, basic.location].filter(Boolean)
+      .length / 4;
   const categories = {
     basicInformation: basicScore,
     education: profile.education.length ? 1 : 0,
@@ -31,7 +33,11 @@ export function calculateProfileCompleteness(profile: DeveloperProfileDocument):
     codingStatistics: profile.codingStatistics ? 1 : 0,
   };
   const score = Math.round(
-    Object.entries(weights).reduce((total, [category, weight]) => total + categories[category as keyof typeof categories] * weight, 0) * 100,
+    Object.entries(weights).reduce(
+      (total, [category, weight]) =>
+        total + categories[category as keyof typeof categories] * weight,
+      0,
+    ) * 100,
   );
   const suggestions: string[] = [];
   if (!basic.professionalHeadline) suggestions.push("Complete your professional summary.");

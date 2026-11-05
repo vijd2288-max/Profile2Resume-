@@ -1,7 +1,12 @@
 export const profileSourceProviders = ["github", "linkedin", "leetcode", "manual"] as const;
 export type ProfileSourceProvider = (typeof profileSourceProviders)[number];
 
-export const verificationStatuses = ["imported", "pending_review", "user_confirmed", "rejected"] as const;
+export const verificationStatuses = [
+  "imported",
+  "pending_review",
+  "user_confirmed",
+  "rejected",
+] as const;
 export type VerificationStatus = (typeof verificationStatuses)[number];
 
 export const skillCategories = [

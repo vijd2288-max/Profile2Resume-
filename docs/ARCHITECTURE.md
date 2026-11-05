@@ -4,7 +4,7 @@
 
 The repository currently contains a single static Stitch export in `code.html` and its design specification in `DESIGN.md`. The browser page owns the document shell, Tailwind CDN configuration, typography imports, navigation markup, landing-page sections, a Three.js hero scene, and a small timeline interaction.
 
-There is no package manifest, bundler, framework, component directory, route module, backend, database client, test runner, or environment loader yet. `screen.png` is a reference capture, not an application asset used by the page.
+The page remains a single static Stitch export, while the TypeScript HTTP server provides authenticated profile APIs backed by MongoDB. `screen.png` is a reference capture, not an application asset used by the page.
 
 The visual system is defined inline through Tailwind tokens in `code.html` and documented as YAML-like tokens plus prose in `DESIGN.md`. The design uses Space Grotesk for headings, Inter for body copy, JetBrains Mono for technical metadata, warm ivory surfaces, electric cobalt actions, and restrained paper-like elevation.
 
@@ -42,9 +42,29 @@ The planned backend is a small TypeScript HTTP API with these boundaries:
 4. Persistence repositories isolate database access from services.
 5. Background workers handle provider sync, evidence analysis, and resume generation asynchronously.
 
-Phase 2 adds server-only MongoDB persistence and GitHub OAuth. The static Stitch page
-keeps its existing hash routes; the `Continue with GitHub` action targets the server
-OAuth entry point at `/auth/github`.
+Phase 2 adds server-only MongoDB persistence and GitHub OAuth. Phase 3 adds the
+ownership-scoped `DeveloperProfile` document, source evidence metadata, normalization,
+completeness scoring, and CRUD routes under `/api/profile`. The static Stitch page
+keeps its existing hash routes and uses the dashboard hash route for the editable profile
+surface; the `Continue with GitHub` action targets `/auth/github`.
+
+## Phase 3 profile API
+
+The authenticated profile endpoints are:
+
+- `GET/PATCH /api/profile`
+- `POST/PATCH/DELETE /api/profile/education/:id`
+- `POST/PATCH/DELETE /api/profile/experience/:id`
+- `POST/PATCH/DELETE /api/profile/skills/:id`
+- `POST/PATCH/DELETE /api/profile/projects/:id`
+- `POST/PATCH/DELETE /api/profile/certifications/:id`
+- `POST/PATCH/DELETE /api/profile/achievements/:id`
+- `PATCH /api/profile/coding-statistics`
+
+All records retain their provider, source identifiers/URLs, import timestamps, and
+verification state. Manual entries start as `pending_review`; imported records start as
+`imported`. The API never accepts a frontend-supplied user ID and only mutates records
+inside the authenticated user's profile.
 
 ## Phase 2 setup
 
@@ -114,6 +134,9 @@ The service should support provider timeouts, retry limits, redaction, prompt an
 - CORS, CSRF protection, rate limiting, request size limits, and authorization checks belong at the HTTP boundary once a server exists.
 - Evidence links and generated claims require provenance checks before becoming user-visible output.
 
-## Phase 1 quality boundary
+## Phase 3 quality boundary
 
-Phase 1 establishes documentation, environment validation, shared API primitives, a reusable browser shell around the existing Stitch content, and baseline quality scripts. It does not implement authentication, provider integrations, persistence, AI calls, or new application screens.
+Phase 1 established documentation, environment validation, shared API primitives, a reusable
+browser shell around the existing Stitch content, and baseline quality scripts. Phase 2
+implemented authentication and persistence. Phase 3 implements the unified developer profile;
+provider importers, AI analysis, and resume generation remain future work.
