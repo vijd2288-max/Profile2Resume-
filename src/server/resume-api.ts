@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { Types } from "mongoose";
 import { z } from "zod";
 import { ApiError, success } from "./api.js";
-import { emptyResumeSections, Resume } from "./resume-models.js";
+import { emptyResumeSections, Resume, type ResumeBulletValue } from "./resume-models.js";
 
 type ReadJson = (request: IncomingMessage) => Promise<unknown>;
 type SendJson = (response: ServerResponse, status: number, body: unknown) => void;
@@ -186,10 +186,16 @@ export async function handleResumeRequest(
       bullets.splice(index, 1);
     } else {
       const patch = bulletPatchSchema.parse(await readJson(request));
+      const current = bullets[index] as ResumeBulletValue;
+      const sourceBulletId = patch.sourceBulletId ?? current.sourceBulletId;
       bullets[index] = {
-        ...bullets[index],
-        ...patch,
-        ...(patch.sourceBulletId ? { sourceBulletId: patch.sourceBulletId } : {}),
+        bulletId: current.bulletId,
+        text: patch.text ?? current.text,
+        evidenceReferences: patch.evidenceReferences ?? current.evidenceReferences,
+        validationStatus: patch.validationStatus ?? current.validationStatus,
+        approvalStatus: patch.approvalStatus ?? current.approvalStatus,
+        displayOrder: current.displayOrder,
+        ...(sourceBulletId ? { sourceBulletId } : {}),
       };
     }
     target.bullets = bullets.map((bullet, order) => ({ ...bullet, displayOrder: order }));
