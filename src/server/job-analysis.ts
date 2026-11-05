@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { DeveloperProfile } from "./profile-models.js";
-import { ConfigurableAiProvider } from "./ai-provider.js";
+import type { ConfigurableAiProvider } from "./ai-provider.js";
 import { aiJsonSchema, jobAnalysisSchema, jobDescriptionInputSchema } from "./ai-schemas.js";
 import { JobDescriptionAnalysis } from "./job-analysis-models.js";
 
