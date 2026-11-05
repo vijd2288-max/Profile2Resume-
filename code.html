@@ -2372,6 +2372,26 @@
                 state.textContent = `${bullet.validationStatus} · ${bullet.supportingEvidenceIds.length} evidence reference(s)`;
                 const actions = document.createElement("div");
                 actions.className = "flex flex-wrap gap-space-sm";
+                const edit = document.createElement("button");
+                edit.type = "button";
+                edit.className = "font-label-code-sm text-primary";
+                edit.textContent = "Edit";
+                edit.addEventListener("click", async () => {
+                  const edited = window.prompt("Edit this bullet before approval:", bullet.text);
+                  if (!edited || edited.trim() === bullet.text) return;
+                  try {
+                    await profileRequest(`/api/ai/bullets/${bullet._id}`, {
+                      method: "PATCH",
+                      body: JSON.stringify({ text: edited.trim() }),
+                    });
+                    text.textContent = edited.trim();
+                    document.getElementById("ai-resume-status").textContent =
+                      "Bullet edited; approval remains required.";
+                  } catch (error) {
+                    document.getElementById("ai-resume-status").textContent = error.message;
+                  }
+                });
+                actions.append(edit);
                 ["approved", "rejected"].forEach((approvalStatus) => {
                   const button = document.createElement("button");
                   button.type = "button";
