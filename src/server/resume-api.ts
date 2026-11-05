@@ -2,6 +2,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { Types } from "mongoose";
 import { z } from "zod";
 import { ApiError, success } from "./api.js";
+import { ResumeBullet } from "./bullet-models.js";
 import { emptyResumeSections, Resume, type ResumeBulletValue } from "./resume-models.js";
 
 type ReadJson = (request: IncomingMessage) => Promise<unknown>;
@@ -204,6 +205,47 @@ export async function handleResumeRequest(
     resume.revision += 1;
     await resume.save();
     sendJson(response, 201, success(resume));
+    return true;
+  }
+
+  const importMatch = pathname.match(/^\/api\/resumes\/([^/]+)\/from-bullet\/([^/]+)$/);
+  if (importMatch && request.method === "POST") {
+    const resume = await Resume.findOne(resumeFilter(userId, importMatch[1] ?? "")).exec();
+    if (!resume) throw new ApiError(404, "RESUME_NOT_FOUND", "Resume was not found");
+    const bullet = await ResumeBullet.findOne({
+      _id: importMatch[2],
+      userId,
+      approvalStatus: "approved",
+      validationStatus: { $in: ["supported", "user_confirmed"] },
+    })
+      .lean()
+      .exec();
+    if (!bullet)
+      throw new ApiError(
+        409,
+        "BULLET_NOT_APPROVED",
+        "Only approved supported bullets can be added",
+      );
+    const target = resume.sections.projects[0] ?? {};
+    const bullets = Array.isArray(target.bullets) ? target.bullets : [];
+    if (!bullets.some((item) => item.sourceBulletId === bullet._id.toString())) {
+      target.bullets = [
+        ...bullets,
+        {
+          bulletId: new Types.ObjectId().toString(),
+          sourceBulletId: bullet._id.toString(),
+          text: bullet.text,
+          evidenceReferences: bullet.supportingEvidenceIds.map((value) => value.toString()),
+          validationStatus: bullet.validationStatus,
+          approvalStatus: "approved",
+          displayOrder: bullets.length,
+        },
+      ];
+      resume.markModified("sections");
+      resume.revision += 1;
+      await resume.save();
+    }
+    sendJson(response, 200, success(resume));
     return true;
   }
 

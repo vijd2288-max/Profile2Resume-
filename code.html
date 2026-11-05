@@ -2514,6 +2514,26 @@
                     });
                     actions.append(button);
                   });
+                  if (activeResume && bullet.approvalStatus === "approved") {
+                    const add = document.createElement("button");
+                    add.type = "button";
+                    add.className = "font-label-code-sm text-primary";
+                    add.textContent = "Add to selected resume";
+                    add.addEventListener("click", async () => {
+                      try {
+                        activeResume = await resumeRequest(
+                          `/api/resumes/${activeResume._id}/from-bullet/${bullet._id}`,
+                          { method: "POST", body: "{}" },
+                        );
+                        renderResume(activeResume);
+                        document.getElementById("ai-resume-status").textContent =
+                          "Approved bullet added to the selected resume.";
+                      } catch (error) {
+                        document.getElementById("ai-resume-status").textContent = error.message;
+                      }
+                    });
+                    actions.append(add);
+                  }
                   row.append(text, status, actions);
                   list.append(row);
                 });
