@@ -1695,6 +1695,38 @@
               class="grid grid-cols-1 md:grid-cols-2 gap-space-md"
             ></div>
           </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+            <section class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+              <div class="flex items-center justify-between gap-space-md">
+                <div>
+                  <span class="font-label-code-sm text-outline">LinkedIn PDF</span>
+                  <h2 class="font-headline-sm text-headline-sm text-on-surface">Import for review</h2>
+                </div>
+                <span id="linkedin-import-status" class="font-label-code-sm text-outline">Not imported</span>
+              </div>
+              <input id="linkedin-file" type="file" accept="application/pdf" class="font-body-sm text-on-surface" />
+              <button id="linkedin-import-button" type="button" class="self-start px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md">Upload LinkedIn PDF</button>
+              <div id="linkedin-review" class="hidden flex flex-col gap-space-sm"></div>
+            </section>
+            <section class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+              <div>
+                <span class="font-label-code-sm text-outline">LeetCode</span>
+                <h2 class="font-headline-sm text-headline-sm text-on-surface">Manual statistics</h2>
+              </div>
+              <form id="leetcode-form" class="grid grid-cols-2 gap-space-sm">
+                <input name="leetCodeUsername" required placeholder="Username" class="col-span-2 border border-outline-variant rounded p-space-sm" />
+                <input name="totalProblemsSolved" required type="number" min="0" placeholder="Total" class="border border-outline-variant rounded p-space-sm" />
+                <input name="easyProblemsSolved" required type="number" min="0" placeholder="Easy" class="border border-outline-variant rounded p-space-sm" />
+                <input name="mediumProblemsSolved" required type="number" min="0" placeholder="Medium" class="border border-outline-variant rounded p-space-sm" />
+                <input name="hardProblemsSolved" required type="number" min="0" placeholder="Hard" class="border border-outline-variant rounded p-space-sm" />
+                <input name="contestRating" type="number" min="0" placeholder="Contest rating" class="border border-outline-variant rounded p-space-sm" />
+                <input name="globalRanking" type="number" min="1" placeholder="Global ranking" class="border border-outline-variant rounded p-space-sm" />
+                <input name="profileURL" required type="url" placeholder="https://leetcode.com/u/..." class="col-span-2 border border-outline-variant rounded p-space-sm" />
+                <button class="col-span-2 justify-self-start px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md" type="submit">Save manual statistics</button>
+              </form>
+              <p id="leetcode-status" class="font-label-code-sm text-outline">Manual entries are marked pending review.</p>
+            </section>
+          </div>
           <form
             id="basic-profile-form"
             class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm grid grid-cols-1 md:grid-cols-2 gap-space-md"
@@ -2009,6 +2041,110 @@
               }
             }
 
+            function renderLinkedInReview(data) {
+              const status = document.getElementById("linkedin-import-status");
+              const review = document.getElementById("linkedin-review");
+              if (!data) {
+                status.textContent = "Not imported";
+                review.classList.add("hidden");
+                return;
+              }
+              status.textContent = data.status === "approved" ? "Approved" : "Pending review";
+              review.classList.remove("hidden");
+              review.replaceChildren();
+              const extraction = data.extraction || {};
+              ["fullName", "headline", "summary", "skills", "experience", "education", "certifications"].forEach((section) => {
+                if (!extraction[section] || (Array.isArray(extraction[section]) && !extraction[section].length)) return;
+                const row = document.createElement("div");
+                row.className = "flex items-center justify-between gap-space-sm border-b border-outline-variant pb-space-xs";
+                const label = document.createElement("span");
+                label.className = "font-body-sm text-on-surface-variant";
+                label.textContent = `${section}: ${Array.isArray(extraction[section]) ? `${extraction[section].length} entries` : extraction[section].slice(0, 100)}`;
+                const approve = document.createElement("button");
+                approve.type = "button";
+                approve.className = "font-label-code-sm text-primary";
+                approve.textContent = "Approve";
+                approve.addEventListener("click", () => reviewLinkedInSection(data.id, section, "approve", extraction[section]));
+                const reject = document.createElement("button");
+                reject.type = "button";
+                reject.className = "font-label-code-sm text-error";
+                reject.textContent = "Reject";
+                reject.addEventListener("click", () => reviewLinkedInSection(data.id, section, "reject", extraction[section]));
+                row.append(label, approve, reject);
+                review.append(row);
+              });
+              const apply = document.createElement("button");
+              apply.type = "button";
+              apply.className = "self-start px-space-md py-space-sm rounded bg-primary-container text-on-primary font-title-md";
+              apply.textContent = "Apply approved sections";
+              apply.addEventListener("click", async () => {
+                try {
+                  await profileRequest(`/api/linkedin/import/${data.id}/approve`, { method: "POST", body: "{}" });
+                  await loadLinkedInReview();
+                } catch (error) {
+                  status.textContent = error.message;
+                }
+              });
+              review.append(apply);
+            }
+
+            async function loadLinkedInReview() {
+              try {
+                renderLinkedInReview(await profileRequest("/api/linkedin/import/latest"));
+              } catch (error) {
+                document.getElementById("linkedin-import-status").textContent = error.message;
+              }
+            }
+
+            async function reviewLinkedInSection(id, section, action, data) {
+              const normalizedSection = ["fullName", "headline", "summary"].includes(section) ? "basic" : section;
+              try {
+                await profileRequest(`/api/linkedin/import/${id}`, {
+                  method: "PATCH",
+                  body: JSON.stringify({ section: normalizedSection, action, data }),
+                });
+                await loadLinkedInReview();
+              } catch (error) {
+                document.getElementById("linkedin-import-status").textContent = error.message;
+              }
+            }
+
+            document.getElementById("linkedin-import-button").addEventListener("click", async (event) => {
+              const file = document.getElementById("linkedin-file").files[0];
+              const button = event.currentTarget;
+              if (!file) return;
+              button.disabled = true;
+              button.textContent = "Extracting...";
+              try {
+                const formData = new FormData();
+                formData.append("file", file);
+                const response = await fetch("/api/linkedin/import", { method: "POST", body: formData });
+                const body = await response.json();
+                if (!response.ok || !body.ok) throw new Error(body.error?.message || "LinkedIn import failed");
+                renderLinkedInReview(body.data);
+              } catch (error) {
+                document.getElementById("linkedin-import-status").textContent = error.message;
+              } finally {
+                button.disabled = false;
+                button.textContent = "Upload LinkedIn PDF";
+              }
+            });
+
+            document.getElementById("leetcode-form").addEventListener("submit", async (event) => {
+              event.preventDefault();
+              const values = Object.fromEntries(new FormData(event.currentTarget).entries());
+              ["totalProblemsSolved", "easyProblemsSolved", "mediumProblemsSolved", "hardProblemsSolved", "contestRating", "globalRanking"].forEach((key) => {
+                if (values[key] !== "") values[key] = Number(values[key]);
+                else delete values[key];
+              });
+              try {
+                await profileRequest("/api/leetcode/statistics", { method: "PATCH", body: JSON.stringify(values) });
+                document.getElementById("leetcode-status").textContent = "Saved as manual data and marked pending review.";
+              } catch (error) {
+                document.getElementById("leetcode-status").textContent = error.message;
+              }
+            });
+
             document
               .getElementById("github-sync-button")
               .addEventListener("click", async (event) => {
@@ -2087,6 +2223,7 @@
             if (route === "dashboard") {
               loadProfile();
               loadGithubStatus();
+              loadLinkedInReview();
             }
             links.forEach((link) => {
               const isActive = link.getAttribute("data-path") === route;

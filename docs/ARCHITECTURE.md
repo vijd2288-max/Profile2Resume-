@@ -164,3 +164,16 @@ quality, detected technologies, topics, deployment links, activity, and original
 ownership. Stars are a secondary signal, forks receive a substantial penalty, archived
 repositories are deprioritized, and empty repositories are excluded from recommendations
 without deleting their imported metadata.
+
+## Phase 5 profile imports
+
+LinkedIn PDFs are accepted only through the authenticated multipart upload endpoint
+`POST /api/linkedin/import`, limited to 10 MB and extracted in memory. Extracted sections
+are stored as `pending_review`; `PATCH /api/linkedin/import/:id` records section approval or
+rejection, and `POST /api/linkedin/import/:id/approve` applies only approved sections to the
+owner's unified profile. Uploaded PDF bytes are not persisted.
+
+LeetCode statistics use the manual endpoint `GET/PATCH /api/leetcode/statistics`. Usernames,
+profile URLs, nonnegative counts, and difficulty totals are validated server-side. Manual
+values are explicitly marked `pending_review` and `manual_user_entry`; no unofficial or
+restricted API is used.
