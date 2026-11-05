@@ -1929,6 +1929,34 @@
               <div id="resume-version-list" class="flex flex-wrap gap-space-sm"></div>
             </div>
             <div id="resume-bullets" class="flex flex-col gap-space-sm"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+              <div>
+                <span class="font-label-code-sm text-outline">Live preview</span>
+                <article
+                  id="resume-preview"
+                  class="mt-space-sm p-space-lg rounded-lg border border-outline-variant bg-surface"
+                >
+                  Select a resume to preview approved content.
+                </article>
+              </div>
+              <div>
+                <span class="font-label-code-sm text-outline">Target role</span>
+                <div class="flex gap-space-sm mt-space-sm">
+                  <input
+                    id="resume-role-input"
+                    class="flex-1 border border-outline-variant rounded p-space-sm"
+                    placeholder="Target role"
+                  />
+                  <button
+                    id="resume-role-button"
+                    type="button"
+                    class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-title-md"
+                  >
+                    Switch role
+                  </button>
+                </div>
+              </div>
+            </div>
           </section>
           <form
             id="basic-profile-form"
@@ -2486,8 +2514,45 @@
               form.professionalSummary.value = resume.sections.professionalSummary || "";
               document.getElementById("resume-save-status").textContent =
                 `Revision ${resume.revision} · ${resume.status}`;
+              document.getElementById("resume-role-input").value = resume.targetRole;
               renderResumeBullets(resume);
+              renderResumePreview(resume);
               loadResumeVersions();
+            }
+
+            function renderResumePreview(resume) {
+              const preview = document.getElementById("resume-preview");
+              preview.replaceChildren();
+              const heading = document.createElement("h3");
+              heading.className = "font-headline-sm text-on-surface";
+              heading.textContent = resume.title;
+              const role = document.createElement("p");
+              role.className = "font-label-code-sm text-primary";
+              role.textContent = resume.targetRole;
+              const summary = document.createElement("p");
+              summary.className = "font-body-sm text-on-surface-variant";
+              summary.textContent =
+                resume.sections.professionalSummary || "No approved summary yet.";
+              preview.append(heading, role, summary);
+              (resume.sections.projects || []).forEach((project) => {
+                const title = document.createElement("strong");
+                title.className = "block mt-space-sm font-title-md text-on-surface";
+                title.textContent = project.projectName || "Project";
+                preview.append(title);
+                (project.bullets || [])
+                  .filter(
+                    (bullet) =>
+                      bullet.approvalStatus === "approved" &&
+                      ["supported", "user_confirmed"].includes(bullet.validationStatus),
+                  )
+                  .sort((left, right) => left.displayOrder - right.displayOrder)
+                  .forEach((bullet) => {
+                    const item = document.createElement("p");
+                    item.className = "font-body-sm text-on-surface-variant";
+                    item.textContent = `• ${bullet.text}`;
+                    preview.append(item);
+                  });
+              });
             }
 
             async function loadResumeVersions() {
@@ -2595,6 +2660,29 @@
                     method: "POST",
                     body: "{}",
                   });
+
+                  document
+                    .getElementById("resume-role-button")
+                    .addEventListener("click", async () => {
+                      if (!activeResume) return;
+                      const targetRole = document.getElementById("resume-role-input").value.trim();
+                      if (!targetRole) return;
+                      try {
+                        renderResume(
+                          await resumeRequest(`/api/resumes/${activeResume._id}/role`, {
+                            method: "PATCH",
+                            body: JSON.stringify({
+                              targetRole,
+                              expectedRevision: activeResume.revision,
+                            }),
+                          }),
+                        );
+                        document.getElementById("resume-save-status").textContent =
+                          "Target role switched; approved content preserved.";
+                      } catch (error) {
+                        document.getElementById("resume-save-status").textContent = error.message;
+                      }
+                    });
                   await loadResumeVersions();
                   document.getElementById("resume-save-status").textContent =
                     "Version checkpoint saved.";

@@ -157,6 +157,40 @@ export async function handleResumeRequest(
     return true;
   }
 
+  const roleMatch = pathname.match(/^\/api\/resumes\/([^/]+)\/role$/);
+  if (roleMatch && request.method === "PATCH") {
+    const input = z
+      .object({
+        targetRole: z.string().trim().min(1).max(160),
+        jobAnalysisId: z
+          .string()
+          .regex(/^[a-f\d]{24}$/i)
+          .optional(),
+        expectedRevision: z.number().int().min(0).optional(),
+      })
+      .parse(await readJson(request));
+    const update = await Resume.findOneAndUpdate(
+      {
+        ...resumeFilter(userId, roleMatch[1] ?? ""),
+        ...(input.expectedRevision !== undefined ? { revision: input.expectedRevision } : {}),
+      },
+      {
+        $set: {
+          targetRole: input.targetRole,
+          ...(input.jobAnalysisId ? { jobAnalysisId: input.jobAnalysisId } : {}),
+        },
+        $inc: { revision: 1 },
+      },
+      { new: true },
+    )
+      .lean()
+      .exec();
+    if (!update)
+      throw new ApiError(409, "STALE_RESUME", "Resume changed elsewhere; reload before saving");
+    sendJson(response, 200, success(update));
+    return true;
+  }
+
   const bulletMatch = pathname.match(/^\/api\/resumes\/([^/]+)\/bullets$/);
   if (bulletMatch && request.method === "POST") {
     const input = bulletSchema.parse(await readJson(request));

@@ -16,6 +16,7 @@ import { handleBulletRequest } from "./bullet-api.js";
 import { handleClarificationRequest } from "./clarification-api.js";
 import { handleResumeRequest } from "./resume-api.js";
 import { handleResumeVersionRequest } from "./resume-version-api.js";
+import { handleResumePreviewRequest } from "./resume-preview-api.js";
 
 const profilePatchSchema = z.object({
   name: z.string().trim().min(1).max(120).optional(),
@@ -138,6 +139,9 @@ export async function handleApplicationRequest(
     if (
       await handleResumeVersionRequest(request, response, userId, url.pathname, readJson, sendJson)
     ) {
+      return;
+    }
+    if (await handleResumePreviewRequest(request, response, userId, url.pathname, sendJson)) {
       return;
     }
 
