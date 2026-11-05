@@ -12,7 +12,8 @@
     "test:unit": "vitest run",
     "test:e2e": "vitest run tests/e2e-workflow.test.ts tests/smoke.test.js",
     "test:smoke": "node --test tests/smoke.test.js",
-    "build": "npm run typecheck",
+    "build": "tsc --noEmit && esbuild src/server/main.ts --bundle --platform=node --format=esm --outfile=dist/server/main.js",
+    "start": "node dist/server/main.js",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
+    "esbuild": "^0.28.2",
     "eslint": "^9.39.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",

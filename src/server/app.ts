@@ -90,6 +90,10 @@ export async function handleApplicationRequest(
   if (await handleAuthRequest(request, response, source)) return;
 
   const url = requestUrl;
+  if (request.method === "GET" && url.pathname === "/health") {
+    sendJson(response, 200, success({ status: "ok" }));
+    return;
+  }
   if (!url.pathname.startsWith("/api/")) {
     sendJson(response, 404, failure(new ApiError(404, "NOT_FOUND", "Route not found")));
     return;

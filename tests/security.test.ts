@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach } from "vitest";
-import { ApiError } from "../src/server/api.js";
+import type { ApiError } from "../src/server/api.js";
 import { clearRateLimitBuckets, rateLimit } from "../src/server/security.js";
 
 describe("HTTP security controls", () => {
