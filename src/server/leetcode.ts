@@ -65,7 +65,7 @@ export async function handleLeetcodeRequest(
     userConfirmationStatus: "pending_review",
     dataSource: "manual_user_entry",
     lastUpdatedAt: new Date(),
-  } as Record<string, unknown>;
+  };
   await profile.save();
   sendJson(response, 200, success(profile.codingStatistics));
   return true;

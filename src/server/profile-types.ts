@@ -23,10 +23,10 @@ export type SkillCategory = (typeof skillCategories)[number];
 
 export type SourceEvidence = {
   sourceProvider: ProfileSourceProvider;
-  sourceRecordId?: string;
-  sourceURL?: string;
-  importedAt?: Date;
-  updatedAt?: Date;
+  sourceRecordId?: string | undefined;
+  sourceURL?: string | undefined;
+  importedAt?: Date | undefined;
+  updatedAt?: Date | undefined;
   verificationStatus: VerificationStatus;
 };
 
@@ -114,17 +114,17 @@ export type Achievement = SourceEvidence & {
 };
 
 export type CodingStatistics = SourceEvidence & {
-  leetCodeUsername?: string;
-  totalProblemsSolved?: number;
-  easyProblemsSolved?: number;
-  mediumProblemsSolved?: number;
-  hardProblemsSolved?: number;
-  contestRating?: number;
-  globalRanking?: number;
-  profileURL?: string;
-  lastUpdatedAt?: Date;
-  dataSource?: string;
-  userConfirmationStatus?: VerificationStatus;
+  leetCodeUsername?: string | undefined;
+  totalProblemsSolved?: number | undefined;
+  easyProblemsSolved?: number | undefined;
+  mediumProblemsSolved?: number | undefined;
+  hardProblemsSolved?: number | undefined;
+  contestRating?: number | undefined;
+  globalRanking?: number | undefined;
+  profileURL?: string | undefined;
+  lastUpdatedAt?: Date | undefined;
+  dataSource?: string | undefined;
+  userConfirmationStatus?: VerificationStatus | undefined;
 };
 
 export type DeveloperProfile = {

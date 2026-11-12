@@ -67,7 +67,15 @@ export async function handleProfileRequest(
   if (statisticsPath && request.method === "PATCH") {
     const patch = profileRecordSchemas["coding-statistics"].parse(await readJson(request));
     const profile = await getProfile(userId);
-    profile.codingStatistics = { ...profile.codingStatistics, ...patch } as Record<string, unknown>;
+    profile.codingStatistics = {
+      ...profile.codingStatistics,
+      ...patch,
+      sourceProvider: patch.sourceProvider ?? profile.codingStatistics?.sourceProvider ?? "manual",
+      verificationStatus:
+        patch.verificationStatus ??
+        profile.codingStatistics?.verificationStatus ??
+        "pending_review",
+    };
     await profile.save();
     sendJson(response, 200, success(serialize(profile)));
     return true;

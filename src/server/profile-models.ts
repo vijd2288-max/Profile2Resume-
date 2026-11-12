@@ -1,5 +1,17 @@
 import { model, models, Schema, type Document, type Model, type Types } from "mongoose";
-import { profileSourceProviders, skillCategories, verificationStatuses } from "./profile-types.js";
+import {
+  profileSourceProviders,
+  skillCategories,
+  verificationStatuses,
+  type Achievement,
+  type BasicInformation,
+  type Certification,
+  type CodingStatistics,
+  type Education,
+  type Experience,
+  type Project,
+  type TechnicalSkill,
+} from "./profile-types.js";
 
 const sourceEvidenceSchema = new Schema(
   {
@@ -129,26 +141,14 @@ const codingStatisticsSchema = new Schema(
 
 export interface DeveloperProfileDocument extends Document {
   userId: Types.ObjectId;
-  basicInformation: {
-    fullName?: string;
-    professionalHeadline?: string;
-    email?: string;
-    phone?: string;
-    location?: string;
-    profileImage?: string;
-    personalWebsite?: string;
-    githubURL?: string;
-    linkedInURL?: string;
-    leetCodeURL?: string;
-    portfolioURL?: string;
-  };
-  education: Types.DocumentArray<unknown>;
-  experience: Types.DocumentArray<unknown>;
-  technicalSkills: Types.DocumentArray<unknown>;
-  projects: Types.DocumentArray<unknown>;
-  certifications: Types.DocumentArray<unknown>;
-  achievements: Types.DocumentArray<unknown>;
-  codingStatistics?: Record<string, unknown>;
+  basicInformation: BasicInformation;
+  education: Types.DocumentArray<Education>;
+  experience: Types.DocumentArray<Experience>;
+  technicalSkills: Types.DocumentArray<TechnicalSkill>;
+  projects: Types.DocumentArray<Project>;
+  certifications: Types.DocumentArray<Certification>;
+  achievements: Types.DocumentArray<Achievement>;
+  codingStatistics?: CodingStatistics;
   createdAt: Date;
   updatedAt: Date;
 }

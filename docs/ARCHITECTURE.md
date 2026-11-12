@@ -85,7 +85,7 @@ credentials.
 
 ## Database responsibilities
 
-A future relational database should own durable product state:
+MongoDB, accessed through Mongoose, owns durable product state:
 
 - User and profile records, once authentication exists.
 - Provider connection metadata and encrypted token references.
@@ -94,7 +94,12 @@ A future relational database should own durable product state:
 - Resume documents, versions, generation status, and export metadata.
 - Audit events and job state needed for retries and support.
 
-Raw provider payloads should live in object storage or a short-retention ingestion store when their size or retention policy makes relational storage inappropriate. Secrets must never be stored in frontend state or the database as plaintext.
+Resume content is stored as user-owned resume snapshots and version documents.
+Profile education, experience, skills, projects, and certifications are
+validated embedded records in the user's developer profile. Raw provider
+payloads should live in object storage or a short-retention ingestion store when
+their size or retention policy makes database storage inappropriate. Secrets
+must never be stored in frontend state or the database as plaintext.
 
 ## Integration flow
 

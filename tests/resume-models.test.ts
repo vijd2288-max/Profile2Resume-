@@ -31,4 +31,18 @@ describe("resume models", () => {
     });
     expect(version.validateSync()).toBeTruthy();
   });
+
+  it("validates known fields in resume section records", () => {
+    const resume = new Resume({
+      userId: "507f1f77bcf86cd799439011",
+      title: "Resume",
+      targetRole: "Engineer",
+      sections: {
+        ...emptyResumeSections(),
+        education: [{ institutionName: "x".repeat(201) }],
+      },
+    });
+
+    expect(resume.validateSync()?.errors["sections.education.0.institutionName"]).toBeDefined();
+  });
 });
