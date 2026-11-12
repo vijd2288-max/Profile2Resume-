@@ -15,7 +15,12 @@ server-side AI integrations.
 6. Run `npm run build && npm start` for the production-shaped server.
 
 The browser entry point is [code.html](./code.html). The API listens on
-`PORT` (default `3000`).
+`PORT` (default `3000`). The server connects to MongoDB and initializes model
+indexes before accepting requests; startup fails if the database is unavailable.
+Set `MONGODB_TEST_URI` to a dedicated test MongoDB deployment, then run
+`npm run test:database` to exercise CRUD and cross-process persistence. The
+test uses a uniquely named temporary database and removes it when finished;
+never point it at production.
 
 ## Configuration
 
