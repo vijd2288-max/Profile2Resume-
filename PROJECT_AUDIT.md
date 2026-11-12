@@ -107,3 +107,26 @@ the passing local test/build checks.
    architecture document with the current API and UI.
 
 No roadmap item above was implemented in this audit phase.
+
+## Milestone 03 — Development and Git baseline
+
+- The audit started on `main` at `792a565` (`origin/main` matched that commit).
+  The working tree already contained local changes, so a separate
+  `feature/phase-0-project-audit` branch was created without stashing, resetting,
+  or discarding them. No remote branch with that name existed at the pre-push
+  check.
+- `origin` is configured for both fetch and push to the repository's GitHub
+  remote. `main` was not changed.
+- `.gitignore` covers `node_modules/`, `dist/`, `coverage/`, `.env`, `.env.*`,
+  and `*.log`, with an exception for `.env.example`.
+- The existing scripts provide separate typecheck, lint, formatting, unit,
+  smoke, workflow, build, start, and aggregate check commands. The Render
+  configuration uses the build/start commands documented above.
+- The following pre-existing worktree entries were left unchanged and were
+  excluded from all audit commits: modified `package.json`,
+  `src/server/app.ts`, `src/server/env.ts`, and `tests/env.test.ts`, plus the
+  untracked root file named `npm run build`. They remain local and uncommitted;
+  the audit push contains only `PROJECT_AUDIT.md`.
+
+The Git baseline and all three milestone commits are limited to audit
+documentation. No application source or Google Stitch UI was changed.
