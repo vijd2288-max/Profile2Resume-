@@ -15,8 +15,8 @@ const cache = (globalForDatabase.__profile2resumeMongo ??= {
 });
 
 export class DatabaseConfigurationError extends Error {
-  constructor() {
-    super("MONGODB_URI is not configured");
+  constructor(message = "MONGODB_URI is not configured") {
+    super(message);
     this.name = "DatabaseConfigurationError";
   }
 }
@@ -25,6 +25,15 @@ export function getMongoUri(source: NodeJS.ProcessEnv = process.env): string {
   const uri = source.MONGODB_URI?.trim();
   if (!uri) {
     throw new DatabaseConfigurationError();
+  }
+  let parsed: URL;
+  try {
+    parsed = new URL(uri);
+  } catch {
+    throw new DatabaseConfigurationError("MONGODB_URI must be a valid MongoDB connection string");
+  }
+  if (!["mongodb:", "mongodb+srv:"].includes(parsed.protocol) || !parsed.hostname) {
+    throw new DatabaseConfigurationError("MONGODB_URI must be a valid MongoDB connection string");
   }
   return uri;
 }
@@ -39,9 +48,12 @@ export async function connectToDatabase(
   }
 
   if (cache.promise && cache.connectedUri !== uri) {
-    await cache.promise.catch(() => undefined);
-    cache.promise = null;
-    cache.connectedUri = null;
+    const previousConnection = cache.promise;
+    await previousConnection.catch(() => undefined);
+    if (cache.promise !== previousConnection) {
+      return connectToDatabase(source);
+    }
+    await disconnectFromDatabase();
   }
 
   cache.connectedUri = uri;
@@ -49,15 +61,20 @@ export async function connectToDatabase(
     serverSelectionTimeoutMS: 5_000,
     ...(source.MONGODB_DB_NAME?.trim() ? { dbName: source.MONGODB_DB_NAME.trim() } : {}),
   };
-  cache.promise = mongoose
+  const connectionPromise = mongoose
     .connect(uri, options)
-    .then((connection) => {
+    .then(async (connection) => {
+      await Promise.all(
+        Object.values(mongoose.models).map((registeredModel) => registeredModel.init()),
+      );
       console.info("MongoDB connection established");
       return connection;
     })
     .catch((error: unknown) => {
-      cache.promise = null;
-      cache.connectedUri = null;
+      if (cache.promise === connectionPromise) {
+        cache.promise = null;
+        cache.connectedUri = null;
+      }
       console.error(
         "MongoDB connection failed",
         error instanceof Error ? error.message : "unknown error",
@@ -65,13 +82,20 @@ export async function connectToDatabase(
       throw error;
     });
 
-  return cache.promise;
+  cache.promise = connectionPromise;
+  return connectionPromise;
 }
 
 export async function disconnectFromDatabase(): Promise<void> {
-  cache.promise = null;
-  cache.connectedUri = null;
+  const pendingConnection = cache.promise;
+  if (pendingConnection) {
+    await pendingConnection.catch(() => undefined);
+  }
   if (mongoose.connection.readyState !== 0) {
     await mongoose.disconnect();
+  }
+  if (cache.promise === pendingConnection) {
+    cache.promise = null;
+    cache.connectedUri = null;
   }
 }

@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+const optionalNonEmptyString = z.preprocess(
+  (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+  z.string().min(1).optional(),
+);
+
 const serverEnvSchema = z.object({
   APP_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().min(1).max(65535).default(3000),
@@ -7,8 +12,8 @@ const serverEnvSchema = z.object({
   DATABASE_URL: z.string().url().optional(),
   MONGODB_URI: z.string().url().optional(),
   MONGODB_DB_NAME: z.string().min(1).optional(),
-  GITHUB_CLIENT_ID: z.string().min(1).optional(),
-  GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
+  GITHUB_CLIENT_ID: optionalNonEmptyString,
+  GITHUB_CLIENT_SECRET: optionalNonEmptyString,
   GITHUB_CALLBACK_URL: z.string().url().optional(),
   RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(60_000),
   RATE_LIMIT_MAX_REQUESTS: z.coerce.number().int().positive().default(120),

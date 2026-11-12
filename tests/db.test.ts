@@ -2,17 +2,22 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 const connect = vi.fn();
 const disconnect = vi.fn();
+const connection = { readyState: 0 };
 
 vi.mock("mongoose", () => ({
   default: {
     connect,
     disconnect,
-    connection: { readyState: 0 },
+    connection,
+    models: {},
   },
 }));
 
 describe("MongoDB connection", () => {
-  afterEach(() => {
+  afterEach(async () => {
+    connection.readyState = 0;
+    const { disconnectFromDatabase } = await import("../src/server/db.js");
+    await disconnectFromDatabase();
     connect.mockReset();
     disconnect.mockReset();
     vi.resetModules();
@@ -22,6 +27,15 @@ describe("MongoDB connection", () => {
     const { connectToDatabase, DatabaseConfigurationError } = await import("../src/server/db.js");
 
     await expect(connectToDatabase({})).rejects.toBeInstanceOf(DatabaseConfigurationError);
+    expect(connect).not.toHaveBeenCalled();
+  });
+
+  it("rejects invalid MongoDB URI schemes before connecting", async () => {
+    const { connectToDatabase, DatabaseConfigurationError } = await import("../src/server/db.js");
+
+    await expect(
+      connectToDatabase({ MONGODB_URI: "https://example.test/database" }),
+    ).rejects.toBeInstanceOf(DatabaseConfigurationError);
     expect(connect).not.toHaveBeenCalled();
   });
 
@@ -47,5 +61,23 @@ describe("MongoDB connection", () => {
     await expect(connectToDatabase(env)).rejects.toThrow("unavailable");
     await expect(connectToDatabase(env)).resolves.toEqual({ connection: "ok" });
     expect(connect).toHaveBeenCalledTimes(2);
+  });
+
+  it("disconnects the real connection and clears the cached connection", async () => {
+    disconnect.mockResolvedValue(undefined);
+    connect.mockResolvedValue({ connection: "connected" });
+    connection.readyState = 1;
+    const { connectToDatabase, disconnectFromDatabase } = await import("../src/server/db.js");
+
+    const env = { MONGODB_URI: "mongodb://localhost/disconnect-test" };
+    await connectToDatabase(env);
+    await disconnectFromDatabase();
+
+    expect(disconnect).toHaveBeenCalledOnce();
+    expect(await connectToDatabase(env)).toEqual({
+      connection: "connected",
+    });
+    expect(connect).toHaveBeenCalledTimes(2);
+    connection.readyState = 0;
   });
 });

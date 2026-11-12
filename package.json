@@ -12,8 +12,8 @@
     "test:unit": "vitest run",
     "test:e2e": "vitest run tests/e2e-workflow.test.ts tests/smoke.test.js",
     "test:smoke": "node --test tests/smoke.test.js",
-    "build": "tsc --noEmit && esbuild src/server/main.ts --bundle --platform=node --format=esm --outfile=dist/server/main.js",
-    "start": "node dist/server/main.js",
+    "build": "tsc --noEmit && esbuild src/server/main.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server/main.cjs",
+    "start": "node --env-file-if-exists=.env dist/server/main.cjs",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
   },
   "dependencies": {
