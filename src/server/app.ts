@@ -1,6 +1,6 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { z } from "zod";
-import { ApiError, failure, success, toApiFailure } from "./api.js";
+import { ApiError, failure, normalizeApiError, success, toApiFailure } from "./api.js";
 import { handleAuthRequest } from "./auth-http.js";
 import { connectToDatabase } from "./db.js";
 import { assertUserOwnership, requireAuthenticatedUser } from "./access.js";
@@ -80,10 +80,7 @@ export async function handleApplicationRequest(
   try {
     rateLimit(request, requestUrl.pathname, source);
   } catch (error) {
-    const apiError =
-      error instanceof ApiError
-        ? error
-        : new ApiError(500, "INTERNAL_ERROR", "An unexpected error occurred");
+    const apiError = normalizeApiError(error);
     sendJson(response, apiError.status, toApiFailure(apiError));
     return;
   }
@@ -199,7 +196,7 @@ export async function handleApplicationRequest(
         const user = await User.findByIdAndUpdate(
           requestedUserId,
           { $set: patch },
-          { new: true },
+          { new: true, runValidators: true },
         ).exec();
         if (!user) throw new ApiError(404, "USER_NOT_FOUND", "User profile was not found");
         sendJson(response, 200, success(safeUser(user)));
@@ -215,17 +212,8 @@ export async function handleApplicationRequest(
 
     sendJson(response, 404, failure(new ApiError(404, "NOT_FOUND", "Route not found")));
   } catch (error) {
-    const apiError =
-      error instanceof z.ZodError
-        ? new ApiError(
-            400,
-            "VALIDATION_ERROR",
-            "The request could not be validated",
-            error.flatten(),
-          )
-        : error;
-    const responseError = toApiFailure(apiError);
-    sendJson(response, apiError instanceof ApiError ? apiError.status : 500, responseError);
+    const apiError = normalizeApiError(error);
+    sendJson(response, apiError.status, toApiFailure(apiError));
   }
 }
 

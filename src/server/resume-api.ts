@@ -148,7 +148,7 @@ export async function handleResumeRequest(
         ...(input.expectedRevision !== undefined ? { revision: input.expectedRevision } : {}),
       },
       { $set: { sections: input.sections }, $inc: { revision: 1 } },
-      { new: true },
+      { new: true, runValidators: true },
     )
       .lean()
       .exec();
@@ -182,7 +182,7 @@ export async function handleResumeRequest(
         },
         $inc: { revision: 1 },
       },
-      { new: true },
+      { new: true, runValidators: true },
     )
       .lean()
       .exec();
@@ -308,7 +308,7 @@ export async function handleResumeRequest(
     const update = await Resume.findOneAndUpdate(
       { ...filter, ...(expectedRevision !== undefined ? { revision: expectedRevision } : {}) },
       { $set: { ...metadata, ...(sections ? { sections } : {}) }, $inc: { revision: 1 } },
-      { new: true },
+      { new: true, runValidators: true },
     )
       .lean()
       .exec();

@@ -1,4 +1,5 @@
-import type { ZodType } from "zod";
+import mongoose from "mongoose";
+import { z, type ZodType } from "zod";
 
 export type ApiMeta = {
   requestId?: string;
@@ -66,12 +67,35 @@ export function failure(error: ApiError, meta?: ApiMeta): ApiFailure {
   return response;
 }
 
-export function toApiFailure(error: unknown, meta?: ApiMeta): ApiFailure {
+export function normalizeApiError(error: unknown): ApiError {
   if (error instanceof ApiError) {
-    return failure(error, meta);
+    return error;
   }
 
-  return failure(new ApiError(500, "INTERNAL_ERROR", "An unexpected error occurred"), meta);
+  if (error instanceof z.ZodError) {
+    return new ValidationError("The request could not be validated", error.flatten());
+  }
+  if (error instanceof mongoose.Error.ValidationError) {
+    return new ValidationError("The request could not be validated", {
+      fields: Object.keys(error.errors),
+    });
+  }
+  if (error instanceof mongoose.Error.CastError) {
+    return new ValidationError("The request could not be validated", { fields: [error.path] });
+  }
+  if (typeof error === "object" && error !== null && "code" in error && error.code === 11000) {
+    return new ApiError(
+      409,
+      "RESOURCE_CONFLICT",
+      "A record with the same unique value already exists",
+    );
+  }
+
+  return new ApiError(500, "INTERNAL_ERROR", "An unexpected error occurred");
+}
+
+export function toApiFailure(error: unknown, meta?: ApiMeta): ApiFailure {
+  return failure(normalizeApiError(error), meta);
 }
 
 export function validate<T>(schema: ZodType<T>, input: unknown): T {
