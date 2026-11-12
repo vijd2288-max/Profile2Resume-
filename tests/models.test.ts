@@ -8,6 +8,12 @@ describe("database models", () => {
     const invalidUser = new User({ authProvider: "github" });
     expect(invalidUser.validateSync()?.errors.email).toBeDefined();
 
+    const invalidEmail = new User({
+      email: "not-an-email",
+      authProvider: "github",
+    });
+    expect(invalidEmail.validateSync()?.errors.email).toBeDefined();
+
     const validUser = new User({
       email: "Developer@Example.com",
       authProvider: "github",
@@ -15,6 +21,10 @@ describe("database models", () => {
     });
     expect(validUser.validateSync()).toBeUndefined();
     expect(validUser.email).toBe("developer@example.com");
+  });
+
+  it("enforces unique user email addresses", () => {
+    expect(User.schema.indexes()).toContainEqual([{ email: 1 }, { unique: true }]);
   });
 
   it("validates integration provider and ownership fields", () => {

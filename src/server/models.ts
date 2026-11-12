@@ -18,7 +18,14 @@ export interface UserDocument extends Document {
 const userSchema = new Schema<UserDocument>(
   {
     name: { type: String, trim: true, maxlength: 120 },
-    email: { type: String, required: true, lowercase: true, trim: true, maxlength: 320 },
+    email: {
+      type: String,
+      required: true,
+      lowercase: true,
+      trim: true,
+      maxlength: 320,
+      match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Email must be valid"],
+    },
     profileImage: { type: String, trim: true, maxlength: 2_048 },
     emailVerified: { type: Boolean, default: false },
     authProvider: { type: String, enum: ["github"], required: true },
